@@ -3,64 +3,64 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/2018/03/template/</loc>
+    <loc>https://stats4good.github.io/sem_nome/blog/2018/03/template/</loc>
     <lastmod>2018-03-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/</loc>
-    <lastmod>2018-03-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/categoria-1/</loc>
+    <loc>https://stats4good.github.io/sem_nome/blog/</loc>
     <lastmod>2018-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/categoria-2/</loc>
+    <loc>https://stats4good.github.io/sem_nome/categories/categoria-1/</loc>
     <lastmod>2018-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://stats4good.github.io/sem_nome/categories/categoria-2/</loc>
     <lastmod>2018-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+    <loc>https://stats4good.github.io/sem_nome/categories/</loc>
     <lastmod>2018-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/tag-1/</loc>
+    <loc>https://stats4good.github.io/sem_nome/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>https://stats4good.github.io/sem_nome/</loc>
     <lastmod>2018-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/tag-2/</loc>
+    <loc>https://stats4good.github.io/sem_nome/tags/tag-1/</loc>
     <lastmod>2018-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/tag-3/</loc>
+    <loc>https://stats4good.github.io/sem_nome/tags/tag-2/</loc>
     <lastmod>2018-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://stats4good.github.io/sem_nome/tags/tag-3/</loc>
+    <lastmod>2018-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://stats4good.github.io/sem_nome/tags/</loc>
     <lastmod>2018-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
