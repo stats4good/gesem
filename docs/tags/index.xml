@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Sem nome</title>
-    <link>https://stats4good.github.io/sem_nome/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Sem nome</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <lastBuildDate>Sat, 17 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://stats4good.github.io/sem_nome/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tag 1</title>
-      <link>https://stats4good.github.io/sem_nome/tags/tag-1/</link>
+      <link>/tags/tag-1/</link>
       <pubDate>Sat, 17 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://stats4good.github.io/sem_nome/tags/tag-1/</guid>
+      <guid>/tags/tag-1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tag 2</title>
-      <link>https://stats4good.github.io/sem_nome/tags/tag-2/</link>
+      <link>/tags/tag-2/</link>
       <pubDate>Sat, 17 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://stats4good.github.io/sem_nome/tags/tag-2/</guid>
+      <guid>/tags/tag-2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tag 3</title>
-      <link>https://stats4good.github.io/sem_nome/tags/tag-3/</link>
+      <link>/tags/tag-3/</link>
       <pubDate>Sat, 17 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://stats4good.github.io/sem_nome/tags/tag-3/</guid>
+      <guid>/tags/tag-3/</guid>
       <description></description>
     </item>
     

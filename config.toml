@@ -1,4 +1,4 @@
-baseurl = "https://stats4good.github.io/sem_nome"
+baseurl = "https://stats4good.github.io/"
 title = "Sem nome"
 theme = "hugo-universal-theme"
 languageCode = "pt-br"
@@ -20,17 +20,17 @@ paginate = 15
 
 [[menu.main]]
     name = "Home"
-    url  = "/"
+    url  = "/sem_nome/"
     weight = 1
     
 [[menu.main]]
     name = "Blog"
-    url  = "/blog/"
+    url  = "/sem_nome/blog/"
     weight = 2
 
 [[menu.main]]
     name = "Contato"
-    url  = "/contact/"
+    url  = "/sem_nome/contact/"
     weight = 3
 
 # Top bar social links menu
