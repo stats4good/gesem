@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tag 1 on Sem nome</title>
+    <link>/tags/tag-1/</link>
+    <description>Recent content in Tag 1 on Sem nome</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Sat, 17 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/tag-1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Título</title>
+      <link>/blog/2018/03/template/</link>
+      <pubDate>Sat, 17 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2018/03/template/</guid>
+      <description>Título Seção Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula quam et nisl laoreet elementum. Suspendisse in nisl sit amet mauris porta elementum. Fusce sed finibus eros. Ut quam odio, pulvinar et neque non, hendrerit ultrices purus. Nam nec libero nisi. Donec et diam in dui eleifend auctor vel eget urna. Pellentesque eget finibus libero. Sed pellentesque ac odio et ullamcorper. Suspendisse mattis sagittis tincidunt.</description>
+    </item>
+    
+  </channel>
+</rss>

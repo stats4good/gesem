@@ -1,0 +1,10 @@
+{
+    "dialog-state" : {
+        "caseSensitive" : false,
+        "filePatterns" : [
+        ],
+        "path" : "~/Augusto/Github_S4g/site_r/site",
+        "query" : "host",
+        "regex" : false
+    }
+}

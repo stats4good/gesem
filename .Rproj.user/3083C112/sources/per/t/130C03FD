@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1521641891802.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3288536778",
+    "id" : "130C03FD",
+    "lastKnownWriteTime" : 1521648891,
+    "last_content_update" : 1521648891819,
+    "path" : "~/Documents/git/github/stats4good/projetos/sem_nome/content/blog/2018/03/template.Rmd",
+    "project_path" : "content/blog/2018/03/template.Rmd",
+    "properties" : {
+        "cursorPosition" : "93,34",
+        "scrollLine" : "24"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

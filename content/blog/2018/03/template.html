@@ -1,0 +1,126 @@
+---
+title: "Título"
+author: "Autor"
+date: 2018-03-17
+categories: ["categoria 1", "categoria 2"]
+tags: ["tag 1", "tag 2", "tag 3"]
+banner: "blog/2018/03/template/img/banner.png"
+summary: "Resumo de até 500 caracteres."
+---
+
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/datatables-binding/datatables.js"></script>
+<link href="/rmarkdown-libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="/rmarkdown-libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="/rmarkdown-libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/crosstalk/js/crosstalk.min.js"></script>
+
+
+<div id="titulo-secao" class="section level2">
+<h2>Título Seção</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula quam et nisl laoreet elementum. Suspendisse in nisl sit amet mauris porta elementum. Fusce sed finibus eros. Ut quam odio, pulvinar et neque non, hendrerit ultrices purus. Nam nec libero nisi. Donec et diam in dui eleifend auctor vel eget urna. Pellentesque eget finibus libero. Sed pellentesque ac odio et ullamcorper. Suspendisse mattis sagittis tincidunt. Vestibulum et viverra turpis.</p>
+<p>Mauris eget pellentesque diam, at tincidunt purus. Maecenas sagittis elementum molestie. Sed orci dui, elementum eleifend euismod maximus, blandit quis lacus. Phasellus vitae euismod est. Donec vestibulum tellus et facilisis iaculis. Cras quis finibus metus. Duis elit dui, molestie non purus vel, aliquet dignissim turpis. Etiam sodales maximus ex quis facilisis. Aenean tristique porttitor mi, non suscipit erat fringilla quis.</p>
+<div id="titulo-subsecao" class="section level3">
+<h3>Título Subseção</h3>
+<p>In convallis quam diam, vel ullamcorper justo blandit nec. Integer non dui blandit, rhoncus velit at, tempus lacus. Proin eu libero ornare, convallis odio in, pharetra est. Aliquam eget libero a elit hendrerit mattis. Nam pharetra lectus sed eros auctor, eget venenatis est pretium. Integer volutpat neque vel lectus tincidunt, non lacinia neque condimentum. Ut sagittis et enim et rhoncus. Nullam ultrices posuere arcu nec placerat. Phasellus vitae purus tincidunt, efficitur velit eu, maximus justo. Integer porttitor laoreet semper. Nullam ut pulvinar lacus. Cras tincidunt gravida neque. Vestibulum nec lacus tempus, pharetra neque nec, posuere purus. Nullam fermentum enim sit amet nisi eleifend pretium. Aliquam sed ultricies nunc. Curabitur ultrices egestas nisi id lacinia.</p>
+</div>
+</div>
+<div id="funcionalidades" class="section level2">
+<h2>Funcionalidades</h2>
+<p>Sempre que você quiser começar uma nova linha insira duplo espaço na linha imediatamente anterior.</p>
+<p>Esta é uma palavra em <em>itálico</em><br />
+Esta é uma palavra em <strong>negrito</strong><br />
+Esta é uma palavra em <strong><em>negrito e itálico</em></strong></p>
+<p>Para fazer um lista basta usar o sinal de adição:</p>
+<ul>
+<li>Item 1</li>
+<li>Item 2
+<ul>
+<li>Item 2.1</li>
+</ul></li>
+<li>Item 3
+<ul>
+<li>Item 3.1
+<ul>
+<li>Item 3.1.1</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Para fazer um lista numerada basta usar os próprios números:</p>
+<ol style="list-style-type: decimal">
+<li>Item 1<br />
+</li>
+<li>Item 2<br />
+2.1. Item 2.1<br />
+</li>
+<li>Item 3<br />
+3.1. Item 3.1</li>
+</ol>
+<p>Para incluir uma figura use a seguinte:</p>
+<div class="figure">
+<img src="img/figura.png" alt="legenda da figura" />
+<p class="caption">legenda da figura</p>
+</div>
+<p>Para incluir uma equação no texto (inline equation) use <span class="math inline">\(x_i = \sqrt{\frac{1}{y^3}}\)</span>. Note que podem ser utilizados os mesmos comandos que utilizamos em LaTeX.</p>
+<p>Para incluir um bloco de equações, o método é o mesmo do LaTeX:</p>
+<span class="math display">\[\begin{equation}
+  x_i = \sqrt{\frac{1}{y^3}}.
+\end{equation}\]</span>
+<p>Podemos utilizar códigos do R de diversas maneiras nos posts, por exemplo:</p>
+<p>Para carregar uma base de dados</p>
+<p>Tabela referente aos dados</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">x</th>
+<th align="right">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">60</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p>Para tabelas mais elegantes veja <a href="https://rstudio.github.io/DT/">este link</a></p>
+<div id="htmlwidget-1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","data":[[1,2,3,4],[12,15,60,2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>x<\/th>\n      <th>y<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[0,1]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>Plots:</p>
+<p>Base</p>
+<div class="figure"><span id="fig:plot1"></span>
+<img src="/blog/2018/03/template_files/figure-html/plot1-1.png" alt="legenda do plot" width="672" />
+<p class="caption">
+Figure 1: legenda do plot
+</p>
+</div>
+<p>ggplot</p>
+<div class="figure"><span id="fig:ggplot"></span>
+<img src="/blog/2018/03/template_files/figure-html/ggplot-1.png" alt="legenda do plot" width="672" />
+<p class="caption">
+Figure 2: legenda do plot
+</p>
+</div>
+</div>
+<div id="referencias" class="section level1">
+<h1>Referências</h1>
+<p><a href="https://books.google.com.br/books?hl=pt-BR&amp;lr=&amp;id=CT-MHZyNK2wC&amp;oi=fnd&amp;pg=PR15&amp;dq=Mastering+Regular+Expressions,+Second+Edition+Jeffrey+E.F.+Friedl-O%27Reilly+(2002)&amp;ots=ecY2U03UQP&amp;sig=S7v-k5hP3kwhfgHs1xvuTruDXa4#v=onepage&amp;q&amp;f=false">Friedl, Jeffrey EF. Mastering regular expressions. &quot; O’Reilly Media, Inc.“, 2002.</a></p>
+<p><a href="https://cran.r-project.org/web/packages/stringr/stringr.pdf%20https://CRAN.R-project.org/package=stringr">Hadley Wickham (2016). stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.1.0.</a></p>
+<p><a href="https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html">Tutorial do stringr (vignettes)</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Regular_expression">Wikipedia - regular expression</a></p>
+</div>

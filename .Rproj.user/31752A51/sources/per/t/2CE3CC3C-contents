@@ -1,0 +1,13 @@
+---
+title: "Projetos"
+output:
+  blogdown::html_page
+---
+
+# <font color="#006600", size = 5> Veraz </font>
+
+O Veraz é um projeto que objetiva criar uma plataforma de visualização dos dados do [portal da transparência](http://www.portaltransparencia.gov.br/). Atualmente, o portal da transparência conta com grande volume de dados sobre os gastos do poder executivo, porém esta informação é inacessível ao usuário comum. Portanto, a ideia é que a plataforma traga de forma clara e objetiva onde e como é feito o gasto do governo federal. 
+
+# <font color="#a31aff", size = 5> Subnotificação de Estupros contra Mulher </font>
+
+Segundo [pesquisa do Ipea](http://www.ipea.gov.br/portal/index.php?option=com_content&view=article&id=21849&catid=8&Itemid=6), estima-se que há pelo menos 527 mil casos de estupro anualmente no Brasil e que, destes casos, cerca de 10% é notificado. Tendo em vista o alarmante problema, este projeto objetiva avaliar as causas da subnotificação de estupros em mulheres no Brasil e ainda estimar o grau desta subnotificação. Além disso, há a intenção de criar uma plataforma online de denúncia contra os casos de estupro, algo inexistente hoje no Brasil.
