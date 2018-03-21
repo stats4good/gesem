@@ -1,4 +1,4 @@
-baseurl = "https://stats4good.github.io/"
+baseurl = "https://stats4good.github.io/sem_nome"
 title = "Sem nome"
 theme = "hugo-universal-theme"
 languageCode = "pt-br"
