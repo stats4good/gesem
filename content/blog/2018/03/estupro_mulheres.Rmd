@@ -4,13 +4,13 @@ author: "Douglas R. M. Azevedo"
 date: 2018-03-25
 categories: ["Estupro", "Notícias"]
 tags: ["webscrapping", "google trends"]
-banner: "/blog/2018/03/estupro_mulheres/img/why.jpeg"
+banner: "blog/2018/03/estupro_mulheres/img/why.jpeg"
 summary: "O projeto sem_nome tem por objetivo estudar o estupro em mulheres no Brasil. Será esse um tema interessante/relevante? Neste post veremos o que o Google (e por consequência seus usuários) estão falando sobre o assunto."
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
-knitr::opts_knit$set(base.dir = '/blog/2018/03/estupro_mulheres/')
+knitr::opts_knit$set(base.dir = 'blog/2018/03/template/')
 ```
 ```{r pacotes}
 library(gtrendsR)
