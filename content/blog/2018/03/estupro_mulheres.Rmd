@@ -1,0 +1,154 @@
+---
+title: "Por que estudar o estupro em mulheres?"
+author: "Douglas R. M. Azevedo"
+date: 2018-03-25
+categories: ["Estupro", "Notícias"]
+tags: ["webscrapping", "google trends"]
+banner: "blog/2018/03/estupro_mulheres/img/why.jpeg"
+summary: "O projeto sem_nome tem por objetivo estudar o estupro em mulheres no Brasil. Será esse um tema interessante/relevante? Neste post veremos o que o Google (e por consequência seus usuários) estão falando sobre o assunto."
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+knitr::opts_knit$set(base.dir = 'blog/2018/03/template/')
+```
+```{r pacotes}
+library(gtrendsR)
+library(highcharter)
+library(wordcloud2)
+library(ggthemes)
+library(widgetframe)
+library(dplyr)
+library(rvest)
+library(stringr)
+library(tm)
+library(SnowballC)
+```
+
+## Enquanto isso no Google...
+
+Todos os dias milhares de notícias são reportadas por sites de notícias e blogs. Uma parcela considerável dessas reportagens se trata de crimes e violência em geral. O objetivo do nosso projeto é estudar um tipo de violência muito específico: Estupro em Mulheres. Este tema é apenas um subgrupo dentro do contexto de violência. O que será que o Google tem a dizer sobre a relevância deste tema quando comparado a outros tipos de violência?
+
+Utilizando a ferramenta Google Trends é possível comparar o interesse (leia-se relevância) de temas com base nas pesquisas realizadas pelos usuários do Google. Abaixo temos a comparação dos termos 'estupro', 'assédio sexual', 'assalto' e 'assassinato'. Para 'limpar' o gráfico basta clicar em algum termo na legenda.
+
+```{r google trends, cache=T}
+dados_gtrends <- gtrends(keyword = c("estupro", "assédio sexual", "assalto", "assassinato"), time = "today 12-m")
+dados_gtrends <- dados_gtrends$interest_over_time
+dados_gtrends$hits <- as.numeric(dados_gtrends$hits)
+dados_gtrends$date <- as.Date(dados_gtrends$date)
+```
+```{r google trends plot}
+colors <- tableau_color_pal('tableau10medium')(10)
+
+highchart() %>%
+  hc_add_series(data = dados_gtrends, 
+                mapping = hcaes(x = date, y = hits, group = keyword),
+                type = "line") %>%
+  hc_xAxis(type = "datetime", dateTimeLabelFormats = list(day = '%d de %b')) %>%
+  hc_add_theme(hc_thm = hc_theme_538()) %>%
+  hc_yAxis(title = list(text = "Interesse")) %>%
+  hc_xAxis(title = list(text = "Data")) %>%
+  hc_title(text = "Interesse no termo estupro (Google Trends)") %>%
+  frameWidget()
+```
+
+<br></br>
+
+Um valor de 100 indica o pico de popularidade de um termo. Desta forma, o pico de popularidade deste gráfico ocorreu para o termo `r dados_gtrends %>% arrange(desc(hits)) %>% slice(1) %>% .$keyword` em `r dados_gtrends %>% arrange(desc(hits)) %>% slice(1) %>% .$date`. Os demais pontos são relativos a popularidade deste termo neste mê específico. Ou seja, quanto mais próximo de 100 maior o interesse por um termo quando comparado com o pico de popularidade no período.
+
+O interessante desta comparação é que é muito mais natural ouvir a respeito do assunto assalto (em roda de amigos ou mesas de bar) do que o assunto estupro. Porém, segundo o Google, o interesse nos assuntos foi bastante similar ao longo do último ano.
+
+Quanto ao pico em maio de 2017? veja este [link](https://g1.globo.com/rio-de-janeiro/noticia/policia-do-rio-investiga-caso-de-estupro-coletivo-de-menina-de-12-anos.ghtml). Para ver uma versão mais atualizada ou comparar outros termos vá para o [Google Trends](https://g.co/trends/ihGJ9).
+
+## O que nos dizem as notícias sobre o estupro
+
+Vimos que o termo estupro foi bastante pesquisado no último ano. Agora o interesse está em saber o que as notícias falam sobre o estupro. Estamos acostumados a diariamente ler notícias falando deste problema. Para resumir as últimas notícias a respeito do estupro foram extraídos os conteúdos dos 100 primeiros resultados do Google usando como pesquisa o termo 'estupro'. As palavras mais frequentes podem ser vistas em uma núvem de palavras.
+
+```{r webscrapping, cache=T}
+get_pages <- function(key, start){
+    url = URLencode(sprintf("https://www.google.com/search?q=%s&start=%s", key, start))
+
+    page <- read_html(url)
+
+    results <- page %>% 
+      html_nodes("h3.r > a") %>% 
+      html_attr("href") %>%
+      str_replace_all(pattern = "/url\\?q=", replacement = "") %>%
+      str_split(pattern = "&", simplify = T)
+
+    results <- data.frame(links = as.character(results[,1]),
+                          posicao = start:(start + length(results[,1]) - 1), stringsAsFactors = F)
+    return(results)
+}
+get_pages_content <- function(link){
+  content <- try(read_html(link))
+  
+  if(!( "try-error" %in% class(content))){
+    content <- content %>%
+      html_nodes('p') %>% 
+      html_text() %>% 
+      str_trim() %>% 
+      unlist()  
+    return(content)
+  } else{
+    return(NULL)
+  }
+  
+} 
+
+starts <- seq(1, 100, by = 10)
+key <- "estupro"
+
+links <- lapply(X = starts, FUN = get_pages, key = key)
+links <- do.call(links, what = "rbind")
+
+conteudo <- sapply(links$link, FUN = get_pages_content)
+conteudo <- unlist(conteudo)
+```
+<center>
+```{r nuvem de palavras, cache=T}
+palavras_conteudo <- unlist(str_match_all(conteudo, '\\w+\\b'))
+palavras_conteudo <- removePunctuation(x = palavras_conteudo)
+palavras_conteudo <- removeNumbers(x = palavras_conteudo)
+palavras_conteudo <- str_to_lower(string = palavras_conteudo)
+
+stopwords1 <- stopwords('pt')
+stopwords2 <- read.table(file = "https://gist.github.com/alopes/5358189.txt", stringsAsFactors = F)
+stopwords <- c(stopwords1, stopwords2$V1, "estupro", "anos", "caso", "contra", letters)
+
+palavras_conteudo <- palavras_conteudo[!(palavras_conteudo %in% stopwords)]
+palavras_conteudo <- str_replace_all(string = palavras_conteudo, pattern = "mulheres", replacement = "mulher")
+palavras_conteudo <- str_replace_all(string = palavras_conteudo, pattern = "homens", replacement = "homem")
+palavras_conteudo <- data.frame(word = palavras_conteudo)
+
+freq_min <- 30
+palavras_conteudo <- palavras_conteudo %>%
+  filter(word != "") %>%
+  group_by(word) %>%
+  summarise(freq = length(word)) %>%
+  filter(freq >= freq_min) %>%
+  arrange(desc(freq))
+
+cores <- tableau_color_pal('tableau10medium')(10)
+cores_palavras <- c("#ED665D", sample(x = cores, size = nrow(palavras_conteudo)-1, replace = T))
+
+wc <- wordcloud2(data = palavras_conteudo, color = cores_palavras, fontFamily = "Candara", size = 0.6,
+                 shape = "circle", backgroundColor = "black", ellipticity = .65)
+
+wc
+```
+</center>
+
+<br></br>
+
+Nesta nuvem de palavras é possível verificar a frequência em que cada palavra foi utilizada nos 100 diferentes sites resultantes da pesquisa no Google. Para verificar a contagem exata passe o mouse em cima de uma palavra.
+
+Vemos que as cinco palavras mais frequentes nas publicações são: `r palavras_conteudo %>% slice(1:5) %>% .$word %>% paste(collapse = " - ")`. A palavra mulher/mulheres apareceu em média mais de uma vez em cada notícia. Isso é um indício de que este grupo é o que mais sofre com este tipo de violência no Brasil.
+
+## Em outras palavras...
+
+O crime de estupro no Brasil é um assunto de extrema importância. Diariamente este crime faz milhares de vítimas em todo Brasil sendo que grande parte das vítimas é do sexo feminino. 
+
+Por ser um assunto delicado muitas das vítimas não reportam os acontecidos às autoridades fazendo com que haja uma gigantesca subnotificação dos índices de estupro no Brasil. Esta subnotificação é muito prejudicial pois os dados oficiais utilizados para criação de políticas públicas são baseados nestas notificações. 
+
+Você já foi vítima? Não se cale! Denuncie.

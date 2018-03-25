@@ -6,35 +6,26 @@
     <description>Recent content in Tags on Sem nome</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
-    <lastBuildDate>Sat, 17 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Tag 1</title>
-      <link>/tags/tag-1/</link>
-      <pubDate>Sat, 17 Mar 2018 00:00:00 +0000</pubDate>
+      <title>Google Trends</title>
+      <link>/tags/google-trends/</link>
+      <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/tag-1/</guid>
+      <guid>/tags/google-trends/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Tag 2</title>
-      <link>/tags/tag-2/</link>
-      <pubDate>Sat, 17 Mar 2018 00:00:00 +0000</pubDate>
+      <title>Webscrapping</title>
+      <link>/tags/webscrapping/</link>
+      <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/tag-2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tag 3</title>
-      <link>/tags/tag-3/</link>
-      <pubDate>Sat, 17 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/tag-3/</guid>
+      <guid>/tags/webscrapping/</guid>
       <description></description>
     </item>
     
