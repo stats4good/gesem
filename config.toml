@@ -126,4 +126,4 @@ paginate = 15
     enable = true
     
 [params.Paginator.Next.URL]
-    url  = "{{ .Site }}/blog/2"
+    url  = "{{ .Site }}/sem_nome/blog/2"
