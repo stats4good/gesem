@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sem nome</title>
-    <link>/</link>
+    <link>https://stats4good.github.io/sem_nome/</link>
     <description>Recent content on Sem nome</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <lastBuildDate>Sun, 25 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://stats4good.github.io/sem_nome/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Por que estudar o estupro em mulheres?</title>
-      <link>/blog/2018/03/estupro_mulheres/</link>
+      <link>https://stats4good.github.io/sem_nome/sem_nome/blog/2018/03/estupro_mulheres/</link>
       <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2018/03/estupro_mulheres/</guid>
+      <guid>https://stats4good.github.io/sem_nome/sem_nome/blog/2018/03/estupro_mulheres/</guid>
       <description>Enquanto isso no Google… Todos os dias milhares de notícias são reportadas por sites de notícias e blogs. Uma parcela considerável dessas reportagens se trata de crimes e violência em geral. O objetivo do nosso projeto é estudar um tipo de violência muito específico: Estupro em Mulheres. Este tema é apenas um subgrupo dentro do contexto de violência. O que será que o Google tem a dizer sobre a relevância deste tema quando comparado a outros tipos de violência?</description>
     </item>
     
     <item>
       <title>Contato</title>
-      <link>/contact/</link>
+      <link>https://stats4good.github.io/sem_nome/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/contact/</guid>
+      <guid>https://stats4good.github.io/sem_nome/contact/</guid>
       <description>Como entrar em contato com o grupo bla bla bla.</description>
     </item>
     

@@ -21,17 +21,17 @@ paginate = 15
 
 [[menu.main]]
     name = "Home"
-    url  = "/"
+    url  = "/sem_nome/"
     weight = 1
     
 [[menu.main]]
     name = "Blog"
-    url  = "/blog/"
+    url  = "/sem_nome/blog/"
     weight = 2
 
 [[menu.main]]
     name = "Contato"
-    url  = "/contact/"
+    url  = "/sem_nome/contact/"
     weight = 3
 
 # Top bar social links menu
@@ -50,7 +50,7 @@ paginate = 15
     pre = "<i class='fa fa-2x fa-envelope'></i>"
 
 [params]
-    viewMorePostLink = "/blog/"
+    viewMorePostLink = "/sem_nome/blog/"
     author = "Sem nome"
     defaultKeywords = ["S4G", "R", "Data Science"]
     defaultDescription = ""
@@ -80,7 +80,7 @@ paginate = 15
     longitude = "-43.9647344"
 
 [Permalinks]
-    blog = "/blog/:year/:month/:filename/"
+    blog = "/sem_nome/blog/:year/:month/:filename/"
 
 # Enable or disable top bar with social icons
 [params.topbar]
@@ -127,4 +127,4 @@ paginate = 15
     enable = true
     
 [params.Paginator.Next.URL]
-    url  = "{{ .Site }}/blog/2"
+    url  = "{{ .Site }}/sem_nome/blog/2"
