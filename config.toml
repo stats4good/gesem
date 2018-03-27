@@ -1,8 +1,9 @@
-baseurl = "https://stats4good.github.io/"
+baseurl = "https://stats4good.github.io/sem_nome/"
 title = "Sem nome"
 theme = "hugo-universal-theme"
 languageCode = "pt-br"
 publishDir = "docs"
+relativeURLS = true
 # Site language. Available translations in the theme's `/i18n` directory.
 defaultContentLanguage = "pt"
 # Enable comments by entering your Disqus shortname
