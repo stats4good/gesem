@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Sem nome</title>
-    <link>/tags/</link>
-    <description>Recent content in Tags on Sem nome</description>
+    <title>Tags on Grupo de Estudo da Subnotificação de Estupro em Mulheres</title>
+    <link>https://stats4good.github.io/tags/</link>
+    <description>Recent content in Tags on Grupo de Estudo da Subnotificação de Estupro em Mulheres</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <lastBuildDate>Sun, 25 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://stats4good.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Google Trends</title>
-      <link>/tags/google-trends/</link>
+      <link>https://stats4good.github.io/tags/google-trends/</link>
       <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/google-trends/</guid>
+      <guid>https://stats4good.github.io/tags/google-trends/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Webscrapping</title>
-      <link>/tags/webscrapping/</link>
+      <link>https://stats4good.github.io/tags/webscrapping/</link>
       <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/webscrapping/</guid>
+      <guid>https://stats4good.github.io/tags/webscrapping/</guid>
       <description></description>
     </item>
     

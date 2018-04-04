@@ -225,14 +225,14 @@ ul.list-style-none {
     background: url(https://www.toptal.com/designers/subtlepatterns/patterns/subtle_zebra_3d.png);
   }
   body.boxed #all {
-    position: relative;
-    background: #fff;
+  position: relative;
+  background: #fff;
     width: 1200px;
-    margin: 0 auto;
-    overflow: hidden;
-    -webkit-box-shadow: 0 0 5px #cccccc;
-    box-shadow: 0 0 5px #cccccc;
-  }
+  margin: 0 auto;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 5px #cccccc;
+  box-shadow: 0 0 5px #cccccc;
+}
 }
 #top {
   background: #555555;
@@ -315,7 +315,7 @@ ul.list-style-none {
 .navbar ul.nav > li.active > a,
 .navbar ul.nav > li.open > a {
   text-decoration: none !important;
-  border-top: solid 5px #20616d;
+  border-top: solid 5px #3f734b;
 }
 @media (max-width: 768px) {
   .navbar ul.nav > li.active > a,
@@ -327,18 +327,18 @@ ul.list-style-none {
   }
 }
 .navbar.navbar-light ul.nav > li.active > a {
-  border-top: solid 5px #20616d;
+  border-top: solid 5px #3f734b;
   background: #fff !important;
   color: #555555 !important;
 }
 .navbar.navbar-light ul.nav > li.active > a:hover {
-  border-top: solid 5px #20616d;
+  border-top: solid 5px #3f734b;
 }
 .navbar.navbar-light ul.nav > li > a:hover,
 .navbar.navbar-light ul.nav > li.open > a:hover,
 .navbar.navbar-light ul.nav > li > a:focus,
 .navbar.navbar-light ul.nav > li.open > a:focus {
-  border-top: solid 5px #38a7bb;
+  border-top: solid 5px #6aae7a;
   background: #fff !important;
   color: #555555 !important;
 }
@@ -364,7 +364,7 @@ ul.list-style-none {
   left: 0;
 }
 .navbar ul.dropdown-menu li a:hover {
-  color: #38a7bb;
+  color: #6aae7a;
   text-decoration: none;
   background: none;
   left: 2px;
@@ -416,7 +416,7 @@ ul.list-style-none {
   transition: all 0.2s ease-out;
 }
 .navbar .yamm-content ul li a:hover {
-  color: #38a7bb;
+  color: #6aae7a;
   text-decoration: none;
   padding-left: 2px;
 }
@@ -449,12 +449,12 @@ ul.list-style-none {
 .navbar .btn-default:focus,
 .navbar .btn-default.navbar-toggle:focus {
   background-color: #fff;
-  border-color: #38a7bb;
-  color: #38a7bb;
+  border-color: #6aae7a;
+  color: #6aae7a;
 }
 .navbar #search {
   clear: both;
-  border-top: solid 1px #38a7bb;
+  border-top: solid 1px #6aae7a;
   text-align: right;
 }
 .navbar #search form {

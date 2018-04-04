@@ -3,57 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/sem_nome/blog/2018/03/estupro_mulheres/</loc>
+    <loc>https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/</loc>
-    <lastmod>2018-03-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>/categories/estupro/</loc>
+    <loc>https://stats4good.github.io/blog/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/google-trends/</loc>
+    <loc>https://stats4good.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://stats4good.github.io/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>https://stats4good.github.io/categories/estupro/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/not%C3%ADcias/</loc>
+    <loc>https://stats4good.github.io/tags/google-trends/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>https://stats4good.github.io/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://stats4good.github.io/categories/not%C3%ADcias/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/webscrapping/</loc>
+    <loc>https://stats4good.github.io/tags/</loc>
+    <lastmod>2018-03-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://stats4good.github.io/tags/webscrapping/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
