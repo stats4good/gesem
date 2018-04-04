@@ -50,7 +50,7 @@ paginate = 15
 
 [params]
     viewMorePostLink = "/gesem/blog/"
-    author = "Sem nome"
+    author = "gesem"
     defaultKeywords = ["S4G", "R", "Data Science"]
     defaultDescription = ""
     about_us = "<p>Grupo de estudantes de pós graduação em estatística, com intuito de usar a ciência em prol da sociedade.</p>"
