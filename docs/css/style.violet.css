@@ -1073,7 +1073,7 @@ fieldset[disabled] .btn-template-primary.active {
   padding: 6px 20px 6px 20px;
   margin: 30px 10px 10px -71px;
   color: #fff;
-  background-color: #6aae7a;
+  background-color: #8c66b1;
   /* font-family: "Roboto", Helvetica, Arial, sans-serif; */
   font-family: 'Share Tech Mono', monospace;
 }
@@ -3073,7 +3073,7 @@ fieldset[disabled] .btn-template-primary.active {
   color: #777777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #8c66b1;
+  color: #555555;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
