@@ -3,57 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/gesem/blog/2018/03/estupro_mulheres/</loc>
+    <loc>https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/gesem/blog/</loc>
-    <lastmod>2018-03-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/gesem/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/gesem/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>/gesem/categories/estupro/</loc>
+    <loc>https://stats4good.github.io/gesem/blog/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/gesem/tags/google-trends/</loc>
+    <loc>https://stats4good.github.io/gesem/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://stats4good.github.io/gesem/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>https://stats4good.github.io/gesem/categories/estupro/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/gesem/</loc>
+    <loc>https://stats4good.github.io/gesem/tags/google-trends/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/gesem/categories/not%C3%ADcias/</loc>
+    <loc>https://stats4good.github.io/gesem/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/gesem/tags/</loc>
+    <loc>https://stats4good.github.io/gesem/categories/not%C3%ADcias/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/gesem/tags/webscrapping/</loc>
+    <loc>https://stats4good.github.io/gesem/tags/</loc>
+    <lastmod>2018-03-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://stats4good.github.io/gesem/tags/webscrapping/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
