@@ -8,3 +8,35 @@
 .box-simple {
   min-height: 60px;
 }
+
+#post-content table th {
+    background: #6aae7a;
+    /* background: #c21f25; */
+    /* background: #c21f25; */
+    color: #fff;
+}
+
+#post-content table td, 
+#post-content table th {
+    padding: 12px 16px;
+    vertical-align: top;
+}
+
+#post-content table th {
+    font-size: 12px;
+    text-align: left;
+}
+
+i.fa.fa-2x.fa-github.fa:hover {
+    color:#a8ffbd;
+}
+
+i.fa.fa-2x.fa-envelope.fa:hover {
+    color:#a8ffbd;
+}
+
+/* nav bar - hover */
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #6aae7a!important;
+}

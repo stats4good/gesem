@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Google Trends on Grupo de Estudo da Subnotificação de Estupro em Mulheres</title>
-    <link>/tags/google-trends/</link>
+    <link>https://stats4good.github.io/gesem/tags/google-trends/</link>
     <description>Recent content in Google Trends on Grupo de Estudo da Subnotificação de Estupro em Mulheres</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <lastBuildDate>Sun, 25 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/google-trends/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://stats4good.github.io/gesem/tags/google-trends/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Por que estudar o estupro em mulheres?</title>
-      <link>/gesem/blog/2018/03/estupro_mulheres/</link>
+      <link>https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/</link>
       <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/gesem/blog/2018/03/estupro_mulheres/</guid>
+      <guid>https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/</guid>
       <description>Enquanto isso no Google… Todos os dias milhares de notícias são reportadas por sites de notícias e blogs, sendo que uma parcela considerável dessas reportagens se trata de crimes e violência em geral. Dentro desse contexto, considerando alguns tipos de violência, o que será que o Google tem a dizer sobre a relevância deste tema?.
 Utilizando a ferramenta Google Trends é possível comparar o interesse (ou relevância) de temas com base nas pesquisas realizadas pelos usuários do Google.</description>
     </item>

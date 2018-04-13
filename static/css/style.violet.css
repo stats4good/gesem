@@ -936,7 +936,8 @@ fieldset[disabled] .btn-template-primary.active {
   letter-spacing: 0.08em;
 }
 .panel.sidebar-menu ul.nav.category-menu li a {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  /* font-family: "Roboto", Helvetica, Arial, sans-serif; */
+  font-family: 'Share Tech Mono', monospace;
 }
 .panel.sidebar-menu ul.nav ul {
   list-style: none;
@@ -1071,8 +1072,9 @@ fieldset[disabled] .btn-template-primary.active {
   padding: 6px 20px 6px 20px;
   margin: 30px 10px 10px -71px;
   color: #fff;
-  background-color: #986dbd;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  background-color: #6aae7a;
+  /* font-family: "Roboto", Helvetica, Arial, sans-serif; */
+  font-family: 'Share Tech Mono', monospace;
 }
 .ribbon .theribbon:before,
 .ribbon .theribbon:after {
@@ -2190,7 +2192,7 @@ fieldset[disabled] .btn-template-primary.active {
   font-size: 12px;
 }
 #blog-post .comment .reply {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 #blog-post .comment.last {
   margin-bottom: 0;
@@ -2648,7 +2650,8 @@ fieldset[disabled] .btn-template-primary.active {
 /* Original Boostrap template overwrite */
 /* breadcrumbs */
 .breadcrumb {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  /* font-family: "Roboto", Helvetica, Arial, sans-serif; */
+  font-family: 'Share Tech Mono', monospace;
   text-transform: uppercase;
   background-color: none;
   letter-spacing: 0.08em;
@@ -3149,7 +3152,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 /* scaffolding */
 body {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  /* font-family: "Roboto", Helvetica, Arial, sans-serif; */
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555555;
@@ -3228,7 +3232,8 @@ hr {
 }
 /* labels */
 .label {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  /* font-family: "Roboto", Helvetica, Arial, sans-serif; */
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -3245,8 +3250,8 @@ label {
 .form-control:focus {
   border-color: #986dbd;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(152, 109, 189, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(152, 109, 189, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(106, 174, 122, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(106, 174, 122, 0.6);
 }
 .form-group {
   margin-bottom: 20px;
