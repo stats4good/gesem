@@ -3,7 +3,7 @@ title = "Grupo de Estudo da Subnotificação de Estupro em Mulheres"
 theme = "hugo-universal-theme"
 languageCode = "pt-br"
 publishDir = "docs"
-relativeurls = true
+#relativeurls = true
 canonifyURLs = false
 # Site language. Available translations in the theme's `/i18n` directory.
 defaultContentLanguage = "pt"
