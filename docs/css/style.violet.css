@@ -513,7 +513,7 @@ body.boxed .navbar-affixed-top.affix {
 /* buttons  */
 .btn {
   font-weight: 700;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: 'Share Tech Mono', monospace;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 6px 12px;
@@ -738,7 +738,8 @@ fieldset[disabled] .btn-template-primary.active {
   background-size: cover;
 }
 #intro .item {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  /* font-family: "Roboto", Helvetica, Arial, sans-serif; */
+  font-family: 'Share Tech Mono', monospace;
   height: 100%;
 }
 #intro .item h1 {
@@ -2344,7 +2345,7 @@ fieldset[disabled] .btn-template-primary.active {
   color: #555555;
   text-align: center;
   text-decoration: none;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 #productMain .sizes a.active,
 #productMain .sizes a:hover {
@@ -3263,7 +3264,7 @@ label {
   padding-top: 20px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 .pager li {
   display: inline;
@@ -3291,7 +3292,7 @@ label {
 /* pagination */
 .pagination {
   margin: 20px 0;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   border-radius: 0;
 }
 .pagination > li > a,
@@ -3366,7 +3367,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: 'Share Tech Mono', monospace;
   font-weight: 900;
   line-height: 1.1;
   color: #333333;
