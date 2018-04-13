@@ -28,10 +28,10 @@ paginate = 15
     url  = "/blog/"
     weight = 2
 
-[[menu.main]]
-    name = "Contato"
-    url  = "/contact/"
-    weight = 3
+#[[menu.main]]
+#    name = "Contato"
+#    url  = "/contact/"
+#    weight = 3
 
 # Top bar social links menu
 
