@@ -8,6 +8,7 @@ canonifyURLs = false
 # Site language. Available translations in the theme's `/i18n` directory.
 defaultContentLanguage = "pt"
 # Enable comments by entering your Disqus shortname
+disqusShortname = "https-stats4good-github-io"
 
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = "UA-107006863-1"
