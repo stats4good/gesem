@@ -5,7 +5,7 @@ date: 2018-03-25
 categories: ["Estupro", "Notícias"]
 tags: ["webscrapping", "google trends"]
 banner: "blog/2018/03/estupro_mulheres/img/why.jpeg"
-summary: "O projeto sem_nome tem por objetivo estudar o estupro em mulheres no Brasil. Será esse um tema interessante/relevante? Neste post veremos o que o Google (e por consequência seus usuários) estão falando sobre o assunto."
+summary: "O projeto GESEM tem por objetivo estudar o estupro em mulheres no Brasil. Será esse um tema interessante/relevante? Neste post veremos o que o Google (e por consequência seus usuários) estão falando sobre o assunto."
 ---
 
 ```{r setup, include=FALSE}
