@@ -4,7 +4,7 @@ author: "Guilherme L. de Oliveira"
 date: "2018-05-06"
 categories: ["Estupro", "Subnotificação"]
 tags: ["mapa-taxas"]
-banner: "blog/2018/05/dados_oficiais_subnotificacao/img/iceberg_prop.jpeg"
+banner: "blog/2018/05/dados_oficiais_subnotificacao/img/iceberg_prop.png"
 summary: "Os dados oficiais brasileiros sobre estupro são sabidamente subregistrados. Neste *post* apresentamos uma discussão sobre o problema e seus impactos na estimação das taxas de estupro em mulheres nos municípios do país."
 ---
 
