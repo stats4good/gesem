@@ -2,29 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Grupo de Estudo da Subnotificação de Estupro em Mulheres</title>
-    <link>https://stats4good.github.io/gesem/categories/</link>
+    <link>/gesem/categories/</link>
     <description>Recent content in Categories on Grupo de Estudo da Subnotificação de Estupro em Mulheres</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     
-	<atom:link href="https://stats4good.github.io/gesem/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/gesem/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Estupro</title>
-      <link>https://stats4good.github.io/gesem/categories/estupro/</link>
-      <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
+      <link>/gesem/categories/estupro/</link>
+      <pubDate>Sun, 06 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://stats4good.github.io/gesem/categories/estupro/</guid>
+      <guid>/gesem/categories/estupro/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Notícias</title>
-      <link>https://stats4good.github.io/gesem/categories/not%C3%ADcias/</link>
+      <link>/gesem/categories/not%C3%ADcias/</link>
       <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://stats4good.github.io/gesem/categories/not%C3%ADcias/</guid>
+      <guid>/gesem/categories/not%C3%ADcias/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Subnotificação</title>
+      <link>/gesem/categories/subnotifica%C3%A7%C3%A3o/</link>
+      <pubDate>Sun, 06 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/gesem/categories/subnotifica%C3%A7%C3%A3o/</guid>
       <description></description>
     </item>
     

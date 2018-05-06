@@ -1,0 +1,93 @@
+---
+title: 'Dados oficiais de estupro no Brasil: a questão da subnotificação'
+author: "Guilherme L. de Oliveira"
+date: "2018-05-06"
+categories: ["Estupro", "Subnotificação"]
+tags: ["mapa-taxas"]
+banner: "blog/2018/05/dados_oficiais_subnotificacao/img/iceberg_prop.jpeg"
+summary: "Os dados oficiais brasileiros sobre estupro são sabidamente subregistrados. Neste *post* apresentamos uma discussão sobre o problema e seus impactos na estimação das taxas de estupro em mulheres nos municípios do país."
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+knitr::opts_knit$set(base.dir = 'blog/2018/03/template/')
+
+base_dir <- 'dados_oficiais_subnotificacao'
+```
+
+A *subnotificação* se faz presente quando algum evento de interesse como, por exemplo, ocorrência de um crime ou diagnóstico de uma doença, é notificado/registrado em menor quantidade do que seria esperado ou devido. Quando os dados disponíveis apresentam este tipo de problema, estimativas de taxas e índices tendem a ser viesadas no sentido de representarem algo aquém da realidade. Isto dificulta a percepção da necessidade de políticas públicas de intervenção e controle, dentre outras coisas.
+
+
+### Evidências de subnotificação de casos de estupro no Brasil ###
+**"Apenas 35% das vítimas de estupro costumam relatar o episódio às polícias"** 
+é o que evidencia o [8º Anuário Brasileiro de Segurança Pública (2013)](https://www.mpma.mp.br/arquivos/CAOPCEAP/8o_anuario_brasileiro_de_seguranca_publica.pdf) baseado em pesquisa americana[^1]. Este baixo percentual de reportação aos órgãos policiais surpreende e gera grande desconforto quanto às taxas de estupro[^2] periodicamente divulgadas para os estados e municípios do Brasil. 
+A situação fica ainda pior se nos basearmos em pesquisas e estudos nacionais sobre a qualidade de registro dos casos de estupro e demais violências interpessoais.
+
+<!-- nota de rodapé --> [^1]: *National Crime Victimization Survey* conduzida pelo Departamento de Justiça dos EUA em 2010.
+
+<!-- nota de rodapé --> [^2]: A Lei Federal 12.015/2009 altera a conceituação de "estupro", passando a incluir, além da conjunção carnal, os "atos libidinosos" e "atentados violentos ao pudor".
+
+
+Segundo a [Pesquisa Nacional de Vitimização de 2013](http://www.crisp.ufmg.br/wp-content/uploads/2013/10/Sumario_SENASP_final.pdf), primeira deste tipo feita no Brasil,  verifica-se que **apenas 7,5% das vítimas**
+de *violência sexual* **registram o crime na delegacia**. Ou seja, por motivos diversos, 92,5% das vítimas deixam de reportar o ocorrido aos órgãos policiais responsáveis por investigaro crime.
+
+Ainda, na nota técnica ["Estupro no Brasil: uma radiografia segundo os dados da Saúde"](http://www.ipea.gov.br/atlasviolencia/artigo/21/estupro-no-brasil-uma-radiografia-segundo-os-dados-da-saude-), produzida pelo IPEA em 2014 com base nos  dados do Sistema
+de Informação de Agravos de Notificação (Sinan) gerido pelo Ministério da Saúde, estimou-se que a cada ano no Brasil 0,26% da população sofre *violência sexual*. Isto indica que haja, anualmente, 527 mil tentativas ou casos de *estupros* consumados no país (quase 1 caso por minuto), **dos quais apenas 10% são reportados à polícia**.
+
+Enfim, o fato é que os dados oficiais sobre estupro publicados anualmente tanto pelas Secretarias de Segurança Pública quanto pelo Ministério da Saúde por meio do Sinan apresentam alto índice de não-reportação.
+
+<!-- nota de rodapé --> [^3]: Fonte: [11º Anuário Brasileiro de Segurança Pública ](http://www.forumseguranca.org.br/wp-content/uploads/2017/12/ANUARIO_11_2017.pdf)
+
+
+### Visualizando o problema nos municípios brasileiros ###
+Uma consequência do percentual de reportação tão baixo é que um grande número de municípios apresenta contagem nula de casos. Por exemplo, segundo os dados do Sinan 2016,  71,22% dos municípios brasileiros não apresenta registro de casos de estupro em mulheres. Isto implica numa taxa de ocorrência nula para a maior parte do país como pode ser visto na Figura 1. Os municípios em que  nenhum caso de estupro em mulheres foi reportado no ano de 2016 estão destacados em cinza. Uma análise crua dos dados apresentado nesta figura poderia nos levar a concluir que diversas regiões do pais representam um padrão a ser seguido, já que o crime de estupro não está presente na maioria dos seus municípios. Dentre elas, por exemplo,  o estado da Paraíba e o interior do estado da Bahia. Sabemos, no entanto, que na prática isto não é verdade, mas sim justificado pela não-reportação dos crimes lá ocorridos.
+
+<!-- Criando e inserindo mapa -->
+<center>
+```{r, echo = FALSE, results = 'asis', message = FALSE, warning = FALSE}
+## O echo=F faz com que o código naão apareça, só resultados!
+if(!require(ggthemes)){ install.packages("ggthemes"); require(ggthemes)}   
+if(!require(dplyr)){ install.packages("dplyr"); require(dplyr)}   
+if(!require(stringr)){ install.packages("stringr"); require(stringr)}   
+if(!require(ggplot2)){ install.packages("ggplot2"); require(ggplot2)}   
+if(!require(leaflet)){ install.packages("leaflet"); require(leaflet)}   
+library(mapsBR) #install_github('lgsilvaesilva/mapsBR') #instala pacote mapsBR dado ''devtools''
+library(maps2sinan) #install from  maps2sinan_0.1.2.tar.gz
+
+#taxa2016 <- readRDS(file = paste(getwd(),"/sinan_taxa_geral2016.RDS", sep=""))
+taxa2016 <- readRDS(file = paste0(base_dir, "/data/sinan_taxa_geral2016.RDS"))
+
+breaks <- c(0, 1e-100, quantile(taxa2016$TAXA[taxa2016$TAXA != 0], probs = c(0.25, 0.5, 0.75, 0.9, 1)))
+taxa2016$TAXA_CAT <- cut(taxa2016$TAXA, breaks = breaks, include.lowest = T)
+taxa2016$TAXA_CAT <- factor(x = taxa2016$TAXA_CAT,
+                             levels = levels(taxa2016$TAXA_CAT),
+                             labels = c("0", sprintf("(0, %s]", round(breaks[3], 1)),
+                              levels(taxa2016$TAXA_CAT)[-c(1:2)]))
+
+##-- + mapa interativo ----
+mapa <- map_sinan(data = taxa2016, var_id = "COD_MUN", var_plot = "TAXA_CAT",
+                  UF_subset = NULL, UF_border = "black", mun_border = "transparent",
+                  central_point = NULL, colorize_point = list("#CCCCCC" = 0),
+                  legend_title = "Taxa",
+                  color = list(low = "white", high = "IndianRed", middle = NULL, palette = "Reds"),
+                  interativo = T)
+
+mapa %>% addProviderTiles(providers$Stamen)
+
+```
+</center>
+<br>
+Figura 1: Taxa de ocorrência de estupro por 100 mil mulheres nos municípios do Brasil.  As taxas são calculadas pela razão entre o total de estupros em mulheres registrados e o total de mulheres residentes em cada município, sendo então multiplicada por 100 mil. Destacamos em cinza os municípios com contagem nula de casos. Fonte dos dados: VIVA/SVS/MS.
+
+###O GESEM na abordagem do problema ###
+A presença de dados municipais tão esparsos (grande presença de zeros) compromete a identificação de municípios ou pequenas regiões que carecem de atenção especial. Também fica difícil, por exemplo, um estudo das melhores localizações para implementação de novas delegacias especializadas no atendimento à mulher. Então, dadas as valiosas informações que poderiam ser obtidas  das taxas de ocorrência de estupro em pequenas áreas tais como os municípios, métodos de estimação mais sofisticados se mostram de grande importância. 
+
+Um dos objetivos do projeto GESEM é justamente a utilização e descrição de métodos de modelagem estatística que permitam a estimação do nível de subnotificação de estupros em mulheres nos dados oficiais brasileiros e, consequentemente, a obtenção de estimativas corrigidas para as taxas de ocorrência associadas. 
+
+Finalizo destacando a frase de Enrico Bisogno, especialista em estatística das Nações Unidas, em reportagem da BBC Brasil[^4] a respeito do problema de subnotificação que fora discutido neste post:
+*"Nós sempre usamos a metáfora do iceberg para explicar essa situação. O que podemos ver é somente a ponta dele, enquanto que há uma imensidão que se estende abaixo do mar, ou seja, fora do radar das agências que fiscalizam o cumprimento da lei"*.
+
+<!-- nota de rodapé --> [^4]: http://www.bbc.com/portuguese/celular/noticias/2012/09/120917_suecia_estupro_lgb.shtml.
+
+
+** É importante notificar os casos de estupro (opções: ligue 180 ou ir ao centro de saúde mais próximo). 
