@@ -1,3 +1,20 @@
+.float_right {
+    float: left;
+    /* etc. */
+}
+
+.column6 {
+    float: left;
+    width: 16.66%;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
 /* your styles go here */
 
 .box-image-text .image {

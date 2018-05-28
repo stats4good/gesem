@@ -6,10 +6,20 @@
     <description>Recent content on Grupo de Estudo da Subnotificação de Estupro em Mulheres</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
-    <lastBuildDate>Sun, 06 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/gesem/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>O que as localizações de cada crime de estupro têm a nos dizer?</title>
+      <link>/gesem/blog/2018/05/localizacoes_estupros/</link>
+      <pubDate>Fri, 18 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/gesem/blog/2018/05/localizacoes_estupros/</guid>
+      <description>O Sistema de Informação de Agravos de Notificação (SINAN) fornece, dentre outras informações, dados de notificações ou registros de casos de estupro em todo o Brasil. A partir desses dados, focaremos nos casos cujas vítimas eram mulheres, pois como visto no post Por que estudar o estupro em mulheres?, esses são os casos mais frequentes.
+Um simples gráfico (Figura 1) com o número total de casos de estupro em mulheres notificados em cada ano, mostra que tem havido mais notificações; contudo, levando em consideração a enorme porcentagem de casos subnotificados (ler Dados oficiais de estupro no Brasil: a questão da subnotificação), não podemos afirmar nada sobre o padrão do número de ocorrências.</description>
+    </item>
     
     <item>
       <title>Dados oficiais de estupro no Brasil: a questão da subnotificação</title>

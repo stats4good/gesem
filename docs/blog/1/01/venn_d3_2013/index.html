@@ -1,0 +1,82 @@
+<!doctype html>
+
+<body>
+
+ <div id="venn_three" style=float:left>    
+
+	<script>
+	
+        var sets = [
+		    {sets:["Residência"], figure: 3.5, label: "Residência", size: 16976, size2: 728},
+                    {sets:["Ocorrência"], figure: 5.3, label: "Ocorrência", size: 16976, size2: 1087},
+                    {sets:["Notificação"], figure: 16.3, label: "Notificação", size: 16976, size2: 3383},
+                    {sets: ["Notificação", "Ocorrência"], figure: 2.2, label: "Notificação e ocorrência", size: 454, size2: 454},
+                    {sets: ["Notificação", "Residência"], figure: 3.9, label: "Notificação e residência", size: 813, size2: 813},
+                    {sets: ["Ocorrência", "Residência"], figure: 15, label: "Ocorrência e residência", size: 3109, size2: 3109},
+                    {sets: ["Notificação", "Ocorrência", "Residência"], figure: 53.7, label: "Notificação, ocorrência e residência", size: 11121, size2: 11121}
+                    ];
+
+
+        var chart = venn.VennDiagram()
+            .width(500)
+            .height(400)
+
+          
+
+       var div3 = d3.select("#venn_three").datum(sets).call(chart);
+            div3.selectAll("text").style("fill", "white");
+            div3.selectAll(".venn-circle path")
+                    .style("fill-opacity", .8)
+                    .style("stroke-width", 1)
+                    .style("stroke-opacity", 1)
+                    .style("stroke", "fff");
+
+
+
+        var tooltip = d3.select("body").append("div3")
+            .attr("class", "venntooltip");
+
+
+        div3.selectAll("g")
+            .on("mouseover", function(d, i) {
+                
+                venn.sortAreas(div3, d);
+
+                
+                tooltip.transition().duration(40).style("opacity", 1);
+                tooltip.text(d.size2 + " (" + d.figure + ")" + "% dos casos notificados");
+
+                
+                
+                var selection = d3.select(this).transition("tooltip").duration(400);
+                selection.select("path")
+                    .style("stroke-width", 3)
+                    .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                    .style("stroke-opacity", 1);
+            })
+
+            .on("mousemove", function() {
+                tooltip.style("left", (d3.event.pageX) + "px")
+                       .style("top", (d3.event.pageY - 28) + "px");
+            })
+
+            .on("mouseout", function(d, i) {
+                tooltip.transition().duration(2000).style("opacity", 0);
+                var selection = d3.select(this).transition("tooltip").duration(400);
+                selection.select("path")
+                    .style("stroke-width", 3)
+                    .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                    .style("stroke-opacity", 1);
+            });
+
+	
+        
+
+    </script>
+
+</div> 
+
+</body>
+
+</html>
+

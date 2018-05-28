@@ -1,0 +1,166 @@
+---
+title: O que as localizações de cada crime de estupro têm a nos dizer?
+author: "Juliana Freitas"
+date: "2018-05-18"
+categories: ["estupro", "localizações", "subnotificação"]
+tags: ["diagrama de venn"]
+banner: "blog/2018/05/localizacoes_estupros/img/localizacoes.png"
+summary: "Em cada caso de estupro registrado existem três informações de localização: município de notificação, de residência e de ocorrência. A partir disso, o foco desse post é mostrar algumas relações entre tais localizações, de forma a tentar levar um maior esclarecimento sobre fatores que levam à subnotificação."
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+```{r pacotes}
+if(!require(ggthemes)){ install.packages("ggthemes"); require(ggthemes)}   
+if(!require(dplyr)){ install.packages("dplyr"); require(dplyr)}   
+```
+
+O Sistema de Informação de Agravos de Notificação (SINAN) fornece, dentre outras informações, dados de notificações ou registros de casos de estupro em todo o Brasil. A partir desses dados, focaremos nos casos cujas vítimas eram mulheres, pois como visto no post [Por que estudar o estupro em mulheres?](https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/), esses são os casos mais frequentes.
+
+Um simples gráfico (Figura 1) com o número total de casos de estupro em mulheres notificados em cada ano, mostra que tem havido mais notificações; contudo, levando em consideração a enorme porcentagem de casos subnotificados (ler [Dados oficiais de estupro no Brasil: a questão da subnotificação](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/)), não podemos afirmar nada sobre o padrão do número de __ocorrências__.
+
+<!-- Criando e inserindo mapa -->
+```{r, echo = FALSE, results = 'asis', message = FALSE, warning = FALSE, fig.width = 3, fig.height = 2}
+## O echo=F faz com que o c?digo na?o apare?a, s? resultados!
+### Removendo objetos ja alocados
+rm(list = ls())
+
+### Carregando pacotes exigidos
+require(highcharter)
+require(kableExtra)
+require(dplyr)
+require(widgetframe)
+
+### Lendo os dados
+
+# Nomes e codigos dos municipios
+codigos.municipios<- read.csv(file = "localizacoes_estupros/data/Município.csv", header = FALSE, sep = ";")
+names(codigos.municipios)<- c("codigo", "nome")
+codigos.municipios$cod2<- as.numeric(substr(codigos.municipios$codigo, 1, 6))
+
+# Dados SINAN
+load("localizacoes_estupros/data/dados.Rdata")
+
+highchart(height = 500, width = 800) %>%
+  hc_add_series(data = c(nrow(dados2011), nrow(dados2012), nrow(dados2013),
+                         nrow(dados2014), nrow(dados2015), nrow(dados2016)),
+                width	= "50px",
+                height = "40px",
+                align = "left",
+                name = "\nnúmero de notificações",
+                mapping = hcaes(y = num1),
+                type = "line", xaxt = as.character(2011:2016)) %>%
+  hc_xAxis(title = list(text = "Ano de notificação"), categories = as.character(2011:2016)) %>%
+  hc_yAxis(title = list(text = "Número de notificações"), min = 0, max = 21000, showFirstLabel = TRUE, labels = list(format = "{value}")) %>%
+  hc_title(text = "Figura 1: Número de notificações de casos de estupro em mulheres no Brasil, de 2011 a 2016 (fonte: VIVA/SVS/MS).", style = list(color = gray(0.69))) %>%
+  hc_legend(enabled = FALSE) %>%
+  frameWidget()
+
+```
+
+Tendo isso em mente, esse post tem por objetivo mostrar alguns pontos que podem contribuir para o problema da subnotificação dos registros de estupro em mulheres, focando em aspectos relacionados as três possíveis localizações de cada crime: municípios de notificação, de ocorrência e de residência.
+
+# Dentro dos municípios 
+
+A Tabela 1 mostra o total e a porcentagem de municípios com __**pelo menos**__ uma notificação no ano, no período de 2011 a 2016. Verificamos que essa quantidade também está aumentando; porém, em 2016 apenas 28.87% deles possuíam ao menos uma notificação. O que será então que está havendo em 71.13% dos municípios para que não haja **nenhuma** notificação - será que não há nenhum caso? Será que há casos e estes são notificados em outros municípios? Se sim, por quê? Ou será que os casos não estão sendo notificados?
+
+```{r echo = FALSE, results = "asis"}
+tabela1 <- read.table(file = "localizacoes_estupros/data/tabela1.txt", header = TRUE, sep = "/")
+colnames(tabela1) <- as.character(2011:2016)
+rownames(tabela1) <- "Total (%)"
+
+tabela1 %>%
+  kable("html", caption = "Tabela 1: Total e porcentagem de municípios brasileiros com pelo menos uma notificação, de 2011 a 2016 (fonte: VIVA/SVS/MS).") %>%
+  kable_styling(bootstrap_options = "hover", full_width = F)
+
+```
+
+Um ponto aqui levantado para tentar explicar uma parte desse problema, é entender como se dá dinâmica do local de residência, de ocorrência e de notificação de cada crime registrado. Para isso foi feito um [Diagrama de Venn](https://brasilescola.uol.com.br/matematica/diagrama-de-venn.htm) para cada ano; assim, conseguimos ver as uniões e interseções de cada conjunto de localizações.
+
+<br>
+
+<a href="img/diagrama_euler_2011.png" title="2011">
+  <img class = "float_right" alt="2011" src="img/diagrama_euler_2011.png" width="16.6%" />
+</a>
+
+<a href="img/diagrama_euler_2012.png" title="2012">
+  <img class = "float_right" alt="2012" src="img/diagrama_euler_2012.png" width="16.6%" />
+</a>
+
+<a href="img/diagrama_euler_2013.png" title="2013">
+  <img class = "float_right" alt="2013" src="img/diagrama_euler_2013.png" width="16.6%" />
+</a>
+
+<a href="img/diagrama_euler_2014.png" title="2014">
+  <img class = "float_right" alt="2014" src="img/diagrama_euler_2014.png" width="16.6%" />
+</a>
+
+<a href="img/diagrama_euler_2015.png" title="2015">
+  <img class = "float_right" alt="2015" src="img/diagrama_euler_2015.png" width="16.6%" />
+</a>
+
+<a href="img/diagrama_euler_2016.png" title="2016">
+  <img class = "float_right" alt="2016" src="img/diagrama_euler_2016.png" width="16.6%" />
+</a>
+
+<br></br>
+
+A partir dos diagramas abaixo, pudemos verificar que em pouco mais da metade dos casos notificados/registrados de 2011 a 2016, essas três localizações foram iguais. No entanto, considerando as comparações 2 a 2 (ou seja, notificação x ocorrência, notificação x residência e ocorrência x residência), vimos que em geral há uma certa similaridade entre os municípios de ocorrência e residência; e certa diferença com relação ao município de notificação. Essas ideias estão melhor explicadas nos tópicos que seguem:
+
+1) a porcentagem de casos nos quais apenas os municípios de notificação e ocorrência eram iguais (e ambos diferentes do município de residência) foi baixa, variando ao longo dos anos de 2011 a 2016, de 1.9% a 2.2%;
+
+2) em relação aos municípios de notificação x residência, vimos que a porcentagem de casos em que essas localizações coincidiam (e diferiam do município de ocorrência) também apresentou valores baixos, variando de 3.5% a 4.3%;
+
+3) por outro lado, uma quantidade bastante razoável dos casos registrados (de 14.6% a 16.4%) possuíam os municípios de ocorrência e residência iguais (ambos sendo diferentes do município de notificação);
+
+4) de 16% a 17.7% dos casos registrados, o município de notificação era diferente dos demais (do de ocorrência e de residência); enquanto que de 5.1% a 5.8% tinham o município de ocorrência diferindo das demais localizações; e de 3.3% a 3.6% dos casos possuíam município de residência diferente dos outros.
+
+(observação: esse cálculo levou em consideração somente as notificações que possuíam todas as localizações registradas.)
+
+Isso leva a crer que, considerando os dados registrados, os casos de estupro em mulheres ocorrem no município de residência, e que uma parte razoável das vítimas se sente mais encorajada a notificar num município diferente dos de residência e ocorrência.
+
+Não obstante a isso, pudemos ver (Tabela 2) que em todos os casos notificados havia a informação local de notificação, como se era esperado. Havia também a informação do local de residência para praticamente todos os casos. Porém, em 2011, quase 9% dos casos notificados a informação local de ocorrência estava em branco (pergunta-se: por qual motivo?). Notou-se também que essa porcentagem foi diminuindo ao longo dos anos, o que indica uma melhora no procedimento dos registros desse crime.
+
+```{r echo = FALSE, results = "asis"}
+
+tabela2 <- read.table(file = "localizacoes_estupros/data/tabela2.txt", header = TRUE, sep = "/")
+colnames(tabela2)<- as.character(2011:2016)
+rownames(tabela2)<- c("Local de notificação", "Local de ocorrência", "Local de residência")
+
+tabela2 %>%
+  kable("html", caption = "Tabela 2: Total e porcentagem de casos notificados com localização faltante, de 2011 a 2016 (fonte: VIVA/SVS/MS).") %>%
+  kable_styling(bootstrap_options = "hover", full_width = F)
+
+```
+
+##
+
+Por fim, buscamos argumentos em notícias para tentar respaldar a linha de pensamento exposta acima: várias vítimas relatam dificuldades no momento da notificação. O medo devido a ameaças do agressor e/ou receio de retaliação^5,7^, imensa demora no andamento dos processos^5^, sensação de impunidade para com os agressores^7^, o fato de terem que se deslocar distâncias razoáveis para notificar^1^. Muitas vítimas são encorajadas a não completar a ficha de notificação dentros dos estabelecimetos^2^. Além disso, há um processo de culpabilização da vítima em várias etapas do processo de notificação^2,3,4,5,6,7^. Sendo assim, destacamos que há uma grande responsabilidade das próprias instituições com relação ao montante de casos subnotificados.
+
+Com isso, fica claro que, dos diversos fatores que levam à vítima a não notificar o crime de estupro, alguns podem ser resolvidos diretamente ao fornecer um local seguro e com treinamento de profissionais para o investigar o caso de forma adequada. 
+
+** É importante notificar os casos de estupro (opções: ligar 180 ou ir ao centro de saúde mais próximo).
+
+* Observação: os dados de 2015 e 2016 não estão consolidados.
+
+
+
+Referências:
+<!-- nota de rodapé -->
+
+^1^ [Maioria das vítimas de estupro em AL não procura por atendimento médico](http://g1.globo.com/al/alagoas/noticia/2014/05/maioria-das-vitimas-de-estupro-em-al-nao-procura-por-atendimento-medico.html)
+
+^2^ [“A vítima de estupro já chega na delegacia com culpa”](https://www.cartacapital.com.br/sociedade/ping-ana-rita)
+
+^3^ [ Casos aumentam, mas estupro ainda é crime subnotificado](https://g1.globo.com/sao-paulo/noticia/saiba-o-que-caracteriza-crime-de-estupro-e-como-fazer-para-denunciar.ghtml)
+
+^4^ [ “A cultura do estupro faz a culpa ser transferida do agressor para a vítima"](https://revistagalileu.globo.com/Ciencia/noticia/2017/08/cultura-do-estupro-faz-culpa-ser-transferida-do-agressor-para-vitima.html)
+
+^5^ [ "Parte da impunidade no crime sexual começa antes de chegar à Justiça"](https://www.cartacapital.com.br/sociedade/parte-impunidade-no-crime-sexual-comeca-antes-de-chegar-a-justica)
+
+^6^ [ Apenas 35% dos casos de estupro no Brasil são notificados ](https://epoca.globo.com/tempo/noticia/2016/05/apenas-35-dos-casos-de-estupro-no-brasil-sao-notificados.html)
+
+^7^ [No RJ, só 6% dos acusados por estupro vão a julgamento](https://epoca.globo.com/tempo/noticia/2016/05/no-rj-so-6-dos-acusados-por-estupro-vao-julgamento.html)
+
+

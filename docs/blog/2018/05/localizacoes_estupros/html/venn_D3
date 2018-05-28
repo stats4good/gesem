@@ -1,0 +1,332 @@
+<!doctype html>
+    <head>
+
+        <title>Audience Comparison</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+        <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="venn.js/venn.js"></script>
+
+            <style>
+                body {
+                    font-family: 'Quicksand', sans-serif;
+                    font-weight: 700;
+                    font-size : 14px;
+                    margin: 2% 2% 2% 2%;
+}
+
+               .venntooltip {
+                    font-size : 14px;
+                    position: absolute;
+                    text-align: center;
+                    width: 128px;
+                    height: 85px;
+                    background: #333;
+                    color: #fff;
+                    padding: 2px;  
+                    border: 0px;
+                    border-radius: 8px;
+                    opacity: 0;
+                }
+
+
+            </style>
+
+
+
+    </head>
+
+<body>
+
+   
+<div id="container">
+   <h1>Título</h1>
+
+    <div id="venn_one" style=float:left>    
+        <h3>2011</h3> 
+    </div> 
+
+    <div id="venn_two" style=float:left>    
+        <h3>2012</h3> 
+    </div> 
+
+    <div id="venn_three" style=float:left>    
+        <h3>2013</h3> 
+    </div> 
+
+    <div id="venn_four" style=float:left>    
+        <h3>2014</h3> 
+    </div> 
+
+    <script>
+	// Ano: 2011
+        var sets = [
+		    {sets:["Residencia"], figure: 3.3, label: "Residencia", size: 9970, size2: 630},
+                    {sets:["Ocorrencia"], figure: 5.1, label: "Ocorrencia", size: 9970, size2: 860},
+                    {sets:["Notificacao"], figure: 17.7, label: "Notificacao", size: 9970, size2: 2495},
+                    {sets: ["Notificacao", "Ocorrencia"], figure: 2, label: "Notificacao e ocorrencia", size: 259, size2: 259},
+                    {sets: ["Notificacao", "Residencia"], figure: 3.8, label: "Notificacao e residencia", size: 489, size2: 489},
+                    {sets: ["Ocorrencia", "Residencia"], figure: 16.4, label: "Ocorrencia e residencia", size: 2124, size2: 2124},
+                    {sets: ["Notificacao", "Ocorrencia", "Residencia"], figure: 51.8, label: "Notificacao, ocorrencia e residencia", size: 6727, size2: 6727}
+                    ];
+
+
+        var chart = venn.VennDiagram()
+            .width(500)
+            .height(400)
+
+          
+
+        var div = d3.select("#venn_one").datum(sets).call(chart);
+            div.selectAll("text").style("fill", "white");
+            div.selectAll(".venn-circle path")
+                    .style("fill-opacity", .8)
+                    .style("stroke-width", 1)
+                    .style("stroke-opacity", 1)
+                    .style("stroke", "fff");
+
+
+
+        var tooltip = d3.select("#venn_one").append("div")
+            .attr("class", "venntooltip");
+
+
+        div.selectAll("g")
+            .on("mouseover", function(d, i) {
+                // sort all the areas relative to the current item
+                venn.sortAreas(div, d);
+
+                // Display a tooltip with the current size
+                tooltip.transition().duration(40).style("opacity", 1);
+                tooltip.text(d.size2 + " (" + d.figure + ")" + "% dos casos notificados");
+
+                // highlight the current path
+                // highlight the current path
+                var selection = d3.select(this).transition("tooltip").duration(400);
+                selection.select("path")
+                    .style("stroke-width", 3)
+                    .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                    .style("stroke-opacity", 1);
+            })
+
+            .on("mousemove", function() {
+                tooltip.style("left", (d3.event.pageX) + "px")
+                       .style("top", (d3.event.pageY - 28) + "px");
+            })
+
+            .on("mouseout", function(d, i) {
+                tooltip.transition().duration(2000).style("opacity", 0);
+                var selection = d3.select(this).transition("tooltip").duration(400);
+                selection.select("path")
+                    .style("stroke-width", 3)
+                    .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                    .style("stroke-opacity", 1);
+            });
+
+	// Ano: 2012
+	var sets = [
+		    {sets:["Residencia"], figure: 3.3, label: "Residencia", size: 9970, size2: 630},
+                    {sets:["Ocorrencia"], figure: 5.1, label: "Ocorrencia", size: 9970, size2: 860},
+                    {sets:["Notificacao"], figure: 17.7, label: "Notificacao", size: 9970, size2: 2495},
+                    {sets: ["Notificacao", "Ocorrencia"], figure: 2, label: "Notificacao e ocorrencia", size: 259, size2: 259},
+                    {sets: ["Notificacao", "Residencia"], figure: 3.8, label: "Notificacao e residencia", size: 489, size2: 489},
+                    {sets: ["Ocorrencia", "Residencia"], figure: 16.4, label: "Ocorrencia e residencia", size: 2124, size2: 2124},
+                    {sets: ["Notificacao", "Ocorrencia", "Residencia"], figure: 51.8, label: "Notificacao, ocorrencia e residencia", size: 6727, size2: 6727}
+                    ];
+
+
+        var chart = venn.VennDiagram()
+            .width(500)
+            .height(400)
+
+          
+
+        var div2 = d3.select("#venn_two").datum(sets).call(chart);
+            div2.selectAll("text").style("fill", "white");
+            div2.selectAll(".venn-circle path")
+                    .style("fill-opacity", .8)
+                    .style("stroke-width", 1)
+                    .style("stroke-opacity", 1)
+                    .style("stroke", "fff");
+
+
+
+        var tooltip = d3.select("body").append("div")
+            .attr("class", "venntooltip");
+
+
+        div2.selectAll("g")
+            .on("mouseover", function(d, i) {
+                // sort all the areas relative to the current item
+                venn.sortAreas(div2, d);
+
+                // Display a tooltip with the current size
+                tooltip.transition().duration(40).style("opacity", 1);
+                tooltip.text(d.size2 + " (" + d.figure + ")" + "% dos casos notificados");
+
+                // highlight the current path
+                // highlight the current path
+                var selection = d3.select(this).transition("tooltip").duration(400);
+                selection.select("path")
+                    .style("stroke-width", 3)
+                    .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                    .style("stroke-opacity", 1);
+            })
+
+            .on("mousemove", function() {
+                tooltip.style("left", (d3.event.pageX) + "px")
+                       .style("top", (d3.event.pageY - 28) + "px");
+            })
+
+            .on("mouseout", function(d, i) {
+                tooltip.transition().duration(2000).style("opacity", 0);
+                var selection = d3.select(this).transition("tooltip").duration(400);
+                selection.select("path")
+                    .style("stroke-width", 3)
+                    .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                    .style("stroke-opacity", 1);
+            });
+
+	// Ano: 2013
+	var sets = [
+		    {sets:["Residencia"], figure: 3.3, label: "Residencia", size: 9970, size2: 630},
+                    {sets:["Ocorrencia"], figure: 5.1, label: "Ocorrencia", size: 9970, size2: 860},
+                    {sets:["Notificacao"], figure: 17.7, label: "Notificacao", size: 9970, size2: 2495},
+                    {sets: ["Notificacao", "Ocorrencia"], figure: 2, label: "Notificacao e ocorrencia", size: 259, size2: 259},
+                    {sets: ["Notificacao", "Residencia"], figure: 3.8, label: "Notificacao e residencia", size: 489, size2: 489},
+                    {sets: ["Ocorrencia", "Residencia"], figure: 16.4, label: "Ocorrencia e residencia", size: 2124, size2: 2124},
+                    {sets: ["Notificacao", "Ocorrencia", "Residencia"], figure: 51.8, label: "Notificacao, ocorrencia e residencia", size: 6727, size2: 6727}
+                    ];
+
+
+        var chart = venn.VennDiagram()
+            .width(500)
+            .height(400)
+
+          
+
+        var div3 = d3.select("#venn_three").datum(sets).call(chart);
+            div3.selectAll("text").style("fill", "white");
+            div3.selectAll(".venn-circle path")
+                    .style("fill-opacity", .8)
+                    .style("stroke-width", 1)
+                    .style("stroke-opacity", 1)
+                    .style("stroke", "fff");
+
+
+
+        var tooltip = d3.select("body").append("div")
+            .attr("class", "venntooltip");
+
+
+        div3.selectAll("g")
+            .on("mouseover", function(d, i) {
+                // sort all the areas relative to the current item
+                venn.sortAreas(div3, d);
+
+                // Display a tooltip with the current size
+                tooltip.transition().duration(40).style("opacity", 1);
+                tooltip.text(d.size2 + " (" + d.figure + ")" + "% dos casos notificados");
+
+                // highlight the current path
+                // highlight the current path
+                var selection = d3.select(this).transition("tooltip").duration(400);
+                selection.select("path")
+                    .style("stroke-width", 3)
+                    .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                    .style("stroke-opacity", 1);
+            })
+
+            .on("mousemove", function() {
+                tooltip.style("left", (d3.event.pageX) + "px")
+                       .style("top", (d3.event.pageY - 28) + "px");
+            })
+
+            .on("mouseout", function(d, i) {
+                tooltip.transition().duration(2000).style("opacity", 0);
+                var selection = d3.select(this).transition("tooltip").duration(400);
+                selection.select("path")
+                    .style("stroke-width", 3)
+                    .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                    .style("stroke-opacity", 1);
+            });
+
+	// Ano: 2014
+	var sets = [
+		    {sets:["Residencia"], figure: 3.3, label: "Residencia", size: 9970, size2: 630},
+                    {sets:["Ocorrencia"], figure: 5.1, label: "Ocorrencia", size: 9970, size2: 860},
+                    {sets:["Notificacao"], figure: 17.7, label: "Notificacao", size: 9970, size2: 2495},
+                    {sets: ["Notificacao", "Ocorrencia"], figure: 2, label: "Notificacao e ocorrencia", size: 259, size2: 259},
+                    {sets: ["Notificacao", "Residencia"], figure: 3.8, label: "Notificacao e residencia", size: 489, size2: 489},
+                    {sets: ["Ocorrencia", "Residencia"], figure: 16.4, label: "Ocorrencia e residencia", size: 2124, size2: 2124},
+                    {sets: ["Notificacao", "Ocorrencia", "Residencia"], figure: 51.8, label: "Notificacao, ocorrencia e residencia", size: 6727, size2: 6727}
+                    ];
+
+
+        var chart = venn.VennDiagram()
+            .width(500)
+            .height(400)
+
+          
+
+        var div4 = d3.select("#venn_four").datum(sets).call(chart);
+            div4.selectAll("text").style("fill", "white");
+            div4.selectAll(".venn-circle path")
+                    .style("fill-opacity", .8)
+                    .style("stroke-width", 1)
+                    .style("stroke-opacity", 1)
+                    .style("stroke", "fff");
+
+
+
+        var tooltip = d3.select("body").append("div")
+            .attr("class", "venntooltip");
+
+
+        div4.selectAll("g")
+            .on("mouseover", function(d, i) {
+                // sort all the areas relative to the current item
+                venn.sortAreas(div4, d);
+
+                // Display a tooltip with the current size
+                tooltip.transition().duration(40).style("opacity", 1);
+                tooltip.text(d.size2 + " (" + d.figure + ")" + "% dos casos notificados");
+
+                // highlight the current path
+                // highlight the current path
+                var selection = d3.select(this).transition("tooltip").duration(400);
+                selection.select("path")
+                    .style("stroke-width", 3)
+                    .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                    .style("stroke-opacity", 1);
+            })
+
+            .on("mousemove", function() {
+                tooltip.style("left", (d3.event.pageX) + "px")
+                       .style("top", (d3.event.pageY - 28) + "px");
+            })
+
+            .on("mouseout", function(d, i) {
+                tooltip.transition().duration(2000).style("opacity", 0);
+                var selection = d3.select(this).transition("tooltip").duration(400);
+                selection.select("path")
+                    .style("stroke-width", 3)
+                    .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                    .style("stroke-opacity", 1);
+            });
+
+        //https://github.com/benfred/venn.js/issues/22
+
+    </script>
+
+</div> 
+
+</body>
+
+</html>
+
