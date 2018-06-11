@@ -3567,3 +3567,9 @@ pre {
   background-color: transparent !important;
   border: 1px solid transparent !important;
 }
+
+.descricao {
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-bottom: 0px;
+} 
