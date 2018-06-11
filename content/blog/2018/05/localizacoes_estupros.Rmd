@@ -78,6 +78,18 @@ tabela1 %>%
 
 Um ponto aqui levantado para tentar explicar uma parte desse problema, é entender como se dá dinâmica do local de residência, de ocorrência e de notificação de cada crime registrado. Para isso foi feito um [Diagrama de Venn](https://brasilescola.uol.com.br/matematica/diagrama-de-venn.htm) para cada ano; assim, conseguimos ver as uniões e interseções de cada conjunto de localizações.
 
+A partir dos diagramas abaixo, pudemos verificar que em pouco mais da metade dos casos notificados/registrados de 2011 a 2016, essas três localizações foram iguais. No entanto, considerando as comparações 2 a 2 (ou seja, notificação x ocorrência, notificação x residência e ocorrência x residência), vimos que em geral há uma certa similaridade entre os municípios de ocorrência e residência; e certa diferença com relação ao município de notificação. Essas ideias estão melhor explicadas nos tópicos que seguem:
+
+1) a porcentagem de casos nos quais apenas os municípios de notificação e ocorrência eram iguais (e ambos diferentes do município de residência) foi baixa, variando ao longo dos anos de 2011 a 2016, de 1.9% a 2.2%;
+
+2) em relação aos municípios de notificação x residência, vimos que a porcentagem de casos em que essas localizações coincidiam (e diferiam do município de ocorrência) também apresentou valores baixos, variando de 3.5% a 4.3%;
+
+3) por outro lado, uma quantidade bastante razoável dos casos registrados (de 14.6% a 16.4%) possuíam os municípios de ocorrência e residência iguais (ambos sendo diferentes do município de notificação);
+
+4) de 16% a 17.7% dos casos registrados, o município de notificação era diferente dos demais (do de ocorrência e de residência); enquanto que de 5.1% a 5.8% tinham o município de ocorrência diferindo das demais localizações; e de 3.3% a 3.6% dos casos possuíam município de residência diferente dos outros.
+
+(observação: esse cálculo levou em consideração somente as notificações que possuíam todas as localizações registradas.)
+
 <br>
 
 <a href="img/diagrama_euler_2011.png" title="2011">
@@ -105,18 +117,6 @@ Um ponto aqui levantado para tentar explicar uma parte desse problema, é entend
 </a>
 
 <br></br>
-
-A partir dos diagramas abaixo, pudemos verificar que em pouco mais da metade dos casos notificados/registrados de 2011 a 2016, essas três localizações foram iguais. No entanto, considerando as comparações 2 a 2 (ou seja, notificação x ocorrência, notificação x residência e ocorrência x residência), vimos que em geral há uma certa similaridade entre os municípios de ocorrência e residência; e certa diferença com relação ao município de notificação. Essas ideias estão melhor explicadas nos tópicos que seguem:
-
-1) a porcentagem de casos nos quais apenas os municípios de notificação e ocorrência eram iguais (e ambos diferentes do município de residência) foi baixa, variando ao longo dos anos de 2011 a 2016, de 1.9% a 2.2%;
-
-2) em relação aos municípios de notificação x residência, vimos que a porcentagem de casos em que essas localizações coincidiam (e diferiam do município de ocorrência) também apresentou valores baixos, variando de 3.5% a 4.3%;
-
-3) por outro lado, uma quantidade bastante razoável dos casos registrados (de 14.6% a 16.4%) possuíam os municípios de ocorrência e residência iguais (ambos sendo diferentes do município de notificação);
-
-4) de 16% a 17.7% dos casos registrados, o município de notificação era diferente dos demais (do de ocorrência e de residência); enquanto que de 5.1% a 5.8% tinham o município de ocorrência diferindo das demais localizações; e de 3.3% a 3.6% dos casos possuíam município de residência diferente dos outros.
-
-(observação: esse cálculo levou em consideração somente as notificações que possuíam todas as localizações registradas.)
 
 Isso leva a crer que, considerando os dados registrados, os casos de estupro em mulheres ocorrem no município de residência, e que uma parte razoável das vítimas se sente mais encorajada a notificar num município diferente dos de residência e ocorrência.
 

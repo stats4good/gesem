@@ -27,7 +27,7 @@
 }
 
 #post-content table th {
-    background: #6aae7a;
+    background: #976dbd;
     /* background: #c21f25; */
     /* background: #c21f25; */
     color: #fff;
@@ -57,3 +57,9 @@ i.fa.fa-2x.fa-envelope.fa:hover {
 .navbar-default .navbar-nav > li > a:hover {
     color: #8c66b1 !important;
 }
+
+.descricao {
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-bottom: 0px;
+} 
