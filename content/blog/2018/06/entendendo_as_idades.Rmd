@@ -1,0 +1,291 @@
+---
+title: "Qual a idade das vítimas e onde esses crimes estão ocorrendo?"
+author: "Juliana Freitas"
+date: "2018-06-15"
+categories: ["estupro", "local de ocorrencia"]
+tags: ["idade", "cultura do estupro", "notícias"]
+banner: "blog/2018/06/entendendo_as_idades/img/silhueta_mulher_com_ponto_interrogacao.jpg"
+summary: "Um pensamento constantemente repercurtido é o de que as vítimas de estupro são, em sua grande maioria, mulheres que fazem uso de álcool, andam desacompanhadas em ruas escuras e usam roupas curtas. A partir disso, vamos mostrar dados contradizendo esse pensamento."
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+```{r pacotes}
+if(!require(ggthemes)){ install.packages("ggthemes"); require(ggthemes)}   
+if(!require(dplyr)){ install.packages("dplyr"); require(dplyr)}     
+require(widgetframe) 
+
+```
+
+Em 2014, o IPEA realizou uma [pesquisa](http://www.ipea.gov.br/portal/images/stories/PDFs/SIPS/140327_sips_violencia_mulheres.pdf) acerca da "Tolerância social à violência contra as mulheres", chamando atenção para algumas características patriarcais marcantes da sociedade. Através desta pesquisa pode-se constatar que 58,5% das pessoas entrevistadas concordaram, total  ou  parcialmente, que “se as mulheres soubessem se comportar haveria menos estupros”. Outro pensamento constantemente repercurtido é o de que as vítimas de estupro são, em sua grande maioria, mulheres que facem uso de álcool, andam desacompanhadas em ruas escuras, usam roupas curtas e outras características ditadas pela cultura do estupro^1,2,7^.
+
+As ideias mencionadas acima acabam fazendo, cruelmente, com que a culpa do crime recaia sobre a vítima (estupro **nunca** é culpa da vítima). A partir disso, esse *post* foi feito com o objetivo de mostrar pontos importantes que vão contra as ideias mencionadas acima; além de apontar para características impactantes sobre crimes de estupro.
+
+### Idade das vítimas
+
+O primeiro ponto a ser mostrado com o intuito de contradizer os pensamentos comuns expostos acima, será em relação à idade. A Figura 1 mostra o [*boxplot*](http://www.portalaction.com.br/estatistica-basica/31-boxplot) das idades (no momento da ocorrência do crime) das [mulheres vítimas](https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/) de estupro, para os casos notificados de 2011 a 2016. Esse gráfico possibilita a visualização da distribuição da idade das vítimas que notificaram o crime, e também fornece informação sobre a variabilidade.
+
+```{r, echo = FALSE, results = 'asis', message = FALSE, warning = FALSE, fig.width = 3, fig.height = 2}
+## O echo=F faz com que o c?digo na?o apare?a, s? resultados!
+### Removendo objetos ja alocados
+### Carregando pacotes exigidos
+require(highcharter)
+
+### Diretorio
+#diretorio<- getwd()
+#diretorio.dados<- "/entendendo_as_idades/data/"
+# diretorio.dados<- "C:\\Users\\Juliana\\Dropbox\\S4G - Time 02\\"
+
+### Dados SINAN
+#setwd(diretorio.dados)
+load("entendendo_as_idades/data/dados.Rdata")
+
+#setwd(diretorio)
+
+# highchart() %>%
+#   hc_add_series(data = table(floor(as.numeric(difftime(dados2016$DT_OCOR, dados2016$DT_NASC, units = "days") / 365))),
+#                 width	= "50px",
+#                 height = "40px",
+#                 align = "left",
+#                 type = "column") %>%
+#   hc_xAxis(title = list(text = "Idade da vítima na data de ocorrência")) %>%
+#   hc_yAxis(title = list(text = "Número de notificações"), min = 0, max = 2200, showFirstLabel = TRUE, labels = list(format = "{value}")) %>%
+#   hc_tooltip(pointFormat = "Idade: {point.x} <br> Número de notificações: {point.y}") %>%
+#   hc_title(text = "Figura 1: Histograma das idades das vítimas de estupro no Brasil em 2016 (fonte: VIVA/SVS/MS).", style = list(color = gray(0.69))) %>%
+#   hc_legend(enabled = FALSE)
+
+```
+
+```{r, echo = FALSE, results = 'asis', message = FALSE, warning = FALSE}
+require(highcharter)
+require(shiny)
+require(purrr)
+require(stringr)
+
+data_boxplot<- matrix(data = c(floor(as.numeric(difftime(dados2011$DT_OCOR, dados2011$DT_NASC, units = "days") / 365)),
+                            floor(as.numeric(difftime(dados2012$DT_OCOR, dados2012$DT_NASC, units = "days") / 365)),
+                            floor(as.numeric(difftime(dados2013$DT_OCOR, dados2013$DT_NASC, units = "days") / 365)),
+                            floor(as.numeric(difftime(dados2014$DT_OCOR, dados2014$DT_NASC, units = "days") / 365)),
+                            floor(as.numeric(difftime(dados2015$DT_OCOR, dados2015$DT_NASC, units = "days") / 365)),
+                            floor(as.numeric(difftime(dados2016$DT_OCOR, dados2016$DT_NASC, units = "days") / 365)),
+                            rep(x = 2011, times = nrow(dados2011)),
+                            rep(x = 2012, times = nrow(dados2012)),
+                            rep(x = 2013, times = nrow(dados2013)),
+                            rep(x = 2014, times = nrow(dados2014)),
+                            rep(x = 2015, times = nrow(dados2015)),
+                            rep(x = 2016, times = nrow(dados2016))),
+                      nrow = sum(nrow(dados2011), nrow(dados2012), nrow(dados2013), nrow(dados2014), nrow(dados2015), nrow(dados2016)),
+                      ncol = 2)
+colnames(data_boxplot)<- c("idade", "ano")
+data_boxplot<- as.data.frame(data_boxplot)
+
+pointFormat<- '<span style="color:{point.color}"></span><br/>
+Máximo: {point.high}<br/>
+3º quartil: {point.q3}<br/>
+Mediana: {point.median}<br/>
+1º quartil: {point.q1}<br/>
+Minimum: {point.low}<br/>'
+
+hcboxplot(x = data_boxplot$idade, var = data_boxplot$ano, outliers = FALSE, color = gray(0.49), fillColor = gray(0.8))%>%
+  hc_chart(type = "column") %>%
+  hc_xAxis(title = list(text = "Ano de notificação")) %>%
+  # hc_yAxis(title = list(text = "Idade da vítima (na data de ocorrência)"), min = 0) %>%
+  hc_yAxis(title = list(text = "Idade da vítima (na data de ocorrência)"), min = 0, max = 38, showFirstLabel = TRUE, labels = list(format = "{value}")) %>%
+  hc_title(text = "Figura 1: Boxplot das idades das vítimas de estupro no Brasil, casos notificados de 2011 a 2016 (fonte: VIVA/SVS/MS).", style = list(color = gray(0.69))) %>%
+  hc_legend(enabled = FALSE) %>%
+  hc_credits(enabled = TRUE, text = "*os valores discrepantes não estão representados") %>%
+  hc_tooltip(pointFormat = pointFormat) %>%
+  frameWidget()
+
+###------
+
+idades2011<- floor(as.numeric(difftime(dados2011$DT_OCOR, dados2011$DT_NASC, units = "days") / 365)) ; table2011<- table(idades2011)
+idades2012<- floor(as.numeric(difftime(dados2012$DT_OCOR, dados2012$DT_NASC, units = "days") / 365)) ; table2012<- table(idades2012)
+idades2013<- floor(as.numeric(difftime(dados2013$DT_OCOR, dados2013$DT_NASC, units = "days") / 365)) ; table2013<- table(idades2013)
+idades2014<- floor(as.numeric(difftime(dados2014$DT_OCOR, dados2014$DT_NASC, units = "days") / 365)) ; table2014<- table(idades2014)
+idades2015<- floor(as.numeric(difftime(dados2015$DT_OCOR, dados2015$DT_NASC, units = "days") / 365)) ; table2015<- table(idades2015)
+idades2016<- floor(as.numeric(difftime(dados2016$DT_OCOR, dados2016$DT_NASC, units = "days") / 365)) ; table2016<- table(idades2016)
+
+data_heatmap<- data.frame(anos = c(rep(x = 2011, times = length(table2011)),
+                                  rep(x = 2012, times = length(table2012)),
+                                  rep(x = 2013, times = length(table2013)),
+                                  rep(x = 2014, times = length(table2014)),
+                                  rep(x = 2015, times = length(table2015)),
+                                  rep(x = 2016, times = length(table2016))),
+                          idades = c(as.numeric(labels(table2011)[[1]]),
+                                     as.numeric(labels(table2012)[[1]]),
+                                     as.numeric(labels(table2013)[[1]]),
+                                     as.numeric(labels(table2014)[[1]]),
+                                     as.numeric(labels(table2015)[[1]]),
+                                     as.numeric(labels(table2016)[[1]])),
+                          contagens = c(as.numeric(table2011),
+                                        as.numeric(table2012),
+                                        as.numeric(table2013),
+                                        as.numeric(table2014),
+                                        as.numeric(table2015),
+                                        as.numeric(table2016))
+                          )
+
+# highchart() %>% 
+#   hc_xAxis(categories = data_heatmap$anos) %>% 
+#   hc_yAxis(categories = unique(data_heatmap$idades)) %>% 
+#   hc_add_series(data = data_heatmap, 
+#                 name = "Contagem",
+#                 mapping = hcaes(x = anos, 
+#                                 y = idades, 
+#                                 value = contagens), 
+#                 type = "heatmap") %>%
+#   hc_colorAxis(minColor = "#FFFFFF", maxColor = "#000000")
+
+```
+
+<br></br>
+
+Com base nessa figura, podemos observar que os *boxplots* pra cada ano são bastante similares. Ou seja, levando em consideração a idade, o perfil das vítimas é praticamente o mesmo ao longo desses seis anos. Além disso, a idade [mediana](https://brasilescola.uol.com.br/matematica/moda-media-mediana.htm) em todos esses anos foi igual a 14; isso significa que em 50% dos casos notificados, as vítimas tinham **até** 14 anos de idade. Esse fato agrava ainda mais essa realidade, uma vez que, segundo o código penal brasileiro, pessoas com menos de 14 anos não podem consentir com relações sexuais; se configurando então em estupro de vulnerável^3,4^. Nesse mesmo sentido, também foi possível verificar que em 25% dos casos notificados, as vítimas possuíam até 11 anos na data de ocorrência do crime.
+
+Essas análises levam a crer que mesmo ao passar dos anos, com medidas sendo tomadas e casos vindo à tona, **crianças** continuam sendo estupradas. Faz sentido pensar também que, o fato de grande parte das vítimas serem tão novas, pode ser mais um fator que faz com que a taxa de [subnotificação](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/) desse crime seja tão alta.
+
+### Local de ocorrência
+
+Um outro ponto abordado nesse post diz respeito ao local de ocorrência dos crimes de estupro em mulheres no Brasil. Assim, a Figura 2 mostra o número de casos notificados por local de ocorrência, nos anos de 2011 a 2016.
+
+Por esse gráfico podemos ver os tipos de locais nos quais os crimes de estupro estão ocorrendo, assim como o número de notificações para cada um deles em cada ano (clique no nome da categoria para adicioná-la/removê-la do gráfico).
+
+```{r, echo = FALSE, results = 'asis', message = FALSE, warning = FALSE}
+
+# Local de ocorrencia
+nomes_local_ocorrencia<- c("Residência", #1
+                           "Habitação coletiva", #2
+                           "Escola", #3
+                           "Local de prática esportiva", #4
+                           "Bar ou similar", #5
+                           "Via pública", #6
+                           "Comércio/Serviços", #7
+                           "Indústrias/construção", #8
+                           "Outro", #9
+                           "Ignorado") #10
+nomes_local_ocorrencia_ordem<- c("Residência", "Via pública", "Ignorado", "Outro", "Escola", "Comércio/Serviços", "Bar ou similar", "Habitação coletiva",
+                                 "Indústrias/construção", "Local de prática esportiva")
+
+levels(dados2011$LOCAL_OCOR)<- nomes_local_ocorrencia ; levels(dados2011$LOCAL_OCOR)<- ordered(levels(dados2011$LOCAL_OCOR), levels = nomes_local_ocorrencia_ordem)
+levels(dados2012$LOCAL_OCOR)<- nomes_local_ocorrencia ; levels(dados2012$LOCAL_OCOR)<- ordered(levels(dados2012$LOCAL_OCOR), levels = nomes_local_ocorrencia_ordem)
+levels(dados2013$LOCAL_OCOR)<- nomes_local_ocorrencia ; levels(dados2013$LOCAL_OCOR)<- ordered(levels(dados2013$LOCAL_OCOR), levels = nomes_local_ocorrencia_ordem)
+levels(dados2014$LOCAL_OCOR)<- nomes_local_ocorrencia ; levels(dados2014$LOCAL_OCOR)<- ordered(levels(dados2014$LOCAL_OCOR), levels = nomes_local_ocorrencia_ordem)
+levels(dados2015$LOCAL_OCOR)<- nomes_local_ocorrencia ; levels(dados2015$LOCAL_OCOR)<- ordered(levels(dados2015$LOCAL_OCOR), levels = nomes_local_ocorrencia_ordem)
+levels(dados2016$LOCAL_OCOR)<- nomes_local_ocorrencia ; levels(dados2016$LOCAL_OCOR)<- ordered(levels(dados2016$LOCAL_OCOR), levels = nomes_local_ocorrencia_ordem)
+
+
+
+highchart() %>% 
+  hc_xAxis(categories = as.character(2011:2016)) %>% 
+  hc_add_series(name = "Residência", data = c(nrow(subset(dados2011, dados2011$LOCAL_OCOR == "Residência")),
+                                         nrow(subset(dados2012, dados2012$LOCAL_OCOR == "Residência")),
+                                         nrow(subset(dados2013, dados2013$LOCAL_OCOR == "Residência")),
+                                         nrow(subset(dados2014, dados2014$LOCAL_OCOR == "Residência")),
+                                         nrow(subset(dados2015, dados2015$LOCAL_OCOR == "Residência")),
+                                         nrow(subset(dados2016, dados2016$LOCAL_OCOR == "Residência")))) %>% 
+  hc_add_series(name = "Habitação coletiva", data = c(nrow(subset(dados2011, dados2011$LOCAL_OCOR == "Habitação coletiva")),
+                                          nrow(subset(dados2012, dados2012$LOCAL_OCOR == "Habitação coletiva")),
+                                          nrow(subset(dados2013, dados2013$LOCAL_OCOR == "Habitação coletiva")),
+                                          nrow(subset(dados2014, dados2014$LOCAL_OCOR == "Habitação coletiva")),
+                                          nrow(subset(dados2015, dados2015$LOCAL_OCOR == "Habitação coletiva")),
+                                          nrow(subset(dados2016, dados2016$LOCAL_OCOR == "Habitação coletiva")))) %>% 
+  hc_add_series(name = "Escola", data = c(nrow(subset(dados2011, dados2011$LOCAL_OCOR == "Escola")),
+                                              nrow(subset(dados2012, dados2012$LOCAL_OCOR == "Escola")),
+                                              nrow(subset(dados2013, dados2013$LOCAL_OCOR == "Escola")),
+                                              nrow(subset(dados2014, dados2014$LOCAL_OCOR == "Escola")),
+                                              nrow(subset(dados2015, dados2015$LOCAL_OCOR == "Escola")),
+                                              nrow(subset(dados2016, dados2016$LOCAL_OCOR == "Escola")))) %>%
+  hc_add_series(name = "Local de prática esportiva", data = c(nrow(subset(dados2011, dados2011$LOCAL_OCOR == "Local de prática esportiva")),
+                                        nrow(subset(dados2012, dados2012$LOCAL_OCOR == "Local de prática esportiva")),
+                                        nrow(subset(dados2013, dados2013$LOCAL_OCOR == "Local de prática esportiva")),
+                                        nrow(subset(dados2014, dados2014$LOCAL_OCOR == "Local de prática esportiva")),
+                                        nrow(subset(dados2015, dados2015$LOCAL_OCOR == "Local de prática esportiva")),
+                                        nrow(subset(dados2016, dados2016$LOCAL_OCOR == "Local de prática esportiva")))) %>%
+  hc_add_series(name = "Bar ou similar", data = c(nrow(subset(dados2011, dados2011$LOCAL_OCOR == "Bar ou similar")),
+                                        nrow(subset(dados2012, dados2012$LOCAL_OCOR == "Bar ou similar")),
+                                        nrow(subset(dados2013, dados2013$LOCAL_OCOR == "Bar ou similar")),
+                                        nrow(subset(dados2014, dados2014$LOCAL_OCOR == "Bar ou similar")),
+                                        nrow(subset(dados2015, dados2015$LOCAL_OCOR == "Bar ou similar")),
+                                        nrow(subset(dados2016, dados2016$LOCAL_OCOR == "Bar ou similar")))) %>%
+  hc_add_series(name = "Via pública", data = c(nrow(subset(dados2011, dados2011$LOCAL_OCOR == "Via pública")),
+                                        nrow(subset(dados2012, dados2012$LOCAL_OCOR == "Via pública")),
+                                        nrow(subset(dados2013, dados2013$LOCAL_OCOR == "Via pública")),
+                                        nrow(subset(dados2014, dados2014$LOCAL_OCOR == "Via pública")),
+                                        nrow(subset(dados2015, dados2015$LOCAL_OCOR == "Via pública")),
+                                        nrow(subset(dados2016, dados2016$LOCAL_OCOR == "Via pública")))) %>%
+  hc_add_series(name = "Comércio/Serviços", data = c(nrow(subset(dados2011, dados2011$LOCAL_OCOR == "Comércio/Serviços")),
+                                        nrow(subset(dados2012, dados2012$LOCAL_OCOR == "Comércio/Serviços")),
+                                        nrow(subset(dados2013, dados2013$LOCAL_OCOR == "Comércio/Serviços")),
+                                        nrow(subset(dados2014, dados2014$LOCAL_OCOR == "Comércio/Serviços")),
+                                        nrow(subset(dados2015, dados2015$LOCAL_OCOR == "Comércio/Serviços")),
+                                        nrow(subset(dados2016, dados2016$LOCAL_OCOR == "Comércio/Serviços")))) %>%
+  hc_add_series(name = "Indústrias/construção", data = c(nrow(subset(dados2011, dados2011$LOCAL_OCOR == "Indústrias/construção")),
+                                        nrow(subset(dados2012, dados2012$LOCAL_OCOR == "Indústrias/construção")),
+                                        nrow(subset(dados2013, dados2013$LOCAL_OCOR == "Indústrias/construção")),
+                                        nrow(subset(dados2014, dados2014$LOCAL_OCOR == "Indústrias/construção")),
+                                        nrow(subset(dados2015, dados2015$LOCAL_OCOR == "Indústrias/construção")),
+                                        nrow(subset(dados2016, dados2016$LOCAL_OCOR == "Indústrias/construção")))) %>%
+  hc_add_series(name = "Outro", data = c(nrow(subset(dados2011, dados2011$LOCAL_OCOR == "Outro")),
+                                        nrow(subset(dados2012, dados2012$LOCAL_OCOR == "Outro")),
+                                        nrow(subset(dados2013, dados2013$LOCAL_OCOR == "Outro")),
+                                        nrow(subset(dados2014, dados2014$LOCAL_OCOR == "Outro")),
+                                        nrow(subset(dados2015, dados2015$LOCAL_OCOR == "Outro")),
+                                        nrow(subset(dados2016, dados2016$LOCAL_OCOR == "Outro")))) %>%
+  hc_add_series(name = "Ignorado", data = c(nrow(subset(dados2011, dados2011$LOCAL_OCOR == "Ignorado")),
+                                        nrow(subset(dados2012, dados2012$LOCAL_OCOR == "Ignorado")),
+                                        nrow(subset(dados2013, dados2013$LOCAL_OCOR == "Ignorado")),
+                                        nrow(subset(dados2014, dados2014$LOCAL_OCOR == "Ignorado")),
+                                        nrow(subset(dados2015, dados2015$LOCAL_OCOR == "Ignorado")),
+                                        nrow(subset(dados2016, dados2016$LOCAL_OCOR == "Ignorado")))) %>%
+   hc_xAxis(title = list(text = "Ano de notificação")) %>%
+  hc_yAxis(title = list(text = "Número de notificações"), min = 0, showFirstLabel = TRUE, labels = list(format = "{value}")) %>%
+  hc_title(text = "Figura 2: Número de notificações de casos de estupro em mulheres no Brasil, por local de ocorrência, de 2011 a 2016 (fonte: VIVA/SVS/MS).", style = list(color = gray(0.69)))%>%
+  frameWidget()
+
+```
+
+<br></br>
+
+Observando o gráfico, podemos notar que para todos os anos estudados, o local onde aconteceu a grande maioria dos casos notificados foi "residências". Isso nos traz mais evidências de que os pensamentos listados no início desse post não fazem sentido e acentua ainda mais a gravidade perante a esse crime. Em seguida, o local de ocorrência com o segundo maior número de notificações foi "via pública". Além disso, chamamos atenção para os seguites itens:
+
+* a categoria "outros" contempla locais como matagal, motel, terreno baldio, carro, ...;
+
+* a categoria "ignorado" representa de 7% a 10% dos casos notificados. É válido questionar porque não há essa informação em tantos casos;
+
+* em 2016 houve 276 casos notificados cujo local de ocorrência era escola, isso representa cerca de 5 casos por semana;
+
+* sobre a categoria "local de prática esportiva", vale lembrar o escândalo na equipe de ginástica artística^5,6^.
+
+<br>
+
+Espera-se que quanto maior for o conhecimento a respeito desse tema, mais eficazes serão as medidas tomadas visando combater esse crime. Baseado nessa ideia, esse *post* foi elaborado com informações importantes sobre esse crime que precisam ser difundidas.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Observações:
+
+* os dados de 2015 e 2016 não estão consolidados;
+
+* ao longo dos anos, havia em torno de 2% a 5% de valores faltantes na idade da vítimas;
+
+* é importante notificar os casos de estupro (opções: ligar 180 ou ir ao centro de saúde mais próximo).
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+### Referências
+
+^1^ [Por que falamos de cultura do estupro?](https://nacoesunidas.org/por-que-falamos-de-cultura-do-estupro/)
+
+^2^ [Cultura do estupro: Você sabe de que se trata?](https://vestibular.uol.com.br/resumo-das-disciplinas/atualidades/discussao-o-brasil-vive-em-uma-cultura-do-estupro.htm)
+
+^3^ [LEI Nº 12.015, DE 7 DE AGOSTO DE 2009](http://www.planalto.gov.br/ccivil_03/_Ato2007-2010/2009/Lei/L12015.htm#art2)
+
+^4^ [Crime de Estupro](https://www.infoescola.com/direito/crime-de-estupro/)
+
+^5^ [Ex-técnico da seleção de ginástica é acusado na Justiça de assediar 10 atletas](https://oglobo.globo.com/esportes/ex-tecnico-da-selecao-de-ginastica-acusado-na-justica-de-assediar-10-atletas-22639946)
+
+^6^ [40 ginastas acusam ex-técnico da seleção brasileira de abuso sexual](https://www.revistaforum.com.br/40-ginastas-acusam-ex-tecnico-da-selecao-brasileira-de-abuso-sexual/)
+
+^7^ [Jovens não sabem diferenciar sexo de estupro – e o Escola sem Partido quer impedir que aprendam](https://theintercept.com/2018/06/05/jovens-sexo-estupro-escola-sem-partido/)
