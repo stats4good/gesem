@@ -8,7 +8,7 @@ HTMLWidgets.widget({
 
     return {
       // TODO: add instance fields as required
-    };
+    }
 
   },
 
@@ -16,7 +16,6 @@ HTMLWidgets.widget({
     
     if(x.debug) {
       window.xclone = JSON.parse(JSON.stringify(x));
-      window.elclone = $(el);
       console.log(el);
       console.log("hc_opts", x.hc_opts);
       console.log("theme", x.theme);
@@ -28,10 +27,10 @@ HTMLWidgets.widget({
       x.fonts = ((typeof(x.fonts) == "string") ? [x.fonts] : x.fonts);
     
       x.fonts.forEach(function(s){
-        /* http://stackoverflow.com/questions/4724606 */
         var urlfont = 'https://fonts.googleapis.com/css?family=' + s;
+        /* http://stackoverflow.com/questions/4724606 */
         if (!$("link[href='" + urlfont + "']").length) {
-          $('<link href="' + urlfont + '" rel="stylesheet" type="text/css">').appendTo("head");
+          $('<link href="' + urlfont + '" rel="stylesheet" type="">').appendTo("head");
         }
         
       });
@@ -42,30 +41,17 @@ HTMLWidgets.widget({
     
     if(x.theme !== null) {
       
-      if(x.debug) console.log("adding THEME");
-      
       Highcharts.setOptions(x.theme);
       
-    }
-    
-    if((x.theme && x.theme.chart.divBackgroundImage !== undefined) |
-         (x.hc_opts.chart  && x.hc_opts.chart.divBackgroundImage !== undefined)) {
-           
-      if(x.debug) console.log("adding BackgroundImage");     
-           
-      var bkgrnd = x.theme.chart.divBackgroundImage || x.hc_opts.chart.divBackgroundImage;
-      
-      Highcharts.wrap(Highcharts.Chart.prototype, "getContainer", function (proceed) {
+      if(x.theme.chart.divBackgroundImage !== null){
         
-        proceed.call(this);
+        Highcharts.wrap(Highcharts.Chart.prototype, 'getContainer', function (proceed) {
+          proceed.call(this);
+          $("#" + el.id).css('background-image', 'url(' + x.theme.chart.divBackgroundImage + ')');
+          
+        });
         
-        $("#" + el.id).css("background-image", "url(" + bkgrnd + ")");
-        $("#" + el.id).css("-webkit-background-size", "cover");
-        $("#" + el.id).css("-moz-background-size", "cover");
-        $("#" + el.id).css("-o-background-size", "cover");
-        $("#" + el.id).css("background-size", "cover");
-        
-      });
+      }
       
     }
     
@@ -88,7 +74,7 @@ HTMLWidgets.widget({
         return e;
       });
       
-      $("#" + el.id).highcharts('Map', x.hc_opts); 
+      $("#" + el.id).highcharts('Map', x.hc_opts);  
       
       if(x.hc_opts.mapNavigation !== undefined && x.hc_opts.mapNavigation.enabled === true){
         /* if have navigation option and enabled true: http://stackoverflow.com/questions/7600454 */
@@ -103,23 +89,6 @@ HTMLWidgets.widget({
       }
       
     }
-    
-    if(x.hc_opts.motion !== undefined) {
-      
-      $("#" + el.id).css({"position" : "relative" });
-      
-      if(x.debug) console.log("setting MOTION options");
-      
-      var pc = $($("#" + el.id).find("#play-controls")[0]);
-      
-      var ct = x.theme.chart;
-      
-      if(ct.backgroundColor !== undefined) $(pc.find("#play-pause-button")[0]).css({backgroundColor : x.theme.chart.backgroundColor});
-      if(ct.style !== undefined)  $(pc.find("#play-output")[0]).css(x.theme.chart.style);
-      if(ct.style !== undefined && ct.style.color !== undefined) $(pc.find("#play-pause-button")[0]).css({color : x.theme.chart.style.color});
-      
-      
-    } 
     
   },
 

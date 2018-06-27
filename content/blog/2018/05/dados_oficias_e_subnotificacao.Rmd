@@ -65,7 +65,7 @@ taxa2016$TAXA_CAT <- factor(x = taxa2016$TAXA_CAT,
                               levels(taxa2016$TAXA_CAT)[-c(1:2)]))
 
 ##-- + mapa interativo ----
-mapa <- map_sinan(data = taxa2016, var_id = "COD_MUN", var_plot = "TAXA_CAT",
+mapa <- map_sinan(data = taxa2016, var_id_mun = "COD_MUN", var_plot = "TAXA_CAT",
                   UF_subset = NULL, UF_border = "black", mun_border = "transparent",
                   central_point = NULL, colorize_point = list("#CCCCCC" = 0),
                   legend_title = "Taxa",
