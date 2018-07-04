@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mapa Taxas on Grupo de Estudo da Subnotificação de Estupro em Mulheres</title>
-    <link>/gesem/tags/mapa-taxas/</link>
+    <link>https://stats4good.github.io/gesem/tags/mapa-taxas/</link>
     <description>Recent content in Mapa Taxas on Grupo de Estudo da Subnotificação de Estupro em Mulheres</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <lastBuildDate>Sun, 06 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/gesem/tags/mapa-taxas/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://stats4good.github.io/gesem/tags/mapa-taxas/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dados oficiais de estupro no Brasil: a questão da subnotificação</title>
-      <link>/gesem/blog/2018/05/dados_oficias_e_subnotificacao/</link>
+      <link>https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/</link>
       <pubDate>Sun, 06 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/gesem/blog/2018/05/dados_oficias_e_subnotificacao/</guid>
+      <guid>https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/</guid>
       <description>A subnotificação se faz presente quando algum evento de interesse como, por exemplo, ocorrência de um crime ou diagnóstico de uma doença, é notificado/registrado em menor quantidade do que seria esperado ou devido. Quando os dados disponíveis apresentam este tipo de problema, estimativas de taxas e índices tendem a ser viesadas no sentido de representarem algo aquém da realidade. Isto dificulta a percepção da necessidade de políticas públicas de intervenção e controle, dentre outras coisas.</description>
     </item>
     

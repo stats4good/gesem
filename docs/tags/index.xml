@@ -2,75 +2,84 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Grupo de Estudo da Subnotificação de Estupro em Mulheres</title>
-    <link>/gesem/tags/</link>
+    <link>https://stats4good.github.io/gesem/tags/</link>
     <description>Recent content in Tags on Grupo de Estudo da Subnotificação de Estupro em Mulheres</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
-    <lastBuildDate>Fri, 15 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 29 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/gesem/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://stats4good.github.io/gesem/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title></title>
+      <link>https://stats4good.github.io/gesem/tags/</link>
+      <pubDate>Fri, 29 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://stats4good.github.io/gesem/tags/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cultura Do Estupro</title>
-      <link>/gesem/tags/cultura-do-estupro/</link>
+      <link>https://stats4good.github.io/gesem/tags/cultura-do-estupro/</link>
       <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/gesem/tags/cultura-do-estupro/</guid>
+      <guid>https://stats4good.github.io/gesem/tags/cultura-do-estupro/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Diagrama De Venn</title>
-      <link>/gesem/tags/diagrama-de-venn/</link>
+      <link>https://stats4good.github.io/gesem/tags/diagrama-de-venn/</link>
       <pubDate>Fri, 18 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/gesem/tags/diagrama-de-venn/</guid>
+      <guid>https://stats4good.github.io/gesem/tags/diagrama-de-venn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Google Trends</title>
-      <link>/gesem/tags/google-trends/</link>
+      <link>https://stats4good.github.io/gesem/tags/google-trends/</link>
       <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/gesem/tags/google-trends/</guid>
+      <guid>https://stats4good.github.io/gesem/tags/google-trends/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Idade</title>
-      <link>/gesem/tags/idade/</link>
+      <link>https://stats4good.github.io/gesem/tags/idade/</link>
       <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/gesem/tags/idade/</guid>
+      <guid>https://stats4good.github.io/gesem/tags/idade/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mapa Taxas</title>
-      <link>/gesem/tags/mapa-taxas/</link>
+      <link>https://stats4good.github.io/gesem/tags/mapa-taxas/</link>
       <pubDate>Sun, 06 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/gesem/tags/mapa-taxas/</guid>
+      <guid>https://stats4good.github.io/gesem/tags/mapa-taxas/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Notícias</title>
-      <link>/gesem/tags/not%C3%ADcias/</link>
+      <link>https://stats4good.github.io/gesem/tags/not%C3%ADcias/</link>
       <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/gesem/tags/not%C3%ADcias/</guid>
+      <guid>https://stats4good.github.io/gesem/tags/not%C3%ADcias/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Webscrapping</title>
-      <link>/gesem/tags/webscrapping/</link>
+      <link>https://stats4good.github.io/gesem/tags/webscrapping/</link>
       <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/gesem/tags/webscrapping/</guid>
+      <guid>https://stats4good.github.io/gesem/tags/webscrapping/</guid>
       <description></description>
     </item>
     

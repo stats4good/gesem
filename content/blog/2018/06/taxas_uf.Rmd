@@ -1,0 +1,263 @@
+---
+title: "Taxas de estupro no Brasil: como elas variam entre as Unidades da Federação?"
+author: "Walmir D. R. Miranda Filho"
+date: "2018-06-29"
+categories: ["estupro"]
+tags: [""]
+banner: "blog/2018/06/taxas_uf/img/mapa_brasil_estados.jpg"
+summary: "A partir dos dados de notificação de estupro por local de ocorrência nos anos de 2011 e 2016, procuramos observar como a taxa de notificação por 100 mil mulheres, ao longo do tempo, varia entre as diferentes Unidades da Federação (UF) brasileiras. Assim, revelaremos quais UFs têm evoluído no combate à subnotificação, bem como aquelas que pouco ou nada fizeram neste sentido e que merecem mais atenção."
+---
+
+```{r setup, include=FALSE}
+
+# Alterando o diretório do R Markdown:
+
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
+
+# Instalando pacotes:
+
+if(!require(devtools)){install.packages("devtools"); require(devtools)}
+if(!require(dplyr)){install.packages("dplyr"); require(dplyr)}
+if(!require(ggplot2)){install.packages("ggplot2"); require(ggplot2)}
+if(!require(ggthemes)){install.packages("ggthemes"); require(ggthemes)}
+if(!require(leaflet)){install.packages("leaflet"); require(leaflet)}
+if(!require(maptools)){install.packages("maptools"); require(maptools)}
+if(!require(spdep)){install.packages("spdep"); require(spdep)}
+if(!require(stringr)){install.packages("stringr"); require(stringr)}
+
+# O pacote "gpclib", acompanhado de sua licença, é necessário para usar
+# o pacote "maptools".
+
+if(!require(gpclib)){install.packages("gpclib", type = "source");
+  require(gpclib)}
+
+gpclibPermit() # Deve retornar "TRUE".
+
+# Instalando pacote mapsBR dado "devtools":
+
+# install_github('lgsilvaesilva/mapsBR')
+library(mapsBR)
+
+# Instalando "maps2sinan" (mude a partição onde está o arquivo tar.gz):
+
+# install.packages("/media/usuario/WALMIR-EST/Stats4Good/maps2sinan_0.1.3.tar.gz", repos = NULL, type = "source")
+library(maps2sinan)
+```
+
+No Brasil, o estupro é tratado como crime desde 1940, ano em que o Código Penal foi criado, tendo sua definição atualizada pela [Lei nº 12.015 de 2009](http://www.planalto.gov.br/ccivil_03/_Ato2007-2010/2009/Lei/L12015.htm#art2) e punições estabelecidas pelos [Artigos 213 e 217](http://www.planalto.gov.br/ccivil_03/decreto-lei/Del2848compilado.htm). Em linhas gerais, o primeiro define a pena de 6 a 10 anos de reclusão para o crime de *“constranger alguém, mediante violência ou grave ameaça, a ter conjunção carnal ou a praticar ou permitir que com ele se pratique outro ato libidinoso”*, e o segundo, de 8 a 15 anos quando a vítima é vulnerável. Encaixam-se nesta categoria menores de 14 anos, deficientes mentais ou pessoas dopadas a ponto de não poderem responder pelo próprio corpo. Também são aplicadas penas mais graves se a vítima sofrer lesão corporal e/ou o ato resultar em morte. Por fim, o Artigo 213 também aumenta a pena se a vítima tiver entre 14 e 18 anos.
+
+Apesar de haver uma legislação rigorosa, vimos anteriormente que a subnotificação dos casos de estupro por local de ocorrência de estupro em mulheres [é um problema sistêmico](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/), não importando o recorte geográfico. Para a grande maioria dos municípios (71,22% no ano de 2016)[^1], sequer foi registrado um único caso. Além disso, quando as vítimas chegam à delegacia e mesmo às unidades assistenciais de saúde especializadas em atendimento a casos de violência sexual, frequentemente [não encontram](https://www.metropoles.com/materias-especiais/estupro-no-brasil-99-dos-crimes-ficam-impunes-no-pais) o amparo presente na legislação. Como o estupro é notificado ao Sinan através da [Ficha Individual de Notificação](https://ces.ibge.gov.br/base-de-dados/metadados/ministerio-da-saude/sistema-de-informacoes-de-agravos-de-notificacao-sinan.html) (FIN) apenas nestas unidades, um acesso mais difícil à vítima contribui fortemente para o problema da subnotificação.
+
+<!-- Nota de rodapé 1-->
+
+[^1]: Sistema de Informação de Agravos de Notificação (Sinan), 2016.
+
+De posse das informações do Sistema de Informação de Agravos de Notificação (Sinan) para as notificações de estupro de 2011 a 2016[^2], surgem uma série de perguntas. Será que a subnotificação do local de ocorrência é de fato estática ou ela tem variado ao longo do tempo? Se há alguma evolução na taxa de notificações, em que regiões ou Unidades da Federação (UF) a subnotificação está diminuindo ou aumentando? Por fim, quais seriam as razões pelas quais determinadas regiões ou UFs passaram a notificar mais ou menos do que as demais?
+
+<!-- Nota de rodapé 2-->
+
+[^2]: Os dados de 2016 não estão consolidados.
+
+## Taxas de notificações nas UFs ##
+
+Uma forma de resumir a informação das notificações por local de ocorrência do crime de estupro em mulheres é através da obtenção de taxas por UF. Cada taxa é calculada como a razão entre o total de notificações de estupro em mulheres na UF correspondente e o total de mulheres residentes na mesma UF, multiplicada por 100 mil. Desta forma, são apresentadas abaixo, em mapas com escalas de cores, as taxas de notificação por local de ocorrência calculadas dentro de cada uma das 27 UF brasileiras (26 estados mais o Distrito Federal) para os anos de 2011 e 2016. Quanto mais escura for a cor do mapa de uma UF, maior é a taxa de ocorrência de estupros dentro da mesma.
+
+<!-- Calculando as taxas por UF para 2011 e 2016-->
+
+```{r, echo = F, include = F}
+
+# sinan_pop <- readRDS(file = "/home/douglas/Dropbox/outros_projetos/UFMG/stats4good/data/dados_agrupados/output/sinan_pop.RDS") # Banco completo.
+# names(sinan_pop)                             # Nomes das variáveis.
+# tx_fator <- 100000                           # Taxas por 100 mil.
+# 
+# table(sinan_pop$ANO) # 5565 municípios de 2011 a 2016.
+# table(sinan_pop$UF)  # As 27 UF's estão representadas nos 6 anos.
+# 
+# # Agrupando as notificações, por local de ocorrência, para as 27 UFs:
+# 
+# NOTIF_ANO_UF = aggregate(sinan_pop$NOTIFICACOES,
+#                          by = list(sinan_pop$ANO, sinan_pop$UF),
+#                          FUN = sum)
+# colnames(NOTIF_ANO_UF) = c("ANO", "UF", "NOTIFICACOES")
+# 
+# # Agrupando a população feminina para as 27 UFs:
+# 
+# POP_SEG_ANO_UF = aggregate(sinan_pop$POP_SEG,
+#                          by = list(sinan_pop$ANO, sinan_pop$UF),
+#                          FUN = sum)
+# colnames(POP_SEG_ANO_UF) = c("ANO", "UF", "POP_SEG")
+# 
+# # Combinando os dois bancos acima:
+# 
+# taxas_uf = cbind.data.frame(NOTIF_ANO_UF, POP_SEG_ANO_UF$POP_SEG)
+# colnames(taxas_uf) = c("ANO", "UF", "NOTIFICACOES", "POP_SEG")
+# rm(NOTIF_ANO_UF, POP_SEG_ANO_UF)
+# 
+# # Cálculo das taxas por UF:
+# 
+# taxas_uf = taxas_uf %>%
+#   group_by(ANO, UF) %>%
+#   mutate(TAXA = tx_fator*(EBest(n = NOTIFICACOES, x = POP_SEG,
+#                                 family = "poisson")$raw),
+#          TAXA_BAYESIANA_UF = tx_fator*(EBest(n = NOTIFICACOES,
+#                                              x = POP_SEG,
+#                                              family =
+#                                                "poisson")$estmm),
+#          ESPERADO_UF = (sum(NOTIFICACOES)/sum(POP_SEG))*POP_SEG,
+#          TAXA_POISSON_UF = NOTIFICACOES/ESPERADO_UF)
+# 
+# taxas_uf <- taxas_uf %>%
+#   group_by(ANO) %>%
+#   mutate(TAXA_BAYESIANA_BR = tx_fator*(EBest(n = NOTIFICACOES,
+#                                              x = POP_SEG,
+#                                              family = 
+#                                                "poisson")$estmm),
+#          ESPERADO_BR = (sum(NOTIFICACOES)/sum(POP_SEG))*POP_SEG,
+#          TAXA_POISSON_BR = NOTIFICACOES/ESPERADO_BR)
+# 
+# taxas_uf <- taxas_uf %>%
+#   group_by(ANO) %>%
+#   mutate(TAXA_POISSON_BAYESIANA_UF = EBest(n = NOTIFICACOES,
+#                                            x = ESPERADO_UF,
+#                                            family = "poisson")$estmm,
+#          TAXA_POISSON_BAYESIANA_BR = EBest(n = NOTIFICACOES,
+#                                            x = ESPERADO_BR,
+#                                            family = "poisson")$estmm)
+# 
+# rm(sinan_pop, tx_fator); gc(reset = T)
+# 
+# names(taxas_uf) # Temos 13 variáveis. As variáveis com taxas estão lis-
+#                 # tadas nas posições 5 a 13.
+#                 # Filtraremos os resultados para cada ano, com foco nos
+#                 # de 2011 e 2016:
+# 
+# t_2011 <- taxas_uf %>% filter(ANO == 2011)
+# t_2012 <- taxas_uf %>% filter(ANO == 2012)
+# t_2013 <- taxas_uf %>% filter(ANO == 2013)
+# t_2014 <- taxas_uf %>% filter(ANO == 2014)
+# t_2015 <- taxas_uf %>% filter(ANO == 2015)
+# t_2016 <- taxas_uf %>% filter(ANO == 2016)
+# 
+# # Categorizando as taxas de notificação por local de ocorrência para os
+# # 2 anos nas UF (5ª variável):
+# 
+# which(t_2011$TAXA == 0); which(t_2012$TAXA == 0); which(t_2013$TAXA == 0) 
+# which(t_2014$TAXA == 0); which(t_2015$TAXA == 0); which(t_2016$TAXA == 0)
+# 
+# # Todas as UF possuem notificações em cada um dos seis anos considerados.
+# 
+# # Para categorizar as taxas de estupro, note que os pontos de quebra ou
+# # "breaks" devem ser os mesmos para os 6 anos. Para determiná-los, tome # as medidas resumo das taxas nas 27 UF para os 6 anos:
+# 
+# summary(taxas_uf$TAXA)
+# 
+# # A maior taxa observada foi de 105.024; a menor, de 1.327
+# # 1º quartil: 10.132; mediana: 16.757; 3º quartil: 23.617
+# 
+# # Considerando cada ano em separado, temos que:
+# 
+# summary(t_2011$TAXA); summary(t_2016$TAXA)
+# 
+# # Podemos então definir dois tipos de intervalo (consideraremos o segundo):
+# 
+# # bk.qts.1 = quantile(taxas_uf$TAXA, probs = c(0.25, 0.5, 0.75, 0.9, 1))
+# bk.qts.2 = c(6, 12, 18, 50, 150)
+# 
+# breaks <- c(0,1e-100, bk.qts.2);
+# 
+# t_2011$T_CAT <- cut(t_2011$TAXA, breaks = breaks, include.lowest = T)
+# t_2016$T_CAT <- cut(t_2016$TAXA, breaks = breaks, include.lowest = T)
+# 
+# t_2011$T_CAT <- factor(x = t_2011$T_CAT, levels = levels(t_2011$T_CAT),
+#                        labels = c(0, sprintf("(0, %s]",
+#                                              round(breaks[3], 1)),
+#                                   levels(t_2011$T_CAT)[-c(1:2)]))
+# t_2016$T_CAT <- factor(x = t_2016$T_CAT, levels = levels(t_2016$T_CAT),
+#                        labels = c(0, sprintf("(0, %s]",
+#                                              round(breaks[3], 1)),
+#                                   levels(t_2016$T_CAT)[-c(1:2)]))
+# 
+# save(t_2011, t_2016, file = "taxas_uf/data/taxas.RData")
+load(file = "taxas_uf/data/taxas.RData")
+```
+
+<!-- Criando e inserindo o mapa de 2011 -->
+
+```{r, echo = F, results='asis', message = F, warning = F}
+
+# O argumento "echo = F" faz com que o código não apareça.
+
+# Mapas estáticos (2011):
+
+me_2011 <- map_sinan(data = t_2011, var_id_uf = "UF", var_plot = "T_CAT",
+                     UF_border = "black", legend_title = "Taxa (2011)",
+                     color = list(low = "white", high = "IndianRed",
+                                 middle = NULL, palette = "Reds"),
+                     interativo = T)
+me_2011 %>% addProviderTiles(providers$Stamen)
+
+```
+Figura 1: Taxas de notificação de estupro por local de ocorrência, para cada grupo de 100 mil mulheres, nas Unidades da Federação do Brasil em 2011 (fonte: VIVA/SVS/MS).
+
+Pela Figura 1, se percebe que as UFs com as maiores taxas de notificação de estupro por local de ocorrência estão situadas, em sua maioria, na região Norte, com destaque para os estados do Acre (73,46), Amazonas (41,02), Pará (18,42), Roraima (43,73) e Mato Grosso (este último localizado na região Centro-Oeste, com taxa igual a 18,73). Será que nestas UFs de fato há proporcionalmente mais notificações, indicando uma presença mais forte da cultura do estupro[^3] e, consequentemente, mais busca das vítimas por ajuda ou, ao contrário, há maior qualidade dos dados fornecidos pelas respectivas secretarias estaduais (portanto, uma subnotificação menor)?
+
+```{r, echo = F, include = F}
+
+# Taxas nas UF com destaque pela Figura 1:
+
+t_2011$TAXA[t_2011$UF == "AC"]; t_2011$TAXA[t_2011$UF == "AM"]
+t_2011$TAXA[t_2011$UF == "PA"]; t_2011$TAXA[t_2011$UF == "RR"]
+t_2011$TAXA[t_2011$UF == "MT"]
+
+```
+
+Para ajudar a responder a esta questão, fizemos o mesmo gráfico, mas agora com as notificações registradas pelo Sinan em 2016. Vejamos se o comportamento das taxas é ou não mantido na Figura 2.
+
+<!-- Nota de rodapé 3-->
+
+[^3]: O termo *cultura de estupro* surgiu nos EUA durante a década de 1970. É usado para descrever um ambiente no qual a violência sexual contra as mulheres é normalizada na mídia e na cultura popular (https://www.metropoles.com/materias-especiais/estupro-no-brasil-99-dos-crimes-ficam-impunes-no-pais).
+
+
+<!-- Criando e inserindo o mapa de 2016 -->
+
+```{r, echo = F, results='asis', message = F, warning = F}
+
+me_2016 <- map_sinan(data = t_2016, var_id_uf = "UF", var_plot = "T_CAT",
+                     UF_border = "black", legend_title = "Taxa (2016)",
+                     color = list(low = "white", high = "IndianRed",
+                                  middle = NULL, palette = "Reds"),
+                     interativo = T)
+me_2016 %>% addProviderTiles(providers$Stamen)
+
+```
+
+Figura 2: Taxas de estupro de estupro por local de ocorrência, para cada grupo de 100 mil mulheres, nas Unidades da Federação do Brasil em 2016 (fonte: VIVA/SVS/MS).
+
+Na Figura 2, novamente as UFs com as maiores taxas de notificação estão localizadas na região Norte, agora com destaque para os estados do Acre (103,55), Amazonas (50,48), Roraima (58,09) e Tocantins (65,41). De modo geral, as UF localizadas nas regiões Centro-Oeste e Sul, além dos estados do Espírito Santo, Pernambuco e Piauí, também apresentaram altas taxas de notificações, acima de 18 casos por 100 mil habitantes, para o ano de 2016. Novamente, se pode perguntar se a variação nas taxas para uma mesma UF ao longo do tempo é resultado de uma presença crescente (ou decrescente) da cultura de estupro, se de fato há uma melhora (ou piora) na qualidade dos dados notificados ou se, por fim, há um esforço conjunto dos respectivos órgãos estaduais para reduzir as taxas de notificação.
+
+```{r, echo = F, include = F}
+
+# Taxas nas UF com destaque pela Figura 2, parte 1:
+
+t_2016$TAXA[t_2016$UF == "AC"]; t_2016$TAXA[t_2016$UF == "AM"]
+t_2016$TAXA[t_2016$UF == "RR"]; t_2016$TAXA[t_2016$UF == "TO"]
+
+```
+
+Para as UFs da região Norte, há fortes evidências para dizer que as altas taxas de notificações registradas nos dois períodos são motivadas por uma presença mais forte da cultura de estupro. Segundo [levantamento](https://www.bbc.com/portuguese/brasil-36402028) feito pelo Google sobre buscas de termos relacionados ao crime de estupro entre 2004 e 2016, boa parte das UFs que aparecem nas primeiras posições são aquelas localizadas nesta região. Para o termo *"fui estuprada"*, por exemplo, três das cinco UFs que mais procuraram este termo (Acre, Amazonas e Roraima) se encontram nesta região. Outros termos relacionados ao abuso do ponto de vista da vítima, como *"fui molestada"* (para Amazonas e Tocantins) e *"fui abusada"* (para Amazonas e Pará), também são bastante pesquisados pelos nortistas.
+
+Olhando agora para os dois mapas em conjunto, se pode dizer que para a grande maioria das UFs as taxas de notificação aumentaram entre 2011 e 2016. Nas regiões Sul e Sudeste, por exemplo, todas as UFs subiram de categoria no período de 5 anos. O destaque fica para o estado do Piauí, o qual subiu três categorias: a taxa passou de 2,94 (2011) para 34,74 (2016), um aumento de quase 12 vezes. Nesta UF, o termo *"fui molestada"* foi o mais procurado quando comparada às outras, um indício de que a cultura de estupro também é bastante presente. Isto quer dizer que, em um primeiro momento, havia um grave problema de subnotificação, a qual diminuiu consideravelmente neste intervalo de 5 anos.
+
+```{r, echo = F, include = F}
+
+# Taxas nas UF com destaque pela Figura 2, parte 2:
+
+t_2011$TAXA[t_2011$UF == "PB"]; t_2016$TAXA[t_2016$UF == "PB"]
+t_2011$TAXA[t_2011$UF == "PI"]; t_2016$TAXA[t_2016$UF == "PI"]
+t_2011$TAXA[t_2011$UF == "SE"]; t_2016$TAXA[t_2016$UF == "SE"]
+
+```
+
+Em contraposição, os estados da Paraíba e do Sergipe foram as únicas UFs que, visualmente, permaneceram nas mesmas categorias (no caso da Paraíba, com taxas iguais a 5,12 para 2011 e 5,62 para 2016) ou apresentaram redução (com queda de categoria) na taxa de notificações de estupro (no caso do Sergipe, com taxas iguais a 16,01 para 2011 e 10,47 para 2016). Observe que este resultado não quer dizer necessariamente que menos crimes de estupro estão sendo cometidos, já que os mapas representam as taxas de notificação, e já é sabido que esses valores não contemplam todos os casos ocorridos. Até mesmo porque ambas as UFs também aparecem entre aquelas com mais procura de termos: a Paraíba é a segunda UF que mais buscou o termo *"fui abusada"* e a "campeã" na busca da frase *"fui estuprada pelo meu amigo"*. Por sua vez, o Sergipe é a quarta UF que mais buscou o termo *"fui molestada"*. Logo, estas UFs não acompanham as demais no aumento das taxas de notificação de estupro por local de ocorrência ao longo do tempo, ainda que este crime possa ocorrer frequentemente.
+
+**Se você foi vítima de estupro ou conhece alguém que foi, não deixe de notificar o crime. Ligue 180 ou vá ao centro de saúde mais próximo.
