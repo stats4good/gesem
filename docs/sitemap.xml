@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/gesem/blog/2018/07/acesso_dadosestupro/</loc>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/gesem/blog/2018/06/taxas_uf/</loc>
     <lastmod>2018-06-29T00:00:00+00:00</lastmod>
   </url>
@@ -34,8 +39,14 @@
   </url>
   
   <url>
+    <loc>/gesem/tags/acesso-%C3%A0-informa%C3%A7%C3%A3o/</loc>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/gesem/blog/</loc>
-    <lastmod>2018-06-29T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -51,6 +62,12 @@
   <url>
     <loc>/gesem/tags/cultura-do-estupro/</loc>
     <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/tags/dados-p%C3%BAblicos/</loc>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -74,7 +91,7 @@
   
   <url>
     <loc>/gesem/</loc>
-    <lastmod>2018-06-29T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -111,6 +128,18 @@
   <url>
     <loc>/gesem/categories/not%C3%ADcias/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/categories/sinan/</loc>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/categories/ssp/</loc>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

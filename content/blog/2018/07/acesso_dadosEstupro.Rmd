@@ -1,0 +1,44 @@
+---
+title: "A problemática do acesso a dados relacionados ao crime de estupro no Brasil "
+author: "Nívea Bispo"
+date: "2018-07-27"
+output: html_document
+categories: ["SINAN", "SSP"]
+tags: ["Acesso à informação", "Dados públicos"]
+banner: "blog/2018/07/acesso_dadosEstupro/img/data.png"
+summary: "O desencontro de informações advindas dos registros policiais e do SUS torna-se um percalço na tentativa de se estudar as nuances relacionadas às ocorrências ou notificações de estupro no Brasil. Um impacto disso é um possível aumento da subnotificação, uma vez que estas fontes de dados não 'conversam' entre si e, portanto, precisam ser analisadas separadamente. Neste post objetivamos fomentar a discussão sobre toda problemática em torno da aquisição de informações sobre os casos de estupro notificados no Brasil nas diferentes fontes existentes, em especial, nas SSP’s."
+---
+
+Dentre os vários temas que ainda são vistos como tabu em nosso país, sem sombra de dúvidas o estupro é um dos que encabeçam o topo da lista.  Ser estuprada(o) é hoje um dos maiores temores,  senão o maior, para uma boa parcela da população e isso independe de crença, cor e/ou classe social.  Um [survey](http://www.forumseguranca.org.br/wp-content/uploads/2017/01/FBSP_Policia_precisa_falar_estupro_2016.pdf) realizado em 2016 pelo Fórum Brasileiro de Segurança Pública em parceria com o Datafolha mostrou que 65% da população tem medo de sofrer violência sexual.  Entre a [população feminina](https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/) este temor é ainda mais evidente, uma vez que 85% das mulheres entrevistadas afirmaram ter medo de sofrer este tipo de violência. 
+
+Em 2016 foram registrados ao todo, segundo resultados divulgados no [Atlas da Violência 2018](http://www.forumseguranca.org.br/wp-content/uploads/2018/06/FBSP_Atlas_da_Violencia_2018_Relatorio.pdf), 49.497 casos de estupro nas Secretarias de Segurança Pública (SSP’s). Em contrapartida, quando avaliamos as notificações feitas no Sistema Único de Saúde (SUS), estes casos sequer chegam à metade (em 2016 foram registrados  22.918), no entanto, os dados disponíveis no SUS tornam-se uma fonte de pesquisa mais rica para interessados em estudar o crime de estupro, em especial, em [mulheres](https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/), quando comparados aos disponíveis pelas SSP's, quando estes existem. 
+
+Em 2017 o [Fórum Brasileiro de Segurança Pública](http://www.forumseguranca.org.br/publicacoes/estupro-no-brasil-vitimas-autores-fatores-situacionais-e-evolucao-das-notificacoes-no-sistema-de-saude-entre-2011-e-2014/ ) publicou o artigo intitulado “Estupro no Brasil: vítimas, autores, fatores situacionais e evolução das notificações no sistema de saúde entre 2011 e 2016”, onde mostra  a evolução das notificações de estupro no país entre 2011 e 2014, com base  nos dados do Sistema de Informação de Agravos de Notificação (Sinan). Segundo consta no artigo há, ainda hoje, pouquíssima informação de qualidade sobre a [incidência](http://portalses.saude.sc.gov.br/arquivos/sala_de_leitura/saude_e_cidadania/ed_07/03_02_02.html) e [prevalência](http://portalses.saude.sc.gov.br/arquivos/sala_de_leitura/saude_e_cidadania/ed_07/03_02_03.html) do estupro.  A pesquisa ainda aponta que no âmbito nacional existem apenas dados administrativos sobre o assunto e os mesmos revelam faces parciais sobre o fenômeno. Um fato que chama atenção e levanta a questão, em especial neste post, é que os dados policiais, advindos das SSP’s, como citado no artigo, são **desencontrados** (não existe uma harmonização dos boletins criminais registrados nas polícias civil e militar) e só foram reunidos nos últimos anos, a partir do esforço do Fórum Brasileiro de Segurança Pública.
+
+Através do portal de dados do [Ministério da Justiça](http://dados.mj.gov.br) é possível ter acesso ao [Sistema Nacional de Estatísticas de Segurança Pública e Justiça Criminal-SINESPJC](http://dados.mj.gov.br/dataset/sistema-nacional-de-estatisticas-de-seguranca-publica ). O referido sistema é uma ferramenta criada pela Secretaria Nacional de Segurança Pública e tem como objetivo padronizar e organizar o fluxo dos dados criminais produzidos pelas polícias civis e militares em todas as unidades da Federação. A fonte de dados neste caso são os boletins de ocorrência criminais registrados por ambas as polícias.  A partir deste Sistema é possível obter informações sobre o número de ocorrências registradas por mês em cada município brasileiro de 2004 a 2017.  As informações contidas nas bases disponibilizadas pelo SINESPJC, no entanto, não deixam claro, por exemplo, qual o sexo da vítima, idade, raça, etc. A ideia de se criar uma ferramenta que unifique nacionalmente as informações criminais coletadas pelas polícias pode enriquecer os estudos sobre o tema, no entanto ainda há muito o que ser melhorado. 
+
+
+### Atuação do GESEM ###
+
+Um cidadão comum, por exemplo, interessado em estudar o perfil das vítimas de estupro no Brasil ou em determinada unidade da Federação provavelmente irá, em uma primeira tentativa, buscar tais informações através das SSP'S de cada unidade da Federação. Entre março e agosto de 2017, membros do GESEM tentaram obter as bases de dados relacionadas ao crime de estupro em cada estado do Brasil. A tentativa consistiu em acessar as páginas de cada SSP e obter as informações de interesse através de uma solicitação formal. O panorama encontrado foi desanimador. Na maior parte das páginas constam apenas relatórios superficiais, em geral do ano vigente ou anterior, mas não há disponível para download as bases de dados contendo informações mais detalhadas sobre as notificações. 
+Entende-se que existe toda uma política de preservação da informação, em especial por se tratar de um crime delicado onde a identificação da vítima violaria o seu direito à privacidade. No entanto, o acesso às informações sobre o tema é de fundamental importância para que o mesmo deixe de ser um tabu em nosso país e para que políticas públicas sejam implantadas como forma de reduzir a ocorrência deste crime.  Assim, para finalizar, deixamos como reflexão o trecho de uma reportagem publicada no site [Metrópoles](https://www.metropoles.com/materias-especiais/estupro-no-brasil-99-dos-crimes-ficam-impunes-no-pais) em novembro de 2017: *"Compreender estatísticas, dar voz às vítimas, reabilitar agressores e evitar que novos se formem são ingredientes essenciais dentro da complexa receita de como pensar um mundo no qual mulheres não andem na companhia permanente do medo"*.  
+
+***
+
+####Referências
+
+1. [A polícia precisa falar sobre estupro][link_policia]
+
+2. [Atlas da Violência 2018][link_atlas]
+
+3. [Evolução das notificações no sistema de saúde entre 2011 e 2014][link_evolucao]
+
+4. [11º Anuário Brasileiro de Segurança Pública][link_anuario]
+
+***
+[link_policia]:<http://www.forumseguranca.org.br/wp-content/uploads/2017/01/FBSP_Policia_precisa_falar_estupro_2016.pdf>
+[link_atlas]:<http://www.forumseguranca.org.br/wp-content/uploads/2018/06/FBSP_Atlas_da_Violencia_2018_Relatorio.pdf>
+[link_evolucao]:<http://www.forumseguranca.org.br/publicacoes/estupro-no-brasil-vitimas-autores-fatores-situacionais-e-evolucao-das-notificacoes-no-sistema-de-saude-entre-2011-e-2014/>
+[link_anuario]:<http://www.forumseguranca.org.br/publicacoes/11o-anuario-brasileiro-de-seguranca-publica/>
+
+
