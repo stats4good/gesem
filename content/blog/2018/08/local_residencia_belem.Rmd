@@ -1,0 +1,204 @@
+---
+title: 'Local de residência e notificação na região metropolitana de Belém'
+author: "Ian M Danilevicz"
+date: "2018-08-12"
+output: html_document
+categories: ["Estupro", "Localizações", "Estudo de Caso"]
+tags: ["Fluxograma", "Sankey"]
+banner: "blog/2018/08/local_residencia_belem/img/banner.jpg"
+summary: "Hoje, as notificações de estupro no Brasil seguem um padrão com três informações geográficas: o local de residência da vítima, o local de ocorrência do crime e o local de registro do ocorrido. Analisamos a região metropolitana de Belém para entender um pouco desse fluxo, mas principalmente para suscitar mais questionamentos sobre os entraves à justiça e à proteção das vítimas."
+---
+
+##Motivação 
+
+Na base de dados do SINAN, temos três informações de localização geográficas, são elas: o local de residência da vítima, o local de ocorrência do crime e onde este foi notificado. Em um post anterior, Juliana Freitas já identificou que em mais de 50% dos casos notificados esses três locais são os mesmos, sendo que a identificação entre residência e ocorrência é de aproximadamente 65%, ver [O que as localizações de cada crime de estupro têm a nos dizer](https://stats4good.github.io/gesem/blog/2018/05/localizacoes_estupros/). Portanto a localização mais destoante é o local de notificação do crime.   
+
+As duas hipóteses iniciais sobre essa divergência são: falta de serviços adequados para receber essa demanda e/ou constrangimento da vítima em relatar o ocorrido para profissionais que pertencem a mesma comunidade. Essas hipóteses são difíceis de serem verificadas apenas numa análise quantitativa, assim como é difícil decidir quais cidades investigar para termos um modelo do fluxo deste fenômeno. Num primeiro momento, decidimos investigar a região metropolitana de Belém, sobre a qual já temos uma investigação anterior de cunho quantitativo e qualitativo, ver [O poder público só nos vê quando a gente tomba](https://www.huffpostbrasil.com/2017/10/02/o-poder-publico-so-nos-ve-quando-a-gente-tomba_a_23230133/) de Andrea Dip e Bruno Fonseca.
+
+A nossa ideia é bastante simples, consiste em observar os fluxogramas entre os locais de residência das vítimas e onde elas notificaram os crimes nos anos de 2011 a 2016, que correspondem as bases de dados que temos acesso. Um fluxograma funciona como um gráfico migratório que mostra quais municípios recebem migrantes, quais enviam migrantes, quais realizam os dois papeis e quais são as "ilhas" ou municípios isolados. No caso de nossa análise, ao invés de imigrantes temos mulheres que estão notificando crimes. Veja um exemplo interativo de [highcharts sankey-diagram](https://www.highcharts.com/demo/sankey-diagram).
+
+
+##Belém do Pará
+
+A região metropolitana de Belém (RMB) apresenta um fluxograma relativamente simples, pois é formada por apenas sete municípios, são eles: Ananindeua, Belém, Benevides, Castanhal, Marituba, Santa Bárbara do Pará e Santa Izabel do Pará. Além disso, existe uma única Delegacia Especializada no Atendimento à Mulher (DEAM) conforme a reportagem de Andrea Dip e Bruno Fonseca na RMB. Essa DEAM está localizada na cidade de Belém, mas precisa atender a população de toda a região metropolitana. Embora a notificação possa ser feita em qualquer delegacia, é natural esperar um fluxo das outras cidades para a capital em razão do serviço especializado.    
+
+Seguimos com uma descrição sucinta dos dados apresentados nos gráficos. Em 2011 tivemos 733 notificações em Belém, destas 468 (63,8\%) residiam na cidade, mas 181 (24,7\%) residiam em Ananindeua, cidade lindeira e segunda mais populosa da região. Não ocorreu nenhuma notificação fora da capital. Em 2012 aconteceram 851 notificações em Belém e duas notificações em outras cidades. Das notificações na capital 579 (68,0\%) são da própria capital e 169 (19,9\%) são de Ananindeua. Em 2013 foram 843 notificações em Belém e novamente duas em outros municípios. Sendo que das notificações em Belém 558 (66,2\%) são da própria cidade e 266 (66,2\%) são de Ananindeua. Em 2014 foram 772 notificações na capital e 5 noutros municípios. Dos casos notificados em Belém 497 (64,4\%) provém da própia capital e 183 (23,7\%) são provenientes de Ananindeua. Em 2015 tivemos um total de 750 notificações em Belém e 14 nas demais cidades. Sendo que dos casos registrados em Belém 471 (62,8\%) são de Belém e 183 (24,4\%) são de Ananindeua. Finalmente, em 2016 temos 764 casos notificados em Belém e 12 nos demais municípios. Dos casos notificados na capital 510 (66,8\%) são de residentes da capital enquanto 183 (24,0\%) são de Ananindeua. Além disso, nenhum dos 35 casos de notificação ocorridos fora de Belém representam fluxo entre cidades, ou seja, são casos em que os locais de residência e notificação são os mesmos. 
+
+Temos pelo menos duas conclusões óbvias para essa questão complexa, considerando o que é notificado. Primeiro, Belém funciona como um pólo atrator de denúncias, mesmo que o serviço oferecido pela DEAM não seja o mais adequado, os serviços oferecidos nas demais cidades pelas delegacias normais é próximo de zero. Segundo, Ananindeua representa entre 19,9\% e 31,6\% das notificações de Belém, sendo uma cidade populosa e com altos índices de violência contra a mulher, carecendo por esses motivos de ao menos uma unidade de DEAM.  
+
+Fazemos uma ressalva fortíssima na questão da implantação de novas DEAM, pois elas sozinhas não asseguram atendimento qualificado, ágil e eficiente, conforme criticou a jornalista e ativista Flávia Ribeiro, ver a parte da entrevista em [O poder público só nos vê quando a gente tomba](https://www.huffpostbrasil.com/2017/10/02/o-poder-publico-so-nos-ve-quando-a-gente-tomba_a_23230133/) de Andrea Dip e Bruno Fonseca. Muitas vezes, mesmo o local que deveria ser o promotor de políticas públicas para a segurança das mulheres não oferece esse serviço de forma adequada por falta de capacitação da equipe, pessoal insuficiente e falta de equipamentos. 
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/sankey.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container7"></div>
+<div id="container8"></div>
+<div id="container9"></div>
+<div id="container10"></div>
+<div id="container11"></div>
+<div id="container12"></div>
+
+<script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+
+<script >Highcharts.chart('container7', {
+title: {text: 'Figura 1. Fluxo de residência e local de notificação dos casos de estupro na região metropolitana de Belém, 2011 (fonte, VIVA, SVS, MS)'},
+  series: [{
+    keys: ['from', 'to', 'weight'],
+    data: [
+['	Belém (PA)	' ,'	Belém (PA)	' ,	468	],
+['	Ananindeua (PA)	' ,'	Belém (PA)	' ,	181	],
+['	Marituba (PA)	' ,'	Belém (PA)	' ,	33	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	27	],
+['	Santa Bárbara do Pará (PA)	' ,'	Belém (PA)	' ,	17	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	5	],
+['	Santa Izabel do Pará (PA)	' ,'	Belém (PA)	' ,	2	]
+      ],
+    type: 'sankey',
+    name: 'Sankey demo series'
+  }]
+});
+//# sourceURL=pen.js
+</script>
+
+<script >Highcharts.chart('container8', {
+title: {text: 'Figura 2. Fluxo de residência e local de notificação dos casos de estupro na região metropolitana de Belém, 2012 (fonte, VIVA, SVS, MS)'},
+  series: [{
+    keys: ['from', 'to', 'weight'],
+    data: [
+['	Belém (PA)	' ,'	Belém (PA)	' ,	579	],
+['	Ananindeua (PA)	' ,'	Belém (PA)	' ,	169	],
+['	Marituba (PA)	' ,'	Belém (PA)	' ,	48	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	27	],
+['	Santa Bárbara do Pará (PA)	' ,'	Belém (PA)	' ,	15	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	8	],
+['	Santa Izabel do Pará (PA)	' ,'	Belém (PA)	' ,	5	],
+['	Ananindeua (PA)	' ,'	Ananindeua (PA)	' ,	1	],
+['	Belém (PA)	' ,'	Benevides (PA)	' ,	1	]
+      ],
+    type: 'sankey',
+    name: 'Sankey demo series'
+  }]
+});
+//# sourceURL=pen.js
+</script>
+
+<script >Highcharts.chart('container9', {
+title: {text: 'Figura 3. Fluxo de residência e local de notificação dos casos de estupro na região metropolitana de Belém, 2013 (fonte, VIVA, SVS, MS)'},
+  series: [{
+    keys: ['from', 'to', 'weight'],
+    data: [
+ ['	Belém (PA)	' ,'	Belém (PA)	' ,	558	],
+['	Ananindeua (PA)	' ,'	Belém (PA)	' ,	206	],
+['	Marituba (PA)	' ,'	Belém (PA)	' ,	31	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	27	],
+['	Santa Bárbara do Pará (PA)	' ,'	Belém (PA)	' ,	15	],
+['	Santa Izabel do Pará (PA)	' ,'	Belém (PA)	' ,	4	],
+['	Ananindeua (PA)	' ,'	Ananindeua (PA)	' ,	3	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	2	],
+['	Marituba (PA)	' ,'	Ananindeua (PA)	' ,	1	],
+['	Ananindeua (PA)	' ,'	Santa Izabel do Pará (PA)	' ,	1	]
+      ],
+    type: 'sankey',
+    name: 'Sankey demo series'
+  }]
+});
+//# sourceURL=pen.js
+</script>
+
+<script >Highcharts.chart('container10', {
+title: {text: 'Figura 4. Fluxo de residência e local de notificação dos casos de estupro na região metropolitana de Belém, 2014 (fonte, VIVA, SVS, MS)'},
+  series: [{
+    keys: ['from', 'to', 'weight'],
+    data: [
+ ['	Belém (PA)	' ,'	Belém (PA)	' ,	497	],
+['	Ananindeua (PA)	' ,'	Belém (PA)	' ,	183	],
+['	Marituba (PA)	' ,'	Belém (PA)	' ,	50	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	21	],
+['	Santa Bárbara do Pará (PA)	' ,'	Belém (PA)	' ,	14	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	5	],
+['	Santa Izabel do Pará (PA)	' ,'	Belém (PA)	' ,	2	],
+['	Benevides (PA)	' ,'	Benevides (PA)	' ,	2	],
+['	Santa Izabel do Pará (PA)	' ,'	Santa Izabel do Pará (PA)	' ,	2	],
+['	Benevides (PA)	' ,'	Ananindeua (PA)	' ,	1	]
+      ],
+    type: 'sankey',
+    name: 'Sankey demo series'
+  }]
+});
+//# sourceURL=pen.js
+</script>
+
+<script >Highcharts.chart('container11', {
+title: {text: 'Figura 5. Fluxo de residência e local de notificação dos casos de estupro na região metropolitana de Belém, 2015 (fonte, VIVA, SVS, MS)'},
+  series: [{
+    keys: ['from', 'to', 'weight'],
+    data: [
+['	Belém (PA)	' ,'	Belém (PA)	' ,	471	],
+['	Ananindeua (PA)	' ,'	Belém (PA)	' ,	193	],
+['	Marituba (PA)	' ,'	Belém (PA)	' ,	43	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	28	],
+['	Benevides (PA)	' ,'	Benevides (PA)	' ,	9	],
+['	Santa Bárbara do Pará (PA)	' ,'	Belém (PA)	' ,	8	],
+['	Santa Izabel do Pará (PA)	' ,'	Belém (PA)	' ,	5	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	2	],
+['	Santa Izabel do Pará (PA)	' ,'	Santa Izabel do Pará (PA)	' ,	2	],
+['	Marituba (PA)	' ,'	Ananindeua (PA)	' ,	1	],
+['	Belém (PA)	' ,'	Benevides (PA)	' ,	1	],
+['	Belém (PA)	' ,'	Castanhal (PA)	' ,	1	]
+
+      ],
+    type: 'sankey',
+    name: 'Sankey demo series'
+  }]
+});
+//# sourceURL=pen.js
+</script>
+
+<script >Highcharts.chart('container12', {
+title: {text: 'Figura 6. Fluxo de residência e local de notificação dos casos de estupro na região metropolitana de Belém, 2016 (fonte, VIVA, SVS, MS)'},
+  series: [{
+    keys: ['from', 'to', 'weight'],
+    data: [
+['	Belém (PA)	' ,'	Belém (PA)	' ,	510	],
+['	Ananindeua (PA)	' ,'	Belém (PA)	' ,	183	],
+['	Marituba (PA)	' ,'	Belém (PA)	' ,	42	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	20	],
+['	Benevides (PA)	' ,'	Benevides (PA)	' ,	6	],
+['	Santa Bárbara do Pará (PA)	' ,'	Belém (PA)	' ,	4	],
+['	Santa Izabel do Pará (PA)	' ,'	Belém (PA)	' ,	4	],
+['	Ananindeua (PA)	' ,'	Ananindeua (PA)	' ,	2	],
+['	Santa Izabel do Pará (PA)	' ,'	Santa Izabel do Pará (PA)	' ,	2	],
+['	Benevides (PA)	' ,'	Belém (PA)	' ,	1	],
+['	Santa Izabel do Pará (PA)	' ,'	Benevides (PA)	' ,	1	],
+['	Belém (PA)	' ,'	Castanhal (PA)	' ,	1	]
+      ],
+    type: 'sankey',
+    name: 'Sankey demo series'
+  }]
+});
+//# sourceURL=pen.js
+</script>
+
+
+##Outros questionamentos
+
+Seguem em aberto ao menos duas questões. Primeiro, como funcionam as outras regiões metropolitanas, muitas das quais com mais DEAM, mas não necessariamente apresentando atendimentos adequados às vítimas. Segundo, como é o fluxograma em regiões do interior que estão longe das capitais ou grandes cidades com serviços especializados. 
+
+* Observação: os dados de 2015 e 2016 não estão consolidados.
+
+##Agradecimentos
+
+À Juliana Freitas, Rumenick Pereira, Douglas Azevedo e Emilly Malveira. 
+
+
+
+
+
+
+
+
+
+
+

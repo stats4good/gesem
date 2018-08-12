@@ -6,10 +6,19 @@
     <description>Recent content on Grupo de Estudo da Subnotificação de Estupro em Mulheres</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
-    <lastBuildDate>Fri, 27 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/gesem/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Local de residência e notificação na região metropolitana de Belém</title>
+      <link>/gesem/blog/2018/08/local_residencia_belem/</link>
+      <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/gesem/blog/2018/08/local_residencia_belem/</guid>
+      <description>Motivação Na base de dados do SINAN, temos três informações de localização geográficas, são elas: o local de residência da vítima, o local de ocorrência do crime e onde este foi notificado. Em um post anterior, Juliana Freitas já identificou que em mais de 50% dos casos notificados esses três locais são os mesmos, sendo que a identificação entre residência e ocorrência é de aproximadamente 65%, ver O que as localizações de cada crime de estupro têm a nos dizer.</description>
+    </item>
     
     <item>
       <title>A problemática do acesso a dados relacionados ao crime de estupro no Brasil </title>
