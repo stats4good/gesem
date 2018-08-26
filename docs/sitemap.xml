@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/gesem/blog/2018/08/estupro_de_vulneravel/</loc>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/gesem/blog/2018/08/local_residencia_belem/</loc>
     <lastmod>2018-08-12T00:00:00+00:00</lastmod>
   </url>
@@ -51,12 +56,18 @@
   
   <url>
     <loc>/gesem/blog/</loc>
-    <lastmod>2018-08-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/gesem/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/tags/chances-de-ocorr%C3%AAncia/</loc>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -90,7 +101,13 @@
   
   <url>
     <loc>/gesem/categories/estupro/</loc>
-    <lastmod>2018-08-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/tags/estupro-de-vulner%C3%A1vel/</loc>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -108,19 +125,19 @@
   
   <url>
     <loc>/gesem/</loc>
-    <lastmod>2018-08-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/gesem/tags/idade/</loc>
-    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/gesem/categories/local-de-ocorrencia/</loc>
-    <lastmod>2018-06-15T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

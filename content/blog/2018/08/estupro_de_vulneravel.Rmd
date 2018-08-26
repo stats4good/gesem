@@ -1,0 +1,475 @@
+---
+title: "ESTUPRO DE VULNERÁVEL: QUAIS SÃO AS CHANCES DE OCORRÊNCIA DESTE CRIME NO BRASIL?"
+author: "RUMENICK PEREIRA DA SILVA"
+date: 2018-08-24
+categories: ["estupro", "local-de-ocorrencia"]
+tags: ["Estupro de vulnerável", "Chances de ocorrência", "Idade"]
+banner: "blog/2018/08/estupro_vulneravel/img/banner.jpeg"
+summary: "Buscando promover um diálogo sobre o tema estupro de vulnerável, apresentamos informações sobre as chances de ocorrência deste crime no Brasil por Unidades da Federação, região, zona e local de ocorrência do delito usando dados notificados no período de 2011 a 2016. "
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+# knitr::opts_knit$set(base.dir = 'blog/2018/03/template/')
+```
+
+```{r pacotes}
+# devtools::install_github("jbkunst/highcharter")
+# pkgs <- c("ggplot2", "knitr", "kableExtra", "dplyr", "lubridate")
+# install.packages(pkgs)
+library(ggplot2)
+library(highcharter)
+library(widgetframe)
+library(knitr)
+library(kableExtra)
+library(dplyr)
+library(lubridate)
+
+options(digits = 2, OutDec = ",", highcharter.lang = list(decimalPoint = ",", thousandsSep = "."))
+```
+
+A ideia deste post surgiu depois de alguns episódios que geraram uma certa reviravolta nas redes sociais, os quais envolvem interações entre crianças e adultos que, após serem vistas através das mídias, acabaram gerando desconforto em algumas parcelas da população brasileira. Se você acompanha tais redes, já deve imaginar de quais casos estamos falando:
+
++ caso 1: [Interação de criança com artista nu em museu de São Paulo gera polêmica](https://g1.globo.com/sao-paulo/noticia/interacao-de-crianca-com-artista-nu-em-museu-de-sp-gera-polemica.ghtml);
+
++ caso 2: [Bolsonaro ensina criança a fazer arma com a mão e causa polêmica](https://catracalivre.com.br/cidadania/bolsonaro-ensina-crianca-a-fazer-arma-com-a-mao-e-causa-polemica/).
+
+Porém, qual a relação entre os casos apresentados com o tema __estupro de vulnerável__? Vejamos bem, no caso 1 a crítica foi contextualizada no fato de que haveria um crime de [pedofilia](https://professorclebercouto.jusbrasil.com.br/artigos/211483569/pedofilia-no-estatuto-da-crianca-e-adolescente-art-241-e-e-sua-interpretacao-constitucional). Já no caso 2, seguidores do presidenciável alegavam que ele estaria ensinando a criança a se defender de agressores sexuais, e por muitos foi observado nas redes sociais uma figura (ver Anexo) que contrastava ambos os casos, afirmando ironicamente que um dos dois era o mais correto. Agora você deve estar pensando por que abordamos esta questão. Acreditamos que nós, brasileiros e brasileiras, precisamos ter uma conversa franca sobre violência sexual. Claro que os casos apresentados precisam ser discutidos, mas olhando os dados de notificações no Sistema de Informação de Agravos de Notificação (SINAN), percebe-se que essas discussões travadas nas redes sociais estão indo por um caminho confuso, pautas em situações que não retratam a realidade brasileira. Veja algumas postagens do GESEM que buscam dar esclarecimento sobre um problema concreto:
+
++ [LOCAL DE RESIDÊNCIA E NOTIFICAÇÃO NA REGIÃO METROPOLITANA DE BELÉM](https://stats4good.github.io/gesem/blog/2018/08/local_residencia_belem/);
+
++ [A PROBLEMÁTICA DO ACESSO A DADOS RELACIONADOS AO CRIME DE ESTUPRO NO BRASIL](https://stats4good.github.io/gesem/blog/2018/07/acesso_dadosestupro/);
+
++ [TAXAS DE ESTUPRO NO BRASIL: COMO ELAS VARIAM ENTRE AS UNIDADES DA FEDERAÇÃO?](https://stats4good.github.io/gesem/blog/2018/06/taxas_uf/);
+
++ [QUAL A IDADE DAS VÍTIMAS E ONDE ESSES CRIMES ESTÃO OCORRENDO?](https://stats4good.github.io/gesem/blog/2018/06/entendendo_as_idades/);
+
++ [O QUE AS LOCALIZAÇÕES DE CADA CRIME DE ESTUPRO TÊM A NOS DIZER?](https://stats4good.github.io/gesem/blog/2018/05/localizacoes_estupros/);
+
++ [DADOS OFICIAIS DE ESTUPRO NO BRASIL: A QUESTÃO DA SUBNOTIFICAÇÃO](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/);
+
++ [POR QUE ESTUDAR O ESTUPRO EM MULHERES?](https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/).
+
+A nossa pergunta é: por que estamos tentanto relacionar os casos 1 e 2 a algum tipo abuso sexual quando pessoas são vítimas de violência sexual todos os dias? Ou seja, por que não falamos dos crimes que de fato ocorreram e foram notificados?
+
+Sendo assim, já que ambas as situações envolvem crianças ([meninas](https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/)) e adultos, e se tonaram polêmicas (dignas de repúdio) por sua composição e natureza, neste post apresentamos informações referentes aos estupros de vulnerável notificados no Brasil no período de 2011 a 2016. Busca-se responder quais são as chances de meninas (crianças e adolescentes) menores de catorze anos de idade serem vítimas do crime de estupro no Brasil no horizonte de tempo supracitado. Note que, a classificação de estupro de vulnerável utilizada nas análises não considera todos os casos previstos na Lei nº 12.015, de 7 de agosto de 2009$^{1}$, será dado destaque aos casos inseridos no contexto do art. 217-A$^{2}$ do Código Penal, restrito à seguinte parte:
+
+> Estupro de vulnerável: Ter conjunção carnal ou praticar outro ato libidinoso com menor de 14 (catorze) anos.
+
+
+## Chances de ocorrência deste crime no Brasil
+
+
+```{r carregando dados}
+
+df_ufs_br <- read.table(file = "estupro_vulneravel/data/UF_BR.txt", header = TRUE, sep = "\t", encoding = "UTF-8")
+
+df <- readRDS("estupro_vulneravel/data/sinan_CS_SEXO_FEM_SEX_ESTUPR_SIM.rds")
+
+regi <- Vectorize(function(coduf) {
+  ifelse(!is.na(coduf), as.character(df_ufs_br[df_ufs_br$COD == coduf, "REG"]), NA)
+  
+}, vectorize.args = "coduf")
+
+df <- df %>% 
+  transmute(EV = factor(ifelse(NU_IDADE_N < 4014, "Estupro de vulnerável", "Demais casos de estupro"), levels = c("Estupro de vulnerável", "Demais casos de estupro"), ordered = TRUE),
+            ANO_NOT = lubridate::year(DT_NOTIFIC),
+            UF_OCOR = factor(SG_UF_OCOR, levels = df_ufs_br$COD, labels = df_ufs_br$NOME),
+            REG_OCOR = regi(coduf = SG_UF_OCOR),
+            ZONA_OCOR = ZONA_OCOR,
+            LOCAL_OCOR = LOCAL_OCOR, 
+            COR = CS_RACA)
+```
+
+```{r descritiva}
+probEV <- prop.table(table(df$EV))
+chance <- probEV[1] / probEV[2]
+
+table(df$UF_OCOR, df$EV, useNA = "ifany") %>% 
+  as_data_frame() %>% 
+  setNames(c("UF", "EV", "Freq")) %>% 
+  mutate(UF = ifelse(is.na(UF), "Ignorado", UF), 
+         EV = ifelse(is.na(EV), "Ignorado", EV)) %>% 
+  group_by(EV) %>%
+  do(data = (.)) %>% 
+  select(data) %>% 
+  lapply(function(x) {(x)}) %>% .[[1]] %>% 
+  bind_cols() %>% 
+  select(UF, starts_with("Freq")) %>% 
+  arrange(Freq1) %>% 
+  filter(Freq1 == max(Freq1)) -> tabnotmax
+
+table(df$UF_OCOR, df$EV, useNA = "ifany") %>% 
+  as_data_frame() %>% 
+  setNames(c("UF", "EV", "Freq")) %>% 
+  mutate(UF = ifelse(is.na(UF), "Ignorado", UF), 
+         EV = ifelse(is.na(EV), "Ignorado", EV)) %>% 
+  group_by(EV) %>%
+  do(data = (.)) %>% 
+  select(data) %>% 
+  lapply(function(x) {(x)}) %>% .[[1]] %>% 
+  bind_cols() %>% 
+  select(UF, starts_with("Freq")) %>% 
+  group_by(UF) %>% 
+  mutate(Freqr = Freq1/ sum(Freq, Freq1)) %>% 
+  ungroup() %>% 
+  arrange(Freqr) %>% 
+  filter(Freqr == max(Freqr)) -> tabpermax
+
+table(df$UF_OCOR, df$EV, useNA = "ifany") %>% 
+  as_data_frame() %>% 
+  setNames(c("UF", "EV", "Freq")) %>% 
+  mutate(UF = ifelse(is.na(UF), "Ignorado", UF), 
+         EV = ifelse(is.na(EV), "Ignorado", EV)) %>% 
+  group_by(EV) %>%
+  do(data = (.)) %>% 
+  select(data) %>% 
+  lapply(function(x) {(x)}) %>% .[[1]] %>% 
+  bind_cols() %>% 
+  select(UF, starts_with("Freq")) %>% 
+  group_by(UF) %>% 
+  mutate(Freqr = Freq1/ sum(Freq, Freq1)) %>% 
+  ungroup() %>% 
+  arrange(desc(Freqr)) %>% 
+  filter(Freqr >= .6) -> tabpermaior60max
+
+
+
+```
+
+Na Figura 01, apresentamos porcentagens e contagens (passe o mouse sobre o gráfico) das notificações de estupros de vulnerável em comparação com os demais casos de estupro para os 26 estados e o Distrito Federal do Brasil. Nesta pode-se observar:
+
+
++ dos casos de estupro notificados no Brasil no período de 2011 a 2016, `r paste0(round(probEV[1] * 100, 2), "%")` são de vulnerável. Isso significa que, para cada 100 casos notificados espera-se que quase metade das vítimas deste crime sejam crianças ou adolescentes; 
+
++ o estado com o maior número absoluto de casos de estupro de vulnerável é `r as.character(tabnotmax[, "UF"])`, totalizando `r format(as.numeric(tabnotmax[, "Freq1"]), big.mark = ".")` casos, o que é esperado dado a quantidade de habitantes. No entanto, quando comparado ao total de casos de estupro notificados neste estado, esse número representa `r paste0(format(round(tabnotmax[, "Freq1"]/ sum(tabnotmax[, c("Freq1", "Freq")]) * 100, 2), decimal.mark = ",", digits = 4),"%")` dos crimes;
+
++ quando considerado o percentual de estupro de vulnerável por estado, o estado do `r as.character(tabpermax[, "UF"])` lidera o ranking com `r paste0(format(round(tabpermax[, "Freqr"] * 100, 2), decimal.mark = ",", digits = 4), "%")` dos casos de estupro deste estado sendo do crime supracitado. Ou seja, para cada 100 casos de estupro notificados no `r as.character(tabpermax[, "UF"])` espera-se que aproximadamente `r ceiling(tabpermax[, "Freqr"] * 100)` sejam de vulnerável;
+
++ além do estado do Pará, o estado do `r paste0(unlist(tabpermaior60max[2:4, "UF"]), " (", round(unlist(tabpermaior60max[2:4, "Freqr"]) * 100, 2), "%", ")", collapse = ", ")` e `r paste0(unlist(tabpermaior60max[5, "UF"]), " (", round(unlist(tabpermaior60max[5, "Freqr"]) * 100, 2), "%", ")", collapse = ", ")` apresentam porcentagens de estupro de vulnerável maiores que 60% do total de casos de estupro notificados;
+
++ Destaca-se também que existem `r format(1052, big.mark = ".")` casos de estupro de vulnerável que não são atribuídos a nenhum estado ou ao Distrito Federal, constando no registro como *Ignorado* ou o campo não foi preenchido no momento da notificação (Ver Tabela 02 no Apêndice).
+
+
+```{r fig1}
+tabUF <- df %>% 
+  count(EV, UF_OCOR) %>% 
+  na.omit() %>% 
+  bind_rows(data_frame(EV = factor(c("Estupro de vulnerável", "Demais casos de estupro"), 
+                                   levels = c("Estupro de vulnerável", "Demais casos de estupro"), 
+                                   labels = c("Estupro de vulnerável", "Demais casos de estupro"),
+                                   ordered = TRUE), 
+            UF_OCOR = c("Brasil", "Brasil"), n = as.numeric(table(df$EV))))
+
+hchart(tabUF, "column", hcaes(x = UF_OCOR, y = n, group = EV)) %>%
+  hc_title(text = "Figura 01: Porcentagens e contagens das notificações de estupros de vulnerável e demais casos de estupro para Unidades da Federação e Brasil, no período de 2011 a 2016.") %>% 
+  hc_yAxis(title = list(text = "Porcentagem"),
+           minorGridLineWidth = 0, 
+           gridLineWidth = 0,
+           showLastLabel = FALSE,
+           labels = list(format = "{value}%"), max = 101) %>% 
+  hc_xAxis(title = list(text = ""),
+           minorGridLineWidth = 0, 
+           gridLineWidth = 0,
+           plotBands = list(
+             list(from = -.5, to = 6.5, color = "lightgrey",
+                  label = list(text = "Norte", style = list(font = 'bold 12px "Trebuchet MS", Verdana, sans-serif'))),
+             list(from = 6.5, to = 15.5, color = "rgba(0, 0, 0, 0.1)",
+                  label = list(text = "Nordeste", style = list(font = 'bold 12px "Trebuchet MS", Verdana, sans-serif'))),
+             list(from = 15.5, to = 19.5, color = "lightgrey",
+                  label = list(text = "Sudeste", style = list(font = 'bold 12px "Trebuchet MS", Verdana, sans-serif'))),
+             list(from = 19.5, to = 22.5, color = "rgba(0, 0, 0, 0.1)",
+                  label = list(text = "Sul", style = list(font = 'bold 12px "Trebuchet MS", Verdana, sans-serif'))),
+             list(from = 22.5, to = 26.5, color = "lightgrey",
+                  label = list(text = "Centro oeste", style = list(font = 'bold 12px "Trebuchet MS", Verdana, sans-serif'))),
+             list(from = 26.5, to = 28.5, color = "grey",
+                  label = list(text = ""))
+           )) %>%
+  hc_tooltip(table = TRUE, backgroundColor = "lightgrey", split = TRUE, pointFormat = '<span style="color:{series.color}"><b>{series.name}</b></span>: <b>{point.percentage:.2f}%</b> ({point.y:,.0f} casos)<br/>') %>% 
+  hc_plotOptions(column = list(stacking = "percent")) %>% 
+  hc_colors(c("purple", "yellow")) %>%
+  hc_legend(layout = "horizontal", verticalAlign  =  "bottom") %>% 
+  hc_credits(
+    enabled = TRUE, 
+    text = "Fonte: VIVA/SVS/MS",
+    href = "http://svs.aids.gov.br",
+    style = list(fontSize = "12px0")) %>%
+  frameWidget()
+
+```
+
+Além da distribuição dos casos de estupro de vulnerável por Unidades da Federação, consideramos também os casos agregados por: região de ocorrência do crime, zona a qual pertence o município onde aconteceu o estupro e o local (ou ambiente) onde ocorreu o crime. Na Tabela 01, apresentamos as contagens, os percentuais e as [razão de chances](https://pt.wikipedia.org/wiki/Raz%C3%A3o_de_possibilidades)$^3$ de ocorrência de estupro de vulnerável por região, zona e local. Gostaríamos de chamar atenção para os seguintes itens:
+
++ a chance de ocorrência de estupro de vulnerável na região Norte do país é 167% (2,67 menos 1, o resultado anterior vezes 100) maior que a chance de ocorrência na região Sudeste (referência para comparação). Logo em seguida vem a região Sul, em que a chance de ocorrência deste crime é 50% maior que a chance na região Sudeste;
+
++ quando levamos em consideração a zona, a chance de ocorrência do delito na zona Rural é 18% (118% menos 100%) maior que a chance de ocorrência na zona Urbana (referência para comparação). Já na zona Periurbana temos, em termos percentuais uma redução de 29% (100% menos 71%) na chance de ocorrência de estupro de vulnerável quando comparado à chance de ocorrências em áreas urbanas;
+
++ por último, destacamos uma informação alarmante: observamos que as chances de uma criança ou adolescente ser vítima de estupro na escola ou residência são, respectivamente, `r 14.20` e `r 7.73` vezes mais chances que em Via pública (referência para comparação). Em termos percentuais significa que a chance de ocorrência de estupro de vulnerável na escola e residência são, respectivamente, 1320% (14,20 menos 1, o resultado anterior vezes 100) e 673% (7,73 menos 1, o resultado anterior vezes 100) maior que a chance de ocorrência na Via pública. 
+
+
+```{r tab1}
+list(REG =
+table(ifelse(df$REG_OCOR == "Ignorado", NA, df$REG_OCOR), df$EV, useNA = "ifany")  %>% 
+  as_data_frame() %>% 
+  setNames(c("REG", "EV", "Freq")) %>% 
+  mutate(REG = ifelse(is.na(REG), "Ignorado", REG), 
+         EV = ifelse(is.na(EV), "Ignorado", EV)) %>% 
+  group_by(EV) %>%
+  do(data = (.)) %>% 
+  select(data) %>% 
+  lapply(function(x) {(x)}) %>% .[[1]] %>% 
+  bind_cols() %>% 
+  select(REG, starts_with("Freq")) %>% 
+  group_by(REG) %>% 
+  transmute("Nível de agregação" = REG,
+            "% Estupro de Vulnerável" = paste0(format(Freq1 / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq1, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"),
+            "% Demais casos de estupro" = paste0(format(Freq / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"),
+             "% Ignorado" = paste0(format(Freq2 / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq2, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"),
+            freqr1 = Freq1 / sum(Freq, Freq1, Freq2), 
+            freqr2 = Freq / sum(Freq, Freq1, Freq2), 
+            chance = freqr1/freqr2,            
+            varaux = (REG == "Ignorado")) %>% 
+  ungroup() %>% 
+  mutate("Razão de chances" = chance / chance[REG == "Sudeste"]) %>% 
+  group_by(varaux) %>% 
+  arrange(desc(`Razão de chances`), .by_group = TRUE) %>% 
+  ungroup() %>% 
+  select(-REG, -freqr1, -freqr2, -varaux) %>%  
+  select(`Nível de agregação`,
+         `% Estupro de Vulnerável`, 
+         `% Demais casos de estupro`, 
+         `% Ignorado`, 
+         `Razão de chances`),
+
+ZONA =
+table(ifelse(df$ZONA_OCOR == "Ignorado", NA, df$ZONA_OCOR), df$EV, useNA = "ifany")  %>% 
+  as_data_frame() %>% 
+  setNames(c("ZONA", "EV", "Freq")) %>% 
+  mutate(ZONA = ifelse(is.na(ZONA), "Ignorado", ZONA), 
+         EV = ifelse(is.na(EV), "Ignorado", EV)) %>% 
+  group_by(EV) %>%
+  do(data = (.)) %>% 
+  select(data) %>% 
+  lapply(function(x) {(x)}) %>% .[[1]] %>% 
+  bind_cols() %>% 
+  select(ZONA, starts_with("Freq")) %>% 
+  group_by(ZONA) %>% 
+  transmute("Nível de agregação" = ZONA,
+            "% Estupro de Vulnerável" = paste0(format(Freq1 / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq1, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"),
+            "% Demais casos de estupro" = paste0(format(Freq / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"),
+             "% Ignorado" = paste0(format(Freq2 / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq2, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"),
+            freqr1 = Freq1 / sum(Freq, Freq1, Freq2), 
+            freqr2 = Freq / sum(Freq, Freq1, Freq2), 
+            chance = freqr1/freqr2,            
+            varaux = (ZONA == "Ignorado")) %>% 
+  ungroup() %>% 
+  mutate("Razão de chances" = chance / chance[ZONA == "Urbana"]) %>% 
+  group_by(varaux) %>% 
+  arrange(desc(`Razão de chances`), .by_group = TRUE) %>% 
+  ungroup() %>% 
+  select(-ZONA, -freqr1, -freqr2, -varaux) %>% 
+  select(`Nível de agregação`,
+         `% Estupro de Vulnerável`, 
+         `% Demais casos de estupro`, 
+         `% Ignorado`, 
+         `Razão de chances`),
+LOCAL =
+table(ifelse(df$LOCAL_OCOR == "Ignorado", NA, df$LOCAL_OCOR), df$EV, useNA = "ifany") %>% 
+  as_data_frame() %>% 
+  setNames(c("LOCAL", "EV", "Freq")) %>% 
+  mutate(LOCAL = as.character(ifelse(is.na(LOCAL), "Ignorado", LOCAL)), 
+         EV = ifelse(is.na(EV), "Ignorado", EV)) %>% 
+  group_by(EV) %>%
+  do(data = (.)) %>% 
+  select(data) %>% 
+  lapply(function(x) {(x)}) %>% .[[1]] %>% 
+  bind_cols() %>% 
+  select(LOCAL, starts_with("Freq")) %>% 
+  group_by(LOCAL) %>% 
+  transmute("Nível de agregação" = ifelse(LOCAL == "Via publica", "Via pública", LOCAL),
+            "Nível de agregação" = ifelse(LOCAL == "Outro", "Outros", LOCAL),
+            "% Estupro de Vulnerável" = paste0(format(Freq1 / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq1, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"),
+            "% Demais casos de estupro" = paste0(format(Freq / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"),
+             "% Ignorado" = paste0(format(Freq2 / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq2, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"),
+            freqr1 = Freq1 / sum(Freq, Freq1, Freq2), 
+            freqr2 = Freq / sum(Freq, Freq1, Freq2), 
+            chance = freqr1/freqr2, 
+            varaux = (LOCAL == "Ignorado")) %>% 
+  ungroup() %>% 
+  mutate("Razão de chances" = chance / chance[LOCAL == "Via publica"]) %>% 
+  group_by(varaux) %>% 
+  arrange(desc(`Razão de chances`), .by_group = TRUE) %>% 
+  ungroup() %>% 
+  select(-LOCAL, -freqr1, -freqr2, -varaux) %>% 
+  select(`Nível de agregação`,
+         `% Estupro de Vulnerável`, 
+         `% Demais casos de estupro`, 
+         `% Ignorado`, 
+         `Razão de chances`) 
+) %>% 
+  bind_rows() %>% 
+  kable(caption = "Tabela 01: Apresenta as porcentagens e contagens das notificações de estupros de vulnerável e demais casos de estupro por região, zona e  local de ocorrência no período de 2011 a 2016, Brasil:", align = c("l", "c", "c", "c", "c"), format.args = list(big.mark = ".")) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>% 
+  group_rows("Região", 1, 6) %>%
+  group_rows("Zona", 7, 10) %>% 
+  group_rows("Local", 11, 20) %>% 
+  column_spec(2, bold = TRUE, color = "white", background = "purple") %>% 
+  column_spec(3, bold = TRUE, color = "black", background = "yellow") %>% 
+  column_spec(5, bold = TRUE, color = "black", background = "grey")
+  #row_spec(3:5, bold = T, color = "white", background = "#D7261E")
+```
+
+Fonte: VIVA/SVS/MS
+
+Nota$^1$: a categoria *Outros* contempla locais como matagal, motel, terreno baldio, carro, etc.;
+
+Nota$^2$: na tabela as informações são apresentadas da seguinte forma: % Percentual (Nº de notificações / total de notificações por agregado);
+
+Nota$^3$: para obter as razões de chances foi utilizado como referência: região Sudeste, zona Urbana e local de ocorrência Via pública e a coluna *% Ignorado* não entrou no cálculo;
+
+Por fim:
+
+> O GESEM acredita que usar uma abordagem baseada em dados para falarmos sobre esse tema é uma forma de combater o crime de estupro e ajudar a população a tomar conhecimento de questões fundamentais agravantes da realidade brasileira. 
+
+> É importante notificar os casos de estupro (opções: ligue 180 ou ir ao centro de saúde mais próximo).
+
+Observação: 
+
++ como foi observado no post: [DADOS OFICIAIS DE ESTUPRO NO BRASIL: A QUESTÃO DA SUBNOTIFICAÇÃO](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/), temos indícios para afirma que as informações acima estão subestimadas;
+
++ destacamos que todas as informações de Unidades da Federação, região, zona e local são referentes a localização de ocorrência do crime, pois como foi observado nos posts: [O QUE AS LOCALIZAÇÕES DE CADA CRIME DE ESTUPRO TÊM A NOS DIZER?](https://stats4good.github.io/gesem/blog/2018/05/localizacoes_estupros/) e [LOCAL DE RESIDÊNCIA E NOTIFICAÇÃO NA REGIÃO METROPOLITANA DE BELÉM](https://stats4good.github.io/gesem/blog/2018/08/local_residencia_belem/), existe mais de uma informação de localização;
+
++ os dados de 2015 e 2016 não estão consolidados. 
+
+## Referências
+
+$^1$ [LEI Nº 12.015, DE 7 DE AGOSTO DE 2009](http://www.planalto.gov.br/ccivil_03/_Ato2007-2010/2009/Lei/L12015.htm#art2)
+
+$^2$ [Estupro de Vulnerável - Art. 217-A](http://www.planalto.gov.br/ccivil_03/Decreto-Lei/Del2848.htm#art217a)
+
+$^3$ [Razão de chances](https://pt.wikipedia.org/wiki/Raz%C3%A3o_de_possibilidades)
+
+
+## Apêndice
+
+```{r tab2}
+table(df$UF_OCOR, df$EV, useNA = "ifany") %>% 
+  as_data_frame() %>% 
+  setNames(c("UF", "EV", "Freq")) %>% 
+  mutate(UF = ifelse(is.na(UF), "Ignorado", UF), 
+         EV = ifelse(is.na(EV), "Ignorado", EV)) %>% 
+  group_by(EV) %>%
+  do(data = (.)) %>% 
+  select(data) %>% 
+  lapply(function(x) {(x)}) %>% .[[1]] %>% 
+  bind_cols() %>% 
+  select(UF, starts_with("Freq")) %>% 
+  group_by(UF) %>% 
+  transmute(Estado = UF,
+            "% Estupro de Vulnerável" = paste0(format(Freq1 / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq1, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"),
+            "% Demais casos de estupro" = paste0(format(Freq / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"),
+             "% Ignorado" = paste0(format(Freq2 / sum(Freq, Freq1, Freq2) * 100, 
+                                                      digits = 2, 
+                                                      nsmall = 2), 
+                                               " (", 
+                                               format(Freq2, big.mark = "."), 
+                                               " / ",  
+                                               format(sum(Freq, Freq1, Freq2), big.mark = "."),
+                                               ")"), 
+            freqr1 = Freq1 / sum(Freq, Freq1, Freq2), 
+            varaux = (UF == "Ignorado")) %>% 
+  ungroup() %>% 
+  group_by(varaux) %>% 
+  arrange(desc(freqr1), .by_group = TRUE) %>% 
+  ungroup() %>% 
+  select(-UF, -freqr1, -varaux) %>% 
+  kable(caption = "Tabela 02: Informações usadas para construção da Figura 01 adicionadas das informações ignoradas, seja da UF ou da idade (usada para classificação do tipo de estupro):", align = c("c", "c", "c", "c")) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>% 
+  column_spec(2, bold = TRUE, color = "white", background = "purple") %>% 
+  column_spec(3, bold = TRUE, color = "black", background = "yellow")
+```
+
+Fonte: VIVA/SVS/MS
+
+
+## Anexo
+
+![](/gesem/blog/2018/08/estupro_vulneravel/img/print.jpg) 
