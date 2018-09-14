@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Escola on Grupo de Estudo da Subnotificação de Estupro em Mulheres</title>
+    <link>/gesem/tags/escola/</link>
+    <description>Recent content in Escola on Grupo de Estudo da Subnotificação de Estupro em Mulheres</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Fri, 14 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/gesem/tags/escola/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Panorama das notificações de casos de estupro em escolas no Brasil</title>
+      <link>/gesem/blog/2018/09/estupro_escola/</link>
+      <pubDate>Fri, 14 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/gesem/blog/2018/09/estupro_escola/</guid>
+      <description>A partir do levantamento feito e apresentado em Qual a idade das vítimas e onde esses crimes estão ocorrendo?, pudemos ver que em 50% dos casos notificados entre 2011 e 2016, as vítimas (mulheres) tinham até 14 anos, ou seja, metade das vítimas estavam em idade escolar na época de notificação do crime. Nesse post, também foi possível ter ciência que uma rua escura não é exatamente o local (como muitas vezes se é repetido) onde esse crime ocorre com mais frequência e sim, em alguma residência.</description>
+    </item>
+    
+  </channel>
+</rss>

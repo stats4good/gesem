@@ -1,0 +1,156 @@
+---
+title: "Panorama das notificações de casos de estupro em escolas no Brasil"
+author: "Emilly Malveira"
+date: 2018-09-14
+categories: ["estupro", "local de ocorrencia"]
+tags: ["notícias", "escola"]
+banner: "blog/2018/09/estupro_escola/img/capa_post.png"
+summary: "Um pensamento constantemente repercurtido é o de que as vítimas de estupro são, em sua grande maioria, mulheres que fazem uso de álcool, andam desacompanhadas em ruas escuras e usam roupas curtas. A partir disso, vamos mostrar dados contradizendo esse pensamento."
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+#knitr::opts_knit$set(base.dir = "H:/S4G/Data_R/template")
+#knitr::opts_knit$set(base.dir = "/media/labpos/P/S4G/Data_R/template")
+```
+```{r pacotes}
+require(highcharter)  
+require(dplyr)
+require(widgetframe)
+```
+
+A partir do levantamento feito e apresentado em [Qual a idade das vítimas e onde esses crimes estão ocorrendo?](https://stats4good.github.io/gesem/blog/2018/06/entendendo_as_idades/), pudemos ver que em 50% dos casos notificados entre 2011 e 2016, as vítimas ([mulheres](https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/)) tinham até 14 anos, ou seja, metade das vítimas estavam em idade escolar na época de notificação do crime. Nesse post, também foi possível ter ciência que *uma rua escura* não é exatamente o local (como muitas vezes se é repetido) onde esse crime ocorre com mais frequência e sim, em alguma residência. Além disso, também foi mostrado que a escola estava entre os locais em que se tiveram casos de estupro notificados. Isto é, um local no qual esperamos que seja de desenvolvimento intelectual e pessoal para crianças e adolescentes, nesses casos, acaba se tornando um local de insegurança.  
+
+No último post do GESEM  ([Estupro de vulnerável: quais são as chances de ocorrência deste crime no Brasil?](https://stats4good.github.io/gesem/blog/2018/08/estupro_de_vulneravel/)) vimos que, dos casos de estupro notificados no Brasil no período de 2011 a 2016, 47,41% são de vulnerável (*estupro de vulnerável: Ter conjunção carnal ou praticar outro ato libidinoso com menor de 14 (catorze) anos*). Ou seja, é esperado que em **quase metade** dos casos notificados a vítima seja criança ou adolescente, isto inclui casos ocorridos em escola, como foi observado pelo autor do post citado acima.  
+
+Um estudo^1^ recente também utilizando dados do Sistema de Informação de Agravos de Notificação (SINAN), aborda a caracterização da violência sexual -- estupro, assédio sexual, atentado ao pudor, exploração sexual, pornografia infantil -- contra crianças (0 a 9 anos) e adolescentes (10 a 19 anos) em escolas no Brasil no período de 2010-2014. O trabalho traz evidências de que "crianças e adolescentes estão expostos à violência sexual na escola, instituição que supostamente deveria garantir proteção, desenvolvimento saudável e segurança para os escolares''. Um adendo feito pelo autor é que se têm poucos estudos referentes ao assunto e, talvez, tal fato seja devido ao foco no sentido contrário ao que deveria ser discutido, como mencionado acima muitas pessoas associam o crime de estupro às ruas desertas e escuras.
+ 
+Com isso, o objetivo desse post é exibir o panorama das notificações de estupros em que as vítimas são crianças e adolescentes do sexo [feminino]((https://stats4good.github.io/gesem/blog/2018/03/estupro_mulheres/)), de acordo com as regiões do Brasil, entre 2011 e 2016, cujo local de ocorrência foi a escola, com o intuito de salientar que esse crime está acontecendo em um local onde *não é esperado* e possivelmente não estão sendo tomadas atidudes de prevenção eficazes contra isso.
+
+### Distribuição das notificações em escolas por idade
+
+Para explorar os dados das notificações em que o local de ocorrência foi a escola, consideramos os casos em que as vítimas tinham até 19 anos, para poder englobar crianças e adolescentes que possivelmente seriam escolares. Sabemos que esse é mais um crime extremamente [subnotificado](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/) no país. Mas, mesmo com números *inferiores à realidade*, é alarmante o que os dados mostram. No período de estudo, 2011 a 2016, foram notificados 1.078 casos de estupros ocorridos em escolas e, destes casos, 614 (57%) eram de crianças entre 0 e 9 anos enquanto que nos demais 464 (43%) as vítimas eram adolescentes entre 10 e 19 anos. A distribuição do número de notificações de acordo com cada idade é mostrada na Figura 1. Com base nesta figura podemos perceber que:
+
++ o total de notificações sob estudo, 1.078 casos, representam aproximadamente um caso notificado a cada dois dias;
+
++ considerando os casos notificados e a população sob estudo, podemos verificar que houve 314 notificações de casos estupro em crianças de 2 a 4 anos;
+
++ além disso, observamos que em 226 casos notificados, as vítimas eram crianças com idade entre 11 e 13 anos;
+
++ assim, supondo que as vítimas estavam de acordo com o período escolar de sua idade, as vítimas são em sua grande maioria, alunas de educação infantil e ensino fundamental.
+
+
+```{r, echo = FALSE, results = 'asis', message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5}
+#((1078 / (365*6))*2)
+load("estupro_escola/data/dtescolaCA.rda")
+#
+# Escolaridade / Nao se aplica quando o caso notificado é < 6 anos de idade
+tab1 <- table(dtescolaCA$CS_ESCOL_N)
+# Relacao especifica
+tab2 <- table(dtescolaCA$REL_ESP)
+
+criancas <- dtescolaCA %>% filter(IdadeNew <= 9) 
+nc <- criancas %>% tally()
+adolescentes <- dtescolaCA %>% filter(IdadeNew >= 10) 
+na <- adolescentes %>% tally()
+
+```
+
+```{r, echo = FALSE, results = 'asis', message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5}
+  age <- dtescolaCA %>%  count(dtescolaCA$IdadeNew) %>%
+  bind_cols(data_frame(Idade = factor(c("< 1", 1:19), 
+                                   levels = c("< 1", 1:19), 
+                                   labels = c("< 1", 1:19),
+                                   ordered = TRUE), 
+             Freq = as.numeric(table(dtescolaCA$IdadeNew)), Prop = as.numeric(table(dtescolaCA$IdadeNew)/sum(table(dtescolaCA$IdadeNew)))))
+
+hchart(age, "column", hcaes(x = Idade, y = Freq), name = "Contagem") %>%
+  hc_title(text = "Figura 1: Número de notificações, por idade, de casos de estupro em crianças e adolescentes do sexo feminino, ocorridos em escolas brasileiras, de 2011 a 2016.") %>%
+  hc_xAxis(min = 0, title = list(text = "Idade no momento da ocorrência (em anos)")) %>%
+  hc_yAxis(min = 0, title = list(text = "Número de Notificações")) %>%
+  hc_colors("darkslateblue")  %>% 
+  hc_legend(layout = "horizontal", verticalAlign  =  "bottom") %>% 
+  hc_credits(
+     enabled = TRUE, 
+     text = "Fonte: VIVA/SVS/MS",
+     href = "http://svs.aids.gov.br",
+     style = list(fontSize = "12px0")) %>%
+  frameWidget()
+```
+
+### Notificações por regiões do Brasil
+Para se ter ideia do que acontece em cada região do Brasil, na Figura 2 tratamos das notificações por cada uma delas. O que se vê, comparando principalmente os anos de 2011 e 2016, é um ligeiro crescimento da quantidade de notificações em todas as regiões. Esse aumento pode estar ligado ao aumento do número de casos desse crime ou, uma outra possibilidade, talvez mais provável, seria um esforço maior para tentar melhorar o levantamento desse tipo de dado, apesar de que ainda existe [a problemática do acesso a dados relacionados ao crime de estupro no Brasil](https://stats4good.github.io/gesem/blog/2018/07/acesso_dadosestupro/).
+As regiões Sudeste e Norte, na maioria dos anos, registraram o maior número de notificações. No sudeste do país é possível estes números estejam relacionados à quantidade de habitantes da região, pois esperamos que quanto maior a população, maior o número de notificações e também pelos registros de casos ocorridos nas escolas de São Paulo, como podemos ver a partir dos dados do ROE (Registro de Ocorrências Escolares) nessa matéria:  [Casos nas escolas de São  Paulo (Portal R7)](https://noticias.r7.com/sao-paulo/escolas-de-sp-tiveram-967-casos-de-assedio-ou-abuso-sexual-em-4-anos-26032018).
+
+```{r, echo = FALSE, results = 'asis', message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5}
+ #require(ggplot2)
+ 
+ #ggplot(data=dtescolaCA, aes(x=ANO,  fill=Regioes)) +
+#   geom_bar(stat="count") + ylab("Notificações") + xlab("Anos") +
+#   scale_fill_manual(values = alpha(c("red4", "blue", "green", "darkcyan" , "darkorchid1"), 0.5)) +
+#   theme(panel.background = element_blank()) + guides(fill=guide_legend(title="Regiões")) +
+#    ggtitle("Notificações de casos de estupro em mulheres ocorridos \n em escolas pelas regiões do Brasil, de 2011 a 2016 (fonte: VIVA/SVS/MS).") +
+#   theme(plot.title = element_text(hjust=0.5))
+
+tabescolaR <- dtescolaCA %>%  count(ANO, Regioes) 
+
+hc = highchart() %>% 
+  hc_title(text = "Número de notificações de casos de estupro em meninas de até 19 anos, ocorridos em escolas, pelas regiões do Brasil, de 2011 a 2016.
+") %>%
+  hc_chart(type = "line") %>%
+  hc_yAxis(min = 0, title = list(text = "Número de Notificações")) %>%
+  hc_xAxis(categories = c('2011', '2012', '2013', '2014', '2015', '2016')) %>%
+  hc_plotOptions(column = list(
+    dataLabels = list(enabled = FALSE),
+    stacking = "normal",
+    enableMouseTracking = TRUE)) %>%
+  hc_series(list(name="Centro-Oeste", data = tabescolaR$n[tabescolaR$Regioes=="Centro-Oeste"]),
+            list(name="Nordeste", data= tabescolaR$n[tabescolaR$Regioes=="Nordeste"]),
+            list(name="Norte", data = tabescolaR$n[tabescolaR$Regioes=="Norte"]),
+            list(name="Sudeste", data = tabescolaR$n[tabescolaR$Regioes=="Sudeste"]),
+            list(name="Sul", data = tabescolaR$n[tabescolaR$Regioes=="Sul"])) %>%
+  hc_colors(c("lightslategray", "turquoise", "mediumpurple", "purple" , "yellow")) %>%
+  hc_legend(title = "Número de notificações",  layout = "horizontal", verticalAlign  =  "bottom") %>% 
+  hc_credits(
+     enabled = TRUE, 
+     text = "Fonte: VIVA/SVS/MS",
+     href = "http://svs.aids.gov.br",
+     style = list(fontSize = "12px0"))
+
+hc %>%
+  frameWidget()
+
+
+```
+Ver esses números nos faz pensar sobre quais medidas deveriam ser tomadas para tentar mudar essa realidade (que além de grave, ainda é [subnotificada](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/)). Além disso, nos questionamos sobre qual é papel da escola^2,3^ sobre essa temática e como isso poderia ser passado para as crianças e adolescentes como um método de prevenção. Essa prevenção seria útil, não somente para casos nas escolas, mas também para ajudar crianças a identificar atitudes e ações inapropriadas.
+
+
+### Outros questionamentos
+
+Ainda podemos nos questionar sobre quem são os agressores que cometeram esse crime, se foi uma pessoa externa da escola, um professor, um funcionário ou uma pessoa de grau de parentesco próximo e quais são os reflexos na vida das vítimas. Vale ressaltar que queremos passar o possível de informação para que haja um conhecimento maior a respeito desse tema, pois assim  as medidas tomadas visando combater esse crime poderão ser mais eficazes.
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Observações importantes:
+
++  os dados de 2015 e 2016 não estão consolidados;
+
++  ao longo dos anos, havia em torno de 2% a 5% de valores faltantes na idade da vítimas;
+
++  é importante notificar os casos de estupro (opções: ligar 180 ou ir ao centro de saúde mais próximo).
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+### Referências
+
+^1^ [Caracterização da violência sexual contra crianças e
+adolescentes na escola – Brasil, 2010-2014](http://www.scielo.br/pdf/ress/v27n2/2237-9622-ress-27-02-e2017059.pdf).
+
+^2^ [Violência Sexual: A responsabilidade da escola na proteção de crianças e adolescentes](http://www.direitosdacrianca.gov.br/migrados/old/migracao/temas-prioritarios/violencia-sexual/abuso-sexual/pauta-violencia-sexual-a-responsabilidade-da-escola-na-protecao-de-criancas-e-adolescentes).
+
+^3^ [Qual o papel das escolas no combate ao abuso sexual de crianças](https://www.nexojornal.com.br/expresso/2017/08/01/Qual-o-papel-das-escolas-no-combate-ao-abuso-sexual-de-crian%C3%A7as).
+
+
+
