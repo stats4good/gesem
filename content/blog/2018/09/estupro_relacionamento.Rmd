@@ -1,0 +1,311 @@
+---
+title: "Estupro em relacionamentos afetivos: precisamos falar"
+author: "Adriana dos Santos Lima"
+date: 2018-09-28
+categories: ["estupro", "local de ocorrência" , "relaçao com o agressor", "perfil das vítimas"]
+tags: ["idade", "escolaridade", "relacionamento afetivo","marido","ex-marido","namorado","ex-namorado"]
+banner: "blog/2018/09/estupro_relacionamento/img/banner.jpg"
+summary: "É fato que as pessoas, em sua maioria, ainda tem dificuldade de discernir o que é um estupro. Veja bem, nem sempre a violência sexual é acompanhada de força bruta de forma a obrigar a outra pessoa a manter relações, mas sim da força psicológica. Isso dificulta o discernimento da própria vítima sobre o estupro que sofreu. O estupro dentro de relacionamentos amorosos ainda é pouco discutido, o que contribui para a sua subnotificação. Tentaremos através deste post retratar o perfil das vítimas deste crime."
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r pacotes}
+require(highcharter)
+require(dplyr)
+require(knitr)
+require(kableExtra)
+require(widgetframe)
+
+options(digits = 2, OutDec = ",", highcharter.lang = list(decimalPoint = ",", thousandsSep = "."))
+```
+
+
+A ideia deste post surgiu a partir de um caso bastante comentado nos últimos tempos através das redes sociais: o youtuber que em um [vídeo](https://www.youtube.com/watch?v=qK8F8Oh4j0M&feature=youtu.be) para o seu canal relata um episódio em que teria forçado relações sexuais com sua ex-namorada de forma não consentida enquanto ela dormia. Logo depois, devido às repercussões desse vídeo, ele declarou em outro [vídeo](https://www.youtube.com/watch?v=_h_O38MuIrg) que a história não era verdadeira, e sim inventada. 
+
+
+Vale lembrar que segundo o artigo 2017-A do Código Penal Brasileiro, manter relações sexuais com pessoas que, por qualquer razão, não podem oferecer resistência, se enquadra como crime de estupro de vulnerável com pena de 8 a 30 anos de reclusão. 
+
+>"Art. 217-A. Ter conjunção carnal ou praticar outro ato libidinoso com menor de 14 (catorze) anos;                                              
+§ 1º Incorre na mesma pena quem pratica as ações descritas no caput com alguém que, por enfermidade ou deficiência mental, não tem o necessário discernimento para a prática do ato, ou que, por qualquer outra causa, não pode oferecer resistência.
+"
+
+
+O que mais choca na história é a naturalização do estupro. Isso nos leva a acreditar que grande parte da população não tem consciência sobre o que de fato se configura um estupro. A crença de que os [estupros são cometidos por desconhecidos em ruas escuras e desertas](https://stats4good.github.io/gesem/blog/2018/06/entendendo_as_idades/) ainda é grande, e, além disso, a percepção que uma mulher pode ser violentada pelo seu próprio namorado/ex-namorado/marido/ex-marido ainda é difícil de se ter. 
+
+Cabe lembrar então a definição de estupro e violência sexual:
+
+> Segundo o artigo 213 do Código Penal Brasileiro é qualificado como estupro o ato de *"constranger alguém, mediante violência ou grave ameaça, a ter conjunção carnal ou a praticar ou permitir que com ele se pratique outro ato libidinoso."* (Redação dada pela Lei nº 12.015, de 2009);
+
+> De acordo com a Lei Maria da Penha - Capítulo II, artigo 70-III, violência sexual é *"qualquer conduta que a constranja a presenciar, a manter ou a participar de relação sexual não desejada, mediante intimidação, ameaça, coação ou uso da força; que a induza a comercializar ou a utilizar, de qualquer modo, a sua sexualidade, que a impeça de usar qualquer método contraceptivo ou que a force ao matrimônio, à gravidez, ao aborto ou à prostituição, mediante coação, chantagem, suborno ou manipulação; ou que limite ou anule o exercício de seus direitos sexuais e reprodutivos."* (Redação dada pela Lei nº 11.340, de 2006).
+
+É fato que as pessoas, em sua maioria, ainda tem dificuldade de discernir o que é um estupro. Um estudo americano da [Massachusetts Institute of Technology (MIT)](http://time.com/3544323/mit-survey-sexual-assault-college-campus/), realizado com estudantes universitários, demonstra isso. Nele, mostra-se que 17% das mulheres reportaram já ter vivido situações que configuram a definição de violência sexual/estupro ("comportamento sexual indesejado envolvendo uso da força, ameaça física ou incapacitação"). Porém, somente 11% das mulheres marcaram "sim" quando indagadas sobre já terem sido estupradas.
+
+O Levantamento do [Instituto DataSenado em parceria com o Observatório da Mulher Contra a Violência](https://www12.senado.leg.br/institucional/datasenado/arquivos/aumenta-numero-de-mulheres-que-declaram-ter-sofrido-violencia), traz um panorama dos crimes de violência doméstica e familiar contra mulheres. No estudo 15% das mulheres entrevistadas relataram já ter sofrido violência sexual. Apesar da pesquisa não se destinar ao estudo exclusivo de violência cometida por cônjuges, 74% das mulheres entrevistadas mencionaram o marido, ex-marido, companheiro, ex-companheiro, namorado ou ex-namorado como o agressor. 
+
+Além do mais, o levantamento feito, explicita o aumento do percentual de mulheres que declaram ter sofrido violência sexual (de 5% em 2011 para 15% em 2017). Entretanto, não podemos concluir que este aumento corresponda ao crescimento do número de casos. É possível que o aumento do percentual reflita o maior conhecimento/discernimento sobre o que se enquadra em violência sexual. Veja bem, nem sempre a violência sexual é acompanhada de força bruta de forma a obrigar a outra pessoa a manter relações, mas sim da força psicológica. Isso dificulta o discernimento da própria vítima sobre o estupro que sofreu. Por esse e outros motivos, muitas das vítimas só conseguem perceber/admitir que sofreram abusos sexuais de seu parceiro quando o relacionamento acaba.
+
+
+O estupro dentro de relacionamentos amorosos ainda é pouco discutido, o que também contribui para a sua subnotificação. Porém, este vem sendo pauta cada vez mais frequente. Um curta francês, chamado [Je Suis Ordinaire](https://www.youtube.com/watch?v=9sgSl_foYkM) ("Eu sou Normal", em tradução livre) exemplifica bem como se dá, geralmente, um estupro dentro de um relacionamento. 
+
+
+
+[Dantas-Berger & Giffin](https://www.scielosp.org/scielo.php?pid=S0102-311X2005000200008&script=sci_arttext&tlng=pt#) nos dizem que "entende-se que este tipo de violência não será igualmente percebido ou vivido por toda mulher, ou seja, gênero se conjugará com outros elementos como idade, condições familiares, sociais, econômicas e culturais, sem existir um caráter universalizante, mas, sim, socialmente estruturado no modo como esses elementos se associam ou não em suas vidas."
+
+Então, um questionamento que surge eminente ao tratarmos deste tipo de crime é: qual o perfil das vítimas? É este ponto que tentaremos esclarecer no decorrer desse post.
+
+
+<!----
+............... Analise dos Dados ..............
+---->
+
+### Perfil das Vítimas segundo os Dados do SINAN
+
+```{r base de dados}
+# dados = readRDS("estupro_relacionamento/data/sinan_filtrado.RDS" ) # dados brutos
+# dados$COD_IDADE = substr( dados$NU_IDADE_N , 1 , 1 ) # codigo da idade
+# dados$NUM_IDADE = as.numeric( substr( dados$NU_IDADE_N , 2 , 4 ) ) # idade
+# dadosNA = dados[-which(is.na(dados$REL_CONJ) & is.na(dados$REL_EXCON) & is.na(dados$REL_NAMO) & is.na(dados$REL_EXNAM)),] # retirando os individuos que tiveram NA nas 4 categorias que queremos (namorados, ex-namorados, conjuges ou ex-conjuge)
+# 
+# parceiro = dadosNA[which(dadosNA$REL_CONJ=="Sim" | dadosNA$REL_EXCON=="Sim" | dadosNA$REL_NAMO=="Sim" | dadosNA$REL_EXNAM=="Sim"),] # deixando os individuos que tiveram pelo menos uma das 4 categorias que queremos  (namorados, ex-namorados, conjuges ou ex-conjuge) igual a "Sim"
+# 
+# parceiro_id = parceiro[parceiro$COD_IDADE == 4 & !is.na(parceiro$COD_IDADE),] # retirando que a idade era em horas, dias, meses ou NA
+# parceiro_id = parceiro_id[-which(parceiro_id$NUM_IDADE<=9),] # retirando as mulheres com idade menor do que 10 anos
+# parceiro_id$CICL_VID_VITIMA = cut(parceiro_id$NUM_IDADE , breaks = c(0,9,19,24,59,max(parceiro_id$NUM_IDADE)), labels=c(1,2,3,4,5)) # adicionando a variavael que indica o ciclo de vida da vitima
+# # (0,9] crian??a ;  (9;19] adolescente ; (19,24] jovem ; (24,59] adulto ; >59 idoso
+# levels(parceiro_id$CICL_VID_VITIMA) = c( "Criança", "Adolescente", "Jovem", "Adulta", "Idosa")
+# parceiro_id$REGIAO = as.factor( substr( parceiro_id$ID_MN_RESI , 1 , 1 ) ) # adicionando a variavel regiao
+# levels(parceiro_id$REGIAO) = c( "Norte" , "Nordeste" , "Sudeste" , "Sul" , "Centro-Oeste") #mudando codigo da região pelo seu nome
+#saveRDS(object = parceiro_id, file = "estupro_relacionamento/data/parceiro_id")
+
+parceiro_id <- readRDS("estupro_relacionamento/data/parceiro_id.RDS")
+CONJ = parceiro_id[ which(parceiro_id$REL_CONJ == "Sim"),] # somente individuos que relataram como agressor o conjuge
+EXCONJ = parceiro_id[ which(parceiro_id$REL_EXCON == "Sim"),] # somente individuos que relataram como agressor o ex-conjuge
+NAMO = parceiro_id[ which(parceiro_id$REL_NAMO == "Sim"),]  # somente individuos que relataram como agressor o namorado
+EXNAMO = parceiro_id[ which(parceiro_id$REL_EXNAM == "Sim"),]   # somente individuos que relataram como agressor o ex-namorado
+
+```
+
+O Sistema de Informação de Agravos de Notificação (SINAN) nos fornece em seu banco de dados, dentre outras informações, o vínculo/grau de parentesco da vítima com o autor da violência. Com isso, vamos nos ater a análise dos casos nos quais as vítimas relataram que o seu agressor era o seu namorado, ex-namorado, cônjuge ou ex-cônjuge. (Para melhor leitura, ao longo do texto chamaremos os namorados, ex-namorados, cônjuges e ex-cônjuges de "companheiros" quando estivermos nos referindo a todas as categorias de forma agrupada).
+
+De todas as notificações realizadas entre os anos de 2011 e 2016, nos quais a vítima era mulher, em 14% dos casos a autoria da agressão foi atribuída ao companheiro da vítima. A Figura 1 a seguir nos mostra a evolução do número de casos  notificados ao longo dos anos de 2011 a 2016. 
+
+```{r, echo = FALSE, results = 'asis', message = FALSE, warning = FALSE}
+highchart(height = 500, width = 800) %>%
+  hc_add_series(name="Total", data = as.numeric(c(table(parceiro_id$ANO)[1],table(parceiro_id$ANO)[2],table(parceiro_id$ANO)[3],
+                                    table(parceiro_id$ANO)[4],table(parceiro_id$ANO)[5],table(parceiro_id$ANO)[6])) ) %>%
+                # width	= "50px",
+                # height = "40px",
+                # align = "left",
+                # name = "\nnúmero de notificações",
+                # mapping = hcaes(y = num1),
+                # type = "line", xaxt = as.character(2011:2016)) %>%
+  hc_add_series(name="Cônjuge",data = as.numeric(c(table(CONJ$ANO)[1],table(CONJ$ANO)[2],table(CONJ$ANO)[3],
+                                    table(CONJ$ANO)[4],table(CONJ$ANO)[5],table(CONJ$ANO)[6])) ) %>%
+  
+  hc_add_series(name="Ex-cônjuge",data = as.numeric(c(table(EXCONJ$ANO)[1],table(EXCONJ$ANO)[2],table(EXCONJ$ANO)[3],
+                                    table(EXCONJ$ANO)[4],table(EXCONJ$ANO)[5],table(EXCONJ$ANO)[6])) ) %>%
+  
+  hc_add_series(name="Namorado",data = as.numeric(c(table(NAMO$ANO)[1],table(NAMO$ANO)[2],table(NAMO$ANO)[3],
+                                    table(NAMO$ANO)[4],table(NAMO$ANO)[5],table(NAMO$ANO)[6])) ) %>%
+  
+  hc_add_series(name="Ex-namorado",data = as.numeric(c(table(EXNAMO$ANO)[1],table(EXNAMO$ANO)[2],table(EXNAMO$ANO)[3],
+                                    table(EXNAMO$ANO)[4],table(EXNAMO$ANO)[5],table(EXNAMO$ANO)[6])) ) %>%
+  
+  hc_xAxis(title = list(text = "Ano de Notificação"), categories = as.character(2011:2016)) %>%
+  hc_yAxis(title = list(text = "Número de Notificações"),  showFirstLabel = TRUE, labels = list(format = "{value}")) %>%
+  hc_title(text = "Figura 1: Número de Notificações de Casos de Estupro em Mulheres Cometidos por seus Companheiros, de 2011 a 2016.", style = list(color = gray(0.1))) %>%
+    hc_colors(c("#191970","#999999", "#E69F00", "#56B4E9","#746187"))%>%
+  hc_credits(
+    enabled = TRUE, 
+    text = "Fonte: VIVA/SVS/MS",
+    #    href = "http://svs.aids.gov.br",
+    style = list(fontSize = "12px0")) %>%
+  frameWidget()
+
+```
+
+```{r}
+per_tot = (table(parceiro_id$ANO)[6] - table(parceiro_id$ANO)[1]) / table(parceiro_id$ANO)[1] * 100  #crecimento percentual - total
+per_conj = (table(CONJ$ANO)[6] - table(CONJ$ANO)[1]) / table(CONJ$ANO)[1] * 100  #crecimento percentual - conjuges
+per_exconj = (table(EXCONJ$ANO)[6] - table(EXCONJ$ANO)[1]) / table(EXCONJ$ANO)[1] * 100 #crecimento percentual - ex-conjuges
+per_namo = (table(NAMO$ANO)[6] - table(NAMO$ANO)[1]) / table(NAMO$ANO)[1] * 100 #crecimento percentual - namorados
+per_exnamo = (table(EXNAMO$ANO)[6] - table(EXNAMO$ANO)[1]) / table(EXNAMO$ANO)[1] * 100 ##crecimento percentual - ex-namorados
+```
+
+
+Podemos notar na Figura 1 que, em 2016 por exemplo, foram notificados 3010 casos nos quais o agressor era seu companheiro, isso representa cerca de 8 casos notificados por dia. Além disso, houve um aumento significativo no número de casos (o aumento total chegou a 134%). Contudo, como dito anteriormente há fortes motivos para se acreditar que esse aumento não é proveniente somente do crescimento do número de casos em si, mas também do aumento de mulheres que notificaram o crime.
+
+Notamos também que, ao longo dos anos estudados, a maior parte das notificações, o companheiro era o namorado da vítima (variando de 45% a 51% das notificações estudadas). Em seguida, vêm os casos nos quais o agressor era o cônjuge, representando de 29% a 31% das notificações.
+
+#### Idade das Vítimas
+
+Uma característica importante a ser analisada é a idade das vítimas. A Figura 2 mostra a distribuição da idade das vítimas de estupro cujo agressor foi seu companheiro, ao longo de todos os anos estudados. 
+
+
+```{r, echo = FALSE, results = 'asis', message = FALSE, warning = FALSE}
+
+quantis = quantile(parceiro_id$NUM_IDADE)
+
+age = data_frame(Idade = factor(names(table(parceiro_id$NUM_IDADE)), ordered = TRUE), Freq = as.numeric(table(parceiro_id$NUM_IDADE)) )
+
+# age <-parceiro_id %>%  count(parceiro_id$NUM_IDADE) %>%
+#   bind_cols(data_frame(Idade = factor(names(table(parceiro_id$NUM_IDADE)), 
+# #                                      levels = c("", 1:19), 
+# #                                      labels = c("< 1", 1:19),
+#                                       ordered = TRUE), 
+#                        Freq = as.numeric(table(parceiro_id$NUM_IDADE)) ))
+
+hchart(age, "column", hcaes(x = Idade, y = Freq ), name = "Contagem") %>%
+  hc_xAxis(min = 0, title = list(text = "Idade no Momento da Ocorrência (em anos)")) %>%
+  hc_yAxis(min = 0, title = list(text = "Número de Notificações")) %>%
+  hc_colors("#746187")  %>% 
+ # hc_legend(layout = "horizontal", verticalAlign  =  "bottom") %>% 
+  hc_title(text = "Figura 2: Número de Notificações, por idade, de Casos de Estupro em Mulheres Cometidos por seus Companheiros, de 2011 a 2016.", style = list(color = gray(0.1))) %>%
+  hc_credits(
+    enabled = TRUE, 
+    text = "Fonte: VIVA/SVS/MS",
+#    href = "http://svs.aids.gov.br",
+    style = list(fontSize = "12px0")) %>%
+  frameWidget()
+
+```
+
+A Figura revela uma grande concentração de casos em meninas, com o número de ocorrências decrescendo com o aumento da idade da vítima. Veja que há um pico na idade de 13 anos. Uma interpretação bastante preocupante que pode ser feita nos mostra que 50% das mulheres vítimas de estupro por seu companheiro tem menos de 14 anos.  Para melhor entender como se dá a relação do agressor com a vítima, a Tabela 1 vem mostrar o número de casos fazendo uma ligação da faixa etária da vítima (coluna) e de seu agressor (linha). (As idades que compõem cada faixa etária está explicitada nas observações ao final do post.)
+
+
+```{r echo = FALSE, results = "asis"}
+# tabela = read_ods("tabela.ods")
+# tabela1 = tabela[-6,-1]
+# rownames(tabela1) = tabela[-6,1]
+load("estupro_relacionamento/data/tabelas.RData")
+
+tabela1 %>%
+  kable("html", caption = "Tabela 1: Número e Porcentagem de Notificações de Estupros em Mulheres cujo Agressor era seu Companheiro, segregados por Faixa Etária da Vítima e do Agressor.  (fonte: VIVA/SVS/MS).") %>%
+  kable_styling(bootstrap_options = "hover", full_width = F)  #, row_label_position = "r"
+
+```
+
+
+Através da Tabela 1 podemos perceber que 41% das adolescentes foram violentadas por outros adolescentes e 33% delas, por jovens. Por sua vez, as mulheres jovens, tiveram o agressor considerado adulto em 69% dos casos. Já para as mulheres adultas, os companheiros eram predominantemente adultos (90% dos casos). Quando a vítima era idosa, os agressores eram tanto adultos quanto idosos (ambos com 48% dos casos, cada).
+
+#### Escolaridade das Vítimas
+
+Considerando o fato que a grande maioria dos casos são de meninas com baixa idade, esses casos poderiam viesar a análise de escolaridade, já que elas só poderiam estar cursando o Ensino Fundamental. Com isso, a análise será feita  com aquelas que tinham mais de 18 anos, já quenestas poderiam/deveriam ter concluído o Ensino Médio. 
+
+
+```{r}
+
+#Fundamental : <= 15
+#Medio : 15 < x <= 18
+#superior : > 18
+
+parceiro_id$ESCOLARIDADE = as.factor(parceiro_id$CS_ESCOL_N)
+levels(parceiro_id$ESCOLARIDADE) = c("E.F.","E.F.","E.F.",
+                                     "Analfabeto","E.S.","E.S.",
+                                     "E.F.","E.M.","E.M.",
+                                     NA,NA)
+
+
+menos15 = parceiro_id[ parceiro_id$NUM_IDADE <=15 , ]
+entre15e19 = parceiro_id[ parceiro_id$NUM_IDADE > 15 & parceiro_id$NUM_IDADE <= 19 , ]
+mais19 = parceiro_id[ parceiro_id$NUM_IDADE > 19 , ]
+
+#dim(menos15)[1] + dim(entre15e19)[1] + dim(mais19)[1]
+
+mais18= parceiro_id[ parceiro_id$NUM_IDADE >= 18 , ]
+
+#table(mais18$ESCOLARIDADE)
+#prop.table(table(mais18$ESCOLARIDADE))*100
+
+# tabela2 = read.csv2("tabela2.csv",header = T,dec=",")
+# colnames(tabela2)<- c("Analfabeta" , "Ens. Fundamental" , "Ens. Médio" , "Ens. Superior")
+# rownames(tabela2)<- "Total (%)"
+
+tabela2 %>%
+  kable("html", caption = "Tabela 2: Porcentagem de Casos segundo a Escolaridade da Vítima para as Maiores de Idade, de 2011 a 2016 (fonte: VIVA/SVS/MS).") %>%
+  kable_styling(bootstrap_options = "hover", full_width = F)
+
+```
+
+ Das vítimas maiores de idade, percebemos um grande percentual de mulheres que tinham estudado até Ensino Fundamental (49,20%), e em seguida, com Ensino Médio (35,78%).
+ 
+#### Relação da Região de Residência com a Idade da Vítima
+
+Dos dados analisados, 27,37% das vítimas residiam na Região Norte;  22,33% na Região Nordeste; 25,44% na Região Sudeste; 16,37% na Região Sul; e 8,50% na Região Centro-Oeste.
+
+A Figura 3 a seguir mostra o número e aporcentagem de notificações por região, segundo a faixa etária da vítima.
+
+
+```{r, echo = FALSE, results = 'asis', message = FALSE, warning = FALSE}
+
+# parceiro_id$um =  1
+# 
+# parceiro_id_NA = parceiro_id[ -which(is.na(parceiro_id$REGIAO)),]
+# 
+# prop_regiao = round( table(parceiro_id_NA$REGIAO)/dim(parceiro_id_NA)[1]*100 , 2 )
+# 
+# ggplot(parceiro_id_NA, aes(fill=CICL_VID_VITIMA , y=um , x=REGIAO)) + 
+#     geom_bar( stat="identity" , position="fill") +
+#       ylab("Porcentagem") +
+#       xlab("Região") +
+#       scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9","#746187"),
+#                          name="Faixa Etária",
+#                          breaks=c("2", "3", "4","5"),
+#                          labels=c( "Adolescente" ,"Jovem" , "Adulto" , "Idoso")) +
+#       ggtitle("Figura 3: Número de Notificações de Mulheres Vítimas de Estupro cujos Agressores eram seus Companheiros, por Região e Idade, de 2011 a 2016.")
+#       
+
+ciclo_regiao = parceiro_id %>% 
+  count(CICL_VID_VITIMA, REGIAO) %>% 
+  na.omit() 
+
+           
+hchart(ciclo_regiao, "column", hcaes(x = REGIAO, y = n, group = CICL_VID_VITIMA)) %>%
+  hc_yAxis(min = 0, max = 100, title = list(text = "Porcentagem")) %>%
+  hc_xAxis(min = 0, title = list(text = "")) %>%
+  hc_colors(c("#999999", "#E69F00", "#56B4E9","#746187"))  %>% 
+  hc_tooltip(table = TRUE, backgroundColor = "lightgrey", split = TRUE, pointFormat = '<span style="color:{series.color}"><b>{series.name}</b></span>: <b>{point.percentage:.2f}%</b> ({point.y:,.0f} casos)<br/>') %>% 
+  hc_plotOptions(column = list(stacking = "percent")) %>% 
+  hc_legend(layout = "horizontal", verticalAlign  =  "bottom") %>% 
+  hc_title(text = "Figura 3: Número de Notificações de Mulheres Vítimas de Estupro cujos Agressores eram seus Companheiros, por Região e Idade, de 2011 a 2016.", style = list(color = gray(0.1))) %>%
+  hc_credits(
+    enabled = TRUE, 
+    text = "Fonte: VIVA/SVS/MS",
+    style = list(fontSize = "12px0")) %>%
+  frameWidget()
+
+
+
+```
+
+Vemos, então, uma clara diferença entre as regiões do Brasil. A Região Norte se destaca por ter em torno de 90% de suas notificações vinda de adolescentes. Já na Região Sudeste, em mais de 50% dos casos a vítima é adulta. 
+
+O  comportamento tão distinto entre as regiões nos faz refletir sobre os aspectos culturais intrínsecos que moldam desde a ocorrência desse crime, quanto a procura das vítimas por auxílio (e consequentemente a notificação do crime). 
+
+Esses dados um tanto inesperados levantam o questionamento: será que esses dados realmente refletem a realidade? O quão subnotificado esses dados estão? E o quanto essa subnotificação está refletindo nas nossas análises?
+
+
+Sabemos que a sociedade patriarcal em que vivemos por muito tempo "consentiu" com a violência para com a mulher, onde a dependência financeira e a submissão fez com que as mulheres achassem normal ter atribuído dentre seus "deveres conjugais" satisfazer o marido. Até o ano de 2003, por exemplo, um homem podia se divorciar de sua esposa por justa causa, alegando "dívidas conjugais". Esta é uma das hipóteses para o baixo número de pessoas adultas  e idosas que reportaram o crime.
+
+Temos que destacar a importância de orientar os jovens e adolescentes a  como identificar os sinais de abuso, além de salientar a obrigatoriedade do **CONSENTIMENTO** nas relações sexuais.
+
+Sexo sem consentimento é estupro, sim. 
+
+Forçar relações sexuais por meio de "convencimento", também. 
+
+**É importante notificar os casos de estupro (opções: ligue 180 ou ir ao centro de saúde mais próximo).**
+
+Observações:
+
+* Os dados de 2015 e 2016 não estão consolidados;
+
+* Ao longo dos anos, foram eliminados, em média, 1,6% dos dados por inconsistência de informações;
+
+* Vale ressaltar aqui, que a variável que nos indica a faixa etária do agressor apresentava muito valores faltantes;
+
+* A faixa etária, em anos, é dividida de tal maneira: (0,9] criança ;  (9;19] adolescente ; (19,24] jovem ; (24,59] adulto ; >59 idoso.
+
+
