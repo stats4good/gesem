@@ -6,9 +6,28 @@
     <description>Recent content in Categories on Grupo de Estudo da Subnotificação de Estupro em Mulheres</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
+    <lastBuildDate>Tue, 09 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/gesem/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Atendimento À Mulher</title>
+      <link>/gesem/categories/atendimento-%C3%A0-mulher/</link>
+      <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/gesem/categories/atendimento-%C3%A0-mulher/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deam</title>
+      <link>/gesem/categories/deam/</link>
+      <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/gesem/categories/deam/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Estudo De Caso</title>

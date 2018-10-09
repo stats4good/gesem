@@ -1,0 +1,228 @@
+---
+title: "Os ambientes especializados no atendimento à mulher e a relação com as notificações de casos de estupro"
+author: ["Douglas R. Mesquita Azevedo", "Rumenick Pereira da Silva"]
+date: 2018-10-09
+categories: ["DEAM", "Atendimento à mulher"]
+tags: ["Localização", "Taxa de notificação"]
+banner: "blog/2018/10/locais_atendimento_mulher/img/DEAM.png"
+summary: "A primeira Delegacia Especializada no Atendimento à Mulher (DEAM) foi inaugurada em 1985 na cidade de São Paulo. A sua criação foi motivada pelas recorrentes críticas ao atendimento às mulheres nas delegacias convencionais. Passados 33 anos, o Brasil conta com 369 DEAMs segundo a Secretaria Nacional de Políticas para Mulheres. Neste post queremos avaliar através dos dados do SINAN a importância dos locais especializados no atendimento à mulher na taxa de notificação de estupro no Brasil."
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r pacotes}
+require(dplyr)
+require(sf)
+require(ggplot2)
+require(ggthemes)
+require(cowplot)
+```
+
+```{r dados}
+regMun_sf <- readRDS(file = "locais_atendimento_mulher/data/sinan_2014_sf.RDS")
+tab <- readRDS(file = "locais_atendimento_mulher/data/tab_delegacias.RDS")
+```
+
+## Os ambientes especializados no atendimento à mulher
+
+No ano de 1985 na cidade de São Paulo foi inaugurada a primeira Delegacia Especializada no Atendimento à Mulher (DEAM). A criação desta unidade especial foi motivada por diversas críticas à forma como as delegacias convencionais abordavam as vítimas, especialmente quanto a crimes sexuais. Em diversos relatos as vítimas denunciavam o despreparo por parte dos policiais ao abordar o assunto incluindo, por exemplo, a prática de culpar a vítima pelo crime ([Delegacia da Mulher deu início, há 30 anos, a políticas de combate à violência](http://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2015-08/ha-30-anos-delegacia-da-mulher-deu-inicio-politicas-de-combate)).
+
+A partir da criação desta delegacia o número de denúncias de maus tratos aumentou significativamente e assim o governo passou a ter consciência da violência contra a mulher no nosso país. Desde então, diversas políticas foram propostas tentando extinguir os crimes sexuais e de maus tratos contra mulheres. A política mais conhecida é a Lei Maria da Penha proposta em 2006.
+
+Apesar dos esforços para melhorias na resolução deste problema, sabemos que as ferramentas hoje existentes ainda não são suficientes para extinguir a violência contra a mulher. Além disso, ainda existem muitos relatos de despreparo no atendimento às mulheres mesmo nas DEAMs ([A ineficiência da delegacia da mulher](https://www.cartacapital.com.br/blogs/escritorio-feminista/a-ineficiencia-da-delegacia-da-mulher-1964.html), [O poder público só nos vê quando a gente tomba](https://www.huffpostbrasil.com/2017/10/02/o-poder-publico-so-nos-ve-quando-a-gente-tomba_a_23230133/])). 
+
+Esse despreparo no atendimento é um dos motivos que levam à subnotificação do crime de estupro no Brasil. Sabendo dos comentários negativos a respeito das delegacias e até mesmo das DEAMs, muitas mulheres somam esse dificultador a já constrangedora tarefa de reportar o crime e acabam por não fazê-lo. É importante salientar que a notificação é um primeiro passo para a criação de políticas públicas efetivas e, portanto, é muito importante que este crime seja reportado sempre. Para isso é possível ir até uma delegacia convencional, uma DEAM ou através do telefone 180.
+
+Apesar de não funcionar da maneira mais efetiva possível, os atendimentos às mulheres dentro das DEAMs motivou o [aumento das denúncias de crimes sexuais e maus tratos](http://www.spm.gov.br/lei-maria-da-penha/lei-maria-da-penha/norma-tecnica-de-padronizacao-das-deams-.pdf). O aumento nas denúncias e o encorajamento das mulheres para falar do assunto são de grande importância para a criação de novas políticas públicas, além da ampliação e reparação das já existentes.
+
+Além das DEAMs o governo conta com outras frentes no combate aos maus tratos e crimes sexuais como por exemplo unidades móveis, abrigos e serviços de saúde ([Serviços especializados no atendimento à mulher](http://www.spm.gov.br/arquivos-diversos/acesso-a-informacao/perguntas-frequentes/violencia/quantos-sao-e-onde-se-localizam-os-servicos-especializados-no-atendimento-a-mulher-no-brasil)). Em todos esses lugares as mulheres podem notificar os casos de violência sexual e maus tratos. Esses locais são referidos neste post como ambientes especializados no atendimento à mulher.
+
+## A geolocalização dos ambientes especializados no atendimento à mulher e a questão da notificação do estupro
+
+No ano de 2017 atráves do endereço [sistema3.planalto.gov.br/spmu/atendimento/](sistema3.planalto.gov.br/spmu/atendimento/) foram coletados os endereços de 499 ambientes especializados no atendimento à mulher de todo o Brasil. Estes locais estavam distribuídas em 402 municípios brasileiros dos quais em apenas 7 não foram verificados nenhuma notificação de estupro em mulheres no ano de 2014^1^ segundo o SINAN. 
+
+Um fato conhecido é que ainda são poucos os ambientes especializados no atendimento à mulher e, em geral, estes se localizam em cidades bastante populosas ([A distribuição das delegacias da mulher pelo Brasil](https://www.nexojornal.com.br/grafico/2017/09/22/A-distribui%C3%A7%C3%A3o-de-delegacias-da-mulher-pelo-Brasil)). Os mapas abaixo apresentam a distribuição geográfica destes locais, representados pelos pontos nos mapas. 
+
+O mapa a esquerda apresenta as taxas de notificação de estupro por 100.000 mulheres. Essas taxas foram calculadas com base nos dados oriundos do SINAN (Sistema de Informação de Agravos de Notificação) desta forma não são dados obtidos dos ambientes especializados no atendimento à mulher. Ao se observar uma taxa 200, significa que para cada 100.000 mulheres, 200 notificaram estupro em uma determinada cidade. Demarca-se em cinza os municípios com nenhuma notificação no ano de 2014. Para uma visão geral dos municípios sem notificações ao longo do tempo veja o post \"[O que as localizações de cada crime de estupro têm a nos dizer?](https://stats4good.github.io/gesem/blog/2018/05/localizacoes_estupros/)\".
+
+O mapa a direita apresenta as distâncias em quilômetros que uma mulher deveria se deslocar para ser apropriadamente atendida em um ambiente especializado. Espera-se que municípios mais distantes dos locais de atendimento especializados tenham menor taxa de notificação do que aqueles cujas distâncias são menores.
+
+```{r mapa BR, fig.align='center', out.width = '100%'}
+regMun_sf_br <- regMun_sf %>%
+  #filter(UF %in% c("RS", "SC", "PR")) %>%
+  mutate(distancia = distancia/1000,
+         TX_100 = if_else(TX_100 == 0, NA_real_, TX_100),
+         lat_cent = if_else(DELEGACIA == "Não", NA_real_, lat_cent),
+         long_cent = if_else(DELEGACIA == "Não", NA_real_, long_cent))
+
+tx <- ggplot(regMun_sf_br) +
+  geom_sf(aes(group = NOME, fill = TX_100), color = "white", size = 0.05) +
+  geom_point(aes(x = lat_cent, y = long_cent), color = "white", size = 0.1) + 
+  scale_fill_gradient("Taxa de notificação \n por 100.000 mulheres", 
+                      low = "#f768a1", high = "#49006a", na.value = grey(0.3)) +
+  coord_sf(datum = NA) +
+  theme_map() + 
+  theme(legend.position = "bottom", 
+        legend.direction = "horizontal",
+        legend.background = element_rect(fill = "black"),
+        legend.title = element_text(colour = "white", size = 8),
+        legend.text = element_text(colour = "white", size = 6, hjust = 0.1),
+        plot.title = element_text(colour = "white", size = 6, hjust = 0.1),
+        plot.caption = element_text(colour = "white", size = 4),
+        plot.background = element_rect(fill = "black")) + 
+  ggtitle("Taxa de notificação por 100.000 mulheres") + 
+  labs(caption = "Fonte: VIVA/SVS/MS")
+
+dist <- ggplot(regMun_sf_br) +
+  geom_sf(aes(group = NOME, fill = distancia), color = "white", size = 0.05) +
+  geom_point(aes(x = lat_cent, y = long_cent), color = "#49006a", size = 0.1) + 
+  scale_fill_gradient("Distância em KM até o \n local especializado mais próximo", 
+                      low = "#7fcdbb", high = "#081d58", na.value = grey(0.3)) +
+  coord_sf(datum = NA) +
+  theme_map() + 
+  theme(legend.position = "bottom", 
+        legend.direction = "horizontal",
+        legend.background = element_rect(fill = "black"),
+        legend.title = element_text(colour = "white", size = 8),
+        legend.text = element_text(colour = "white", size = 6),
+        plot.caption = element_text(colour = "white", size = 4, hjust = 0.1),
+        plot.title = element_text(colour = "white", size = 6, hjust = 0.1),
+        plot.background = element_rect(fill = "black")) + 
+  ggtitle("Distância até o local especializado mais próximo") +  
+  labs(caption = "Fonte: VIVA/SVS/MS")
+
+p <- plot_grid(tx, dist, ncol = 2, 
+               rel_heights = c(1/2, 1/2))
+
+title <- ggdraw() +
+  draw_label("Figura 1: Localização dos ambientes de atendimento à mulher", hjust = 0.5, size = 12)
+
+plot_grid(title, p, ncol = 1, rel_heights = c(0.1, 1))
+```
+
+Percebe-se que na região Sudeste, região mais populosa do Brasil, tem-se as maiores concentrações de locais especializados no atendimento à mulher enquanto na região norte, região menos populosa do Brasil, temos poucas unidades especializadas no atendimento à mulher. Também vemos que, em geral, municípios mais distantes destes locais (coloridos em tons mais escuros à direita) tendem a não apresentar notificações (áreas cinzas no mapa à esquerda).
+
+Devido às dimensões continentais do Brasil a visualização na região Sudeste fica bastante difícil. Para exemplificar escolhemos o estado de Minas Gerais (pois é um estado bem representativo da realidade brasileira) e refizemos os mesmos gráficos. Novamente, vemos que a distância até um local especializado parece estar relacionada com a ausência de notificações.
+
+```{r mapa MG, fig.align='center', out.width = '100%'}
+regMun_sf_MG <- regMun_sf %>%
+  filter(UF %in% c("MG")) %>%
+  mutate(distancia = distancia/1000,
+         TX_100 = if_else(TX_100 == 0, NA_real_, TX_100),
+         lat_cent = if_else(DELEGACIA == "Não", NA_real_, lat_cent),
+         long_cent = if_else(DELEGACIA == "Não", NA_real_, long_cent))
+
+tx <- ggplot(regMun_sf_MG) +
+  geom_sf(aes(group = NOME, fill = TX_100), color = "white", size = 0.05) +
+  geom_point(aes(x = lat_cent, y = long_cent), color = "white", size = 0.1) + 
+  scale_fill_gradient("Taxa de notificação \n por 100.000 mulheres", 
+                      low = "#f768a1", high = "#49006a", na.value = grey(0.3)) +
+  coord_sf(datum = NA) +
+  theme_map() + 
+  theme(legend.position = "bottom", 
+        legend.direction = "horizontal",
+        legend.background = element_rect(fill = "black"),
+        legend.title = element_text(colour = "white", size = 8),
+        legend.text = element_text(colour = "white", size = 6, hjust = 0.1),
+        plot.title = element_text(colour = "white", size = 6, hjust = 0.1),
+        plot.caption = element_text(colour = "white", size = 4),
+        plot.background = element_rect(fill = "black")) + 
+  ggtitle("Taxa de notificação por 100.000 mulheres") +
+  labs(caption = "Fonte: VIVA/SVS/MS")
+
+dist <- ggplot(regMun_sf_MG) +
+  geom_sf(aes(group = NOME, fill = distancia), color = "white", size = 0.05) +
+  geom_point(aes(x = lat_cent, y = long_cent), color = "#49006a", size = 0.1) + 
+  scale_fill_gradient("Distância em KM até o \n local especializado mais próximo", 
+                      low = "#7fcdbb", high = "#081d58", na.value = grey(0.3)) +
+  coord_sf(datum = NA) +
+  theme_map() + 
+  theme(legend.position = "bottom", 
+        legend.direction = "horizontal",
+        legend.background = element_rect(fill = "black"),
+        legend.title = element_text(colour = "white", size = 8),
+        legend.text = element_text(colour = "white", size = 6),
+        plot.caption = element_text(colour = "white", size = 4, hjust = 0.1),
+        plot.title = element_text(colour = "white", size = 6, hjust = 0.1),
+        plot.background = element_rect(fill = "black")) + 
+  ggtitle("Distância até o local especializado mais próximo") +
+  labs(caption = "Fonte: VIVA/SVS/MS")
+
+p <- plot_grid(tx, dist, ncol = 2, 
+               rel_heights = c(1/2, 1/2))
+
+title <- ggdraw() +
+  draw_label("Figura 2: Localização dos ambientes de atendimento à mulher em MG", hjust = 0.5, size = 12)
+
+plot_grid(title, p, ncol = 1, rel_heights = c(0.1, 1))
+```
+
+Para sanar a curiosidade a respeito das taxas de estupro por município veja também: 
+
++ [Dados oficiais de estupro no Brasil: A questão da subnotificação](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/)
++ [Taxas de estupro no Brasil: Como elas variam entre as unidades da federação?](https://stats4good.github.io/gesem/blog/2018/06/taxas_uf/)
+
+No post [Dados oficiais de estupro no Brasil: A questão da subnotificação](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/) temos que em 2016 não foram contabilizadas notificações em aproximadamente 71% dos municípios brasileiros. Dado que apenas 7 municípios com ambientes especializados no atendimento à mulher não possuíram notificações, temos evidências que a grande maioria dos municípios sem notificações são aqueles onde não existem locais especializados no atendimento à mulher.
+
+## As diferenças nas taxas de notificação nos municípios com e sem ambientes especializados no atendimento à mulher
+
+Sabemos que, em diversos municípios brasileiros, não temos [nenhuma notificação de estupro contra mulheres](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/). Podemos então investigar se as taxas de notificação em municípios com locais especializados no atendimento à mulher são em média maiores que as taxas em municípios sem acesso a estes locais.
+
+No gráfico abaixo temos a série histórica das taxas de notificação médias em municípios com e sem ambientes especializados no atendimento à mulher. O tamanho do ponto é proporcional à população média dos municípios.
+
+```{r série histórica, fig.align='center', out.width='70%'}
+brks <- c(20000, 280000)
+
+ggplot(tab) +
+  geom_line(aes(x = as.numeric(ANO), y = TX_MEDIA, color = DELEGACIA)) +
+  geom_point(aes(x = as.numeric(ANO), y = TX_MEDIA, color = DELEGACIA, size = MEDIA_POP)) +
+  scale_color_manual("Locais especializados no \n atedimento à mulher", 
+                     labels = c("Não", "Sim"), 
+                     values = c("SteelBlue", "IndianRed")) +
+  scale_size_continuous("Número médio de habitantes", breaks = brks, labels = brks) +
+  xlab("Ano de notificação") + ylab("Taxa média de notificação \n por 100.000 mulheres") +
+  ggtitle("Figura 3: Taxa média de notificação por 100.000 mulheres em municípios com \n e sem locais especializados no atendimento à mulher") +
+  theme_bw() +
+  theme(legend.position = "bottom", legend.direction = "vertical") + 
+  labs(caption = "Fonte: VIVA/SVS/MS")
+```
+
+É fácil notar que existe um aumento na taxa de notificação ao longo do tempo tanto para municípios com locais especializados no atendimento à mulher quanto para municípios sem. Portanto esse aumento é global e possivelmente devido às campanhas de incentivo às notificações ([Ações e programas - SPM](http://www.spm.gov.br/sobre/acoes-e-programas)). Um ponto interessante que o gráfico nos mostra é que, em geral, os municípios com locais especializados possuem uma maior taxa média de notificações quando comparados com municípios sem estes locais. Essa diferença é clara e perdura ao longo de todos os anos analisados. 
+
+Outro fato é que em geral os ambientes especializados no atendimento à mulher estão sediadas em municípios com maiores populações (tamanho dos pontos no gráfico). Isso possivelmente contribui para a migração de notificações. Ou seja, é possível que as mulheres saiam de sua cidade para cidades vizinhas em busca de um atendimento mais capacitado ([O que as localizações de cada crime de estupro têm a nos dizer?](https://stats4good.github.io/gesem/blog/2018/05/localizacoes_estupros/)). O estudo dessa migração é assunto para um post futuro.
+
+## Considerações finais
+
+Os ambientes especializados no atendimento à mulher são locais nos quais se espera um tratamento mais capacitado para mulheres vítimas de crimes sexuais ou maus tratos. Em alguns casos este tratamento diferenciado não é observado e, sendo assim, pode contribuir para que as mulheres deixem de notificar.
+
+Analisando os dados disponíveis conseguimos observar de maneira positiva a atuação destas delegacias. Os dados mostram que existe, em média, mais notificações em municípios onde existem locais especializados. Outro ponto observado foi que há uma tendência de ausência de notificações em municípios muito distantes de municípios com com locais especializados no atendimento à mulher. Obviamente muitos outros fatores devem ser considerados quanto a existência de notificações como por exemplo as migrações (mulheres que notificam em cidades vizinhas - [Local de residência e notificação na região metropolitana de Belém](https://stats4good.github.io/gesem/blog/2018/08/local_residencia_belem/)), população do município (em cidades pequenas existe a inibição na notificação pois em geral os habitantes se conhecem), dentre outros aspectos.
+
+Apesar de não ter a efetividade desejada, as DEAMs e os demais locais especializados no atendimento à mulher são ferramentas úteis e importantíssimas na luta contra a violência contra a mulher. 
+
+**É importante notificar os casos de estupro (opções: ligue 180 ou ir ao centro de saúde mais próximo).**
+
+## Observações:
+
+^1^ Os dados de 2015 e 2016 não estão consolidados;
+Os dados utilizados neste post são oriundos do SINAN - O Sistema de Informação de Agravos de Notificação;
+
+## Referências
+
+[Brasil tem uma delegacia da mulher a cada 12 municípios](https://noticias.uol.com.br/cotidiano/ultimas-noticias/2016/06/05/brasil-tem-uma-delegacia-com-atendimento-a-mulher-a-cada-12-municipios.htm).
+
+[Aumento de denúncias reflete encorajamento do estado a mulheres violentadas](https://www.campograndenews.com.br/cidades/aumento-de-denuncias-reflete-encorajamento-do-estado-a-mulheres-violentadas).
+
+[Há 30 anos delegacia da mulher deu inicio a políticas de combate](http://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2015-08/ha-30-anos-delegacia-da-mulher-deu-inicio-politicas-de-combate).
+
+[Falta de delegacias especializadas: outra forma de violência contra a mulher](https://professoraalice.jusbrasil.com.br/artigos/121814298/falta-de-delegacias-especializadas-outra-forma-de-violencia-contra-a-mulher).
+
+[Violência em casa e desamparo nas delegacias de mulheres](https://www.hojeemdia.com.br/horizontes/viol%C3%AAncia-em-casa-e-desamparo-nas-delegacias-de-mulheres-1.280756).
+
+[A distribuição de delegacias da mulher pelo Brasil](https://www.nexojornal.com.br/grafico/2017/09/22/A-distribui%C3%A7%C3%A3o-de-delegacias-da-mulher-pelo-Brasil).
+
+[Ações e programas - SPM](http://www.spm.gov.br/sobre/acoes-e-programas)
+[O que as localizações de cada crime de estupro têm a nos dizer?](https://stats4good.github.io/gesem/blog/2018/05/localizacoes_estupros/).
+
+[Local de residência e notificação na região metropolitana de Belém](https://stats4good.github.io/gesem/blog/2018/08/local_residencia_belem/).
