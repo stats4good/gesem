@@ -206,6 +206,7 @@ Apesar de não ter a efetividade desejada, as DEAMs e os demais locais especiali
 ## Observações:
 
 ^1^ Os dados de 2015 e 2016 não estão consolidados;
+
 Os dados utilizados neste post são oriundos do SINAN - O Sistema de Informação de Agravos de Notificação;
 
 ## Referências
