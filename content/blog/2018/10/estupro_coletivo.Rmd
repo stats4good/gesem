@@ -1,0 +1,451 @@
+---
+title: "Estupro Coletivo: o que o define e o diferencia?"
+author: "Larissa Sayuri Futino C. dos Santos"
+date: 2018-10-20
+categories: ["Localização", "Taxa de notificação"]
+tags: ["estupro", "estupro coletivo", "local de ocorrência", "relaçao com o agressor", "idade", "perfil das vítimas"]
+banner: "blog/2018/10/estupro_coletivo/img/estuproColetImage.jpg"
+summary: "O crime de estupro é considerado de extrema violência por corresponder à apropriação do corpo e intimidade de uma mulher. O estupro coletivo, considerado aqui como a ocorrência da violação com mais de um agressor, é tido por muitos como o mais violento. Nesse post analisamos algumas características das vítimas desse tipo de estupro. Além disso, investigamos aspectos como o local de ocorrência e a relação com os agressores fazendo comparativos das quantidades observadas para estupros com um único agressor."
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+### <a name="secIntroducao"></a>Quando há mais de um agressor
+
+Crimes de estupro coletivo são continuamente noticiados na mídia^1,2,3,4,5,6,7,8,9^ sendo mais recentemente de especial repercussão o caso no [Rio de Janeiro](http://agenciabrasil.ebc.com.br/geral/noticia/2017-05/policia-investiga-mais-um-caso-de-estupro-coletivo-de-adolescente-no-rio). 
+
+Estupro Coletivo é uma expressão de uso comum para denotar:
+
+> Estupro Coletivo: Crime de estupro, cometido com o concurso de duas ou mais pessoas.
+
+Ou seja, diz respeito aos casos de estupro em que há mais de um agressor envolvido. Mais especificamente, a 
+expressão faz referência aos casos em que se aplica o art. 226 do Código Penal. 
+
+Toda forma de violência sexual é cruel pois trata o corpo e intimidade da mulher como itens de posse do agressor pelo prazer e ímpeto de tortura como cita a
+[Agência Patrícia Galvão](https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/). Além disso, segundo o [Estatuto de Roma do Tribunal Penal Internacional](http://www.planalto.gov.br/ccivil_03/decreto/2002/D4388.htm) todo crime de cunho sexual constitui crime de Violência contra a Humanidade. Entretanto,
+casos de estupro coletivo envolvem mais violência física e maior vulnerabilidade das
+vítimas para suicídio e desenvolvimento de sintomas psiquiátricos ^10,11^. 
+
+Bem como nos casos de crime com um único agressor, nos casos de estupro coletivo a vítima apresenta vergonha, medo e profunda 
+dificuldade de denunciar o crime. Isso inibe e dificulta a sua notificação configurando a chamada sub-notificação já abordada no post [Dados oficiais de Estupro no Brasil: A questão da subnotificação](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/). Os estudos de Sarah E. Ullman ^10,11^ afirmam que em casos de estupro coletivo é mais provável que a vítima procure atendimento e assistência mas a extensão dessa afirmação para a realidade do Brasil é impraticável uma vez que não há estudo semelhante no contexto nacional.
+
+
+```{r pacotes}
+library(dplyr); library(tidyr)
+library(ggthemes); library(ggplot2); library(gridExtra)
+library(stringr)
+library(kableExtra)
+```
+
+<!-- ```{r dados} -->
+<!-- dados <- readRDS(file = "~/Dropbox/stats4good/data/dados_desagrupados/sinan/output/sinan_filtrado.RDS") -->
+
+<!-- # Ficar com dados em que a vitima tinha anos de idade completos -->
+<!-- dados <- filter(dados, substr(NU_IDADE_N, 1, 1) == "4") -->
+<!-- numDadosIdAnosComp <- nrow(dados) -->
+
+<!-- dados <- mutate(dados, NU_IDADE_N = as.numeric(substr(NU_IDADE_N, 2, 4))) -->
+
+<!-- # Ficar com dados em que NUM_ENVOLV != NA -->
+<!-- dados <- filter(dados, !is.na(NUM_ENVOLV)) -->
+<!-- numDadosInfoNumEnvolv <- nrow(dados) -->
+
+<!-- # Criar variavel estupro coletivo -->
+<!-- dados <- mutate(dados, estupColet = if_else(NUM_ENVOLV == "Dois ou mais", 1, 0)) -->
+<!-- dados <- dados %>% mutate(estupColetFator = if_else(estupColet == 0, "Um", "Dois ou mais")) -->
+<!-- dados <- dados %>% mutate(estupColetFator = factor(estupColetFator, levels = c("Um", "Dois ou mais"))) -->
+
+<!-- ``` -->
+
+Esse post estuda alguns aspectos desse tipo específico de estupro. Em todas as análises comparamos as quantidades observadas com as de estupros com um único agressor. Assim, é possível verificar se o número de agressores expõe diferenças nas demais características do crime.
+
+### <a name="secMotiv"></a>Quantos são?
+
+Mas de quantos casos estamos falando?! Considerando dados do Sistema de Informação de Agravos de Notificação (SINAN)
+em serviços de saúde do Ministério da Saúde (MS), de 2011 a 2016 temos quantidades relativas às notificações de crime de estupro em mulheres.
+Os números totais podem ser visualizados na Figura abaixo em que se vê a evolução do número total de notificações de crime de estupro 
+no Brasil (linha amarela) e o percentual deles em que há mais de um agressor envolvido (linha azul).
+
+Notamos claramente o crescimento do número de notificações. Segundo o [Atlas da Violência 2018](http://www.forumseguranca.org.br/publicacoes/atlas-da-violencia-2018/) isso é consequência da expansão e aprimoramento dos centros de referência que registram as notificações como as DEAMs, órgãos que receberam análise específica no post [Os Ambientes Especializados no Atendimento à Mulher](https://stats4good.github.io/gesem/blog/2018/10/locais_atendimento_mulher/). 
+
+De forma mais gradativa vemos o aumento do percentual das notificações de estupro coletivo. A diferença entre os valores de 2011 e 2016 alcança dois pontos percentuais (de 12,7% a 14,7%) sendo que o maior valor observado corresponde a 15,6% em 2014. Em números absolutos, o SINAN registrou de 10.000 (2011) a 20.000 (2016) casos de estupro coletivo em mulheres. Logo, vemos que os registros desse crime dizem respeito a um número expressivo de vítimas.
+
+
+```{r serieTemporal, fig.align = 'center', out.width = '70%'}
+# # Serie Temporal
+# # Numero ocorrencia por ano e se ocorreu mais de uma vez ou nao
+# numOcorrAno <- dados %>%
+#   group_by(ANO, estupColet, OUT_VEZES) %>%
+#   summarise(freqColet = n()) %>%
+#   filter(!is.na(OUT_VEZES)) %>%
+#   ungroup() %>%
+#   group_by(ANO) %>%
+#   mutate(freqTotalAno = sum(freqColet),
+#          propRelAno = round(x = freqColet/freqTotalAno, digits = 4)) %>%
+#   ungroup() %>%
+#   group_by(ANO, estupColet) %>%
+#   mutate(freqTotalEstupColetAno = sum(freqColet),
+#          propRelEstupColetAno = round(x = freqColet/freqTotalEstupColetAno, digits = 4)) %>%
+#   ungroup() %>%
+#   mutate(freq = freqTotalEstupColetAno/freqTotalAno)
+# 
+# # Passando ano para numerico
+# numOcorrAno <- numOcorrAno %>% mutate(ANONum = as.numeric(ANO))
+
+
+# ## -- Grafico 01 ----
+# dfSeriesTemporais <- filter(numOcorrAno, estupColet == 1)
+# dfSeriesTemporais <- dfSeriesTemporais %>% select( ANONum, freqTotalAno, freq)
+# dfSeriesTemporais <- unique(dfSeriesTemporais)
+# dfSeriesTemporais <- mutate(dfSeriesTemporais, freq100 = freq*100)
+# 
+# save(dfSeriesTemporais, file = "/home/leste/Dropbox/stats4good/posts/larissa/Dados/dfSeriesTemporais.RData")
+
+load(file = "estupro_coletivo/data/dfSeriesTemporais.RData")
+
+GrafLinFreqTotEPercEstColet <- ggplot(data = dfSeriesTemporais, aes(ANONum)) + 
+  # eixo esq: Frequencia Total
+  geom_point(aes(y = freqTotalAno, colour = "Frequência Total")) +
+  geom_line(aes(y = freqTotalAno, colour = "Frequência Total")) +
+  # eixo dir: percentual relativo a estupro coletivo
+  geom_point(aes(y = freq100*1000, colour = "Estupro Coletivo (%)")) +
+  geom_line(aes(y = freq100*1000, colour = "Estupro Coletivo (%)")) +
+  # eixo secundario (a direita) revertendo a transformacao
+  scale_y_continuous(sec.axis = sec_axis(~./1000, name = "Estupro Coletivo (%)")) +
+  labs(y = "Frequência Total", x = "Ano", colour = "Variável", caption = "Fonte: VIVA/SVS/MS") +
+  scale_color_tableau(palette = "tableau10medium") +
+  ggtitle("Figura 01: Número total de notificações estupros em mulheres no Brasil e \n percentual de estupros coletivos por ano de notificação") +
+  theme(legend.position = "bottom")
+
+GrafLinFreqTotEPercEstColet
+```
+<!-- Vamos observar características sociodemográficas das -->
+<!-- [vítimas](#secVitimas). No que diz respeito ao ato de violência em si investigamos aspectos como o  -->
+<!-- [local de ocorrência](#secLocalOcor) e a [relação com os agressores](#secRel).  -->
+
+### <a name="secVitimas"></a>Vítimas
+
+No post [Qual a idade das vítimas e onde esses crimes estão ocorrendo?](https://stats4good.github.io/gesem/blog/2018/06/entendendo_as_idades/) discutimos o perfil das vítimas de
+estupro segundo a faixa etária. O Gráfico a seguir procura observar se a vítima de estupro coletivo se diferencia quanto à idade da vítima de estupro no caso de um único agressor. 
+Para cada ano da análise, dispomos de curvas representando as idades observadas nos sub-grupos (cores). Essa curvas são representações mais simples de gráficos de barras. O intervalo de idade onde a altura do gráfico está mais alta, representa a faixa etária da vítima com a maior quantidade de notificações.
+
+Vemos que as distribuições das idades das vítimas, por grupo de número de agressores se assemelham. Basta notar que
+há grande intersecção entre as curvas. A diferença perceptível dá-se nas partes mais à esquerda das curvas em que
+vemos mais área azul. Ou seja, como também apresentado no [Atlas da Violência 2018](http://www.forumseguranca.org.br/publicacoes/atlas-da-violencia-2018/) há maior proporção de estupros coletivos
+contra adolescentes e maiores de 18 anos (mulheres com pelo menos 13 anos).
+
+<img src="img/GrafDensidadeIdade.png" width="70%" style="display:block;margin:auto;">
+
+<!-- # ```{r idade, fig.align = 'center', out.width = '70%'} -->
+<!-- # # # Idade -->
+<!-- # # dfIdade <- dados %>% select(ANO, estupColetFator, NU_IDADE_N)#; nrow(dfIdade) -->
+<!-- # # dfIdade <- dfIdade %>% filter(NU_IDADE_N < 80)#; nrow(dfIdade) -->
+<!-- #  -->
+<!-- # # GrafDensidadeIdade <- ggplot(dfIdade, aes(x = NU_IDADE_N, y = ANO)) + -->
+<!-- # #   geom_density_ridges(aes(fill = estupColetFator), colour = "transparent") + -->
+<!-- # #   scale_fill_manual(values = c("#4E79A780", "#F28E2B80")) + -->
+<!-- # #   geom_vline(xintercept = 13.6, linetype = "dotted") +  -->
+<!-- # #   labs(y = "", x = "Idade (anos)", fill = "# Agressores", caption = "Fonte: VIVA/SVS/MS") + -->
+<!-- # #   ggtitle("Figura 02: Distribuição das Idades das Vítimas por número de \n agressores e ano de notificação") + -->
+<!-- # #   theme(legend.position = "right", legend.direction = "vertical") -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # png(filename = "Plots/GrafDensidadeIdade.png") -->
+<!-- # # GrafDensidadeIdade -->
+<!-- # # dev.off() -->
+<!-- # ``` -->
+
+Um aspecto social muito relevante diz respeito à etnia (raça) das vítimas. Dado o histórico brasileiro que criou condição de desigualdade entre as etnias observar essa variável pode ser uma forma de avaliar minorias ou grupos
+de privilégios. É válido lembrarmos que os dados em análise correspondem às notificações de estupro em mulheres. Eles não correspondem à ocorrência em si. A etnia auto declarada de uma pessoa pode corresponder a dificultador para que a vítima notifique o crime.
+
+Na Figura a seguir vemos gráficos de barras identificando as ocorrências com um único agressor e de estupro coletivo para cada um dos anos de notificação em estudo. A ideia é explorar a composição étnica segundo o número de agressores e em relação 
+ao tempo. A visualização deixa evidente que a maior proporção das etnias é _parda_ e _branca_, respectivamente, em todos os
+anos. Também notamos,com mais atenção, que a proporção referente à etnia _parda_ aumenta gradativamente no tempo ao passo que 
+a etnia _branca_ reduz na mesma proporção (cerca de 2 pontos percentuais). Tal fato também é discutido no [Atlas da Violência 2018](http://www.forumseguranca.org.br/publicacoes/atlas-da-violencia-2018/). 
+
+Obs.: A etnia _amarela_ foi agrupada à etnia _branca_ dada a sua pouca ocorrência.
+
+```{r etnia, fig.align = 'center', out.width = '70%'}
+# # Etnia
+# dfRaca <- dados %>% select(ANO, estupColetFator, CS_RACA)
+# dfRaca <- dfRaca %>% mutate(CS_RACA = if_else(is.na(CS_RACA), "Desconhecido", CS_RACA))
+# dfRaca <- dfRaca %>% mutate(CS_RACA = if_else(CS_RACA == "indígena", "Indígena", CS_RACA))
+# dfRaca <- dfRaca %>% mutate(CS_RACA = str_replace_all(string = CS_RACA, pattern =  "indígena", replacement = "Indígena"))
+# dfRaca <- dfRaca %>% mutate(CS_RACA = if_else(CS_RACA %in% c("Amarela", "Branca") , "Branca", CS_RACA))
+# dfRaca <- dfRaca %>% mutate(CS_RACA = if_else(CS_RACA %in% c("Desconhecido", "Ignorado") , "Ignorado", CS_RACA))
+
+# niveisEtnia <- c("Branca", "Indígena", "Parda", "Preta", "Ignorado")
+# dfRaca <- dfRaca %>% mutate(Etnia = factor(x = CS_RACA, levels = niveisEtnia))
+# 
+# dfRaca <- dfRaca %>%
+#   group_by(ANO, estupColetFator, CS_RACA) %>%
+#   mutate(freqAbs = n()) %>%
+#   ungroup() %>%
+#   group_by(ANO, estupColetFator) %>%
+#   mutate(freqTotal = n()) %>%
+#   ungroup() %>%
+#   mutate(freqRel = (freqAbs/freqTotal)*100)
+# 
+# dfRacaPlot <- unique(dfRaca); rm(dfRaca)
+
+# save(dfRacaPlot, file = "/home/leste/Dropbox/stats4good/posts/larissa/Dados/dfRacaPlot.RData")
+
+load(file = "estupro_coletivo/data/dfRacaPlot.RData")
+
+GrafBarrasEmpilRaca <- ggplot() + 
+  geom_bar(aes(x = estupColetFator, y = freqRel, fill = Etnia), 
+           data = dfRacaPlot,
+           stat = "identity", position = "fill") + 
+  facet_wrap(~ ANO) +
+  scale_fill_tableau(palette = "tableau10medium") +
+   scale_y_continuous(labels = c("0.00" = "0",
+                               "0.25" = "25%","0.50" = "50%",
+                               "0.75" = "75%", "1.00" = "100%")) +
+  ggtitle("Figura 03: Distribuição percentual das etnias de vítimas de estupro \n em mulheres no Brasil por ano de notificação") +
+  labs(x = "Número de Agressores", y = "", colour = "Etnia", caption = "Fonte: VIVA/SVS/MS")
+
+GrafBarrasEmpilRaca
+rm(dfRacaPlot)
+```
+
+### <a name="secLocalOcor"></a>Local de Ocorrência
+
+A identificação do local em que o crime de estupro acontece é também fundamental na definição de 
+características do crime. Estas podem auxiliar na concepção de políticas de combate ao estupro. Uma vez que o post [Qual a idade das vítimas e onde esses crimes estão ocorrendo?](https://stats4good.github.io/gesem/blog/2018/06/entendendo_as_idades/) demonstra que os locais mais
+comuns são _residências_ e _vias públicas_ vamos nos ater com mais atenção a essas duas categorias sendo as demais
+(bares, áreas de lazer, comércio, escola, etc)) agrupadas como _outros_. 
+
+Na Figura a seguir vemos o percentual das notificações de estupro que se deram em residências, vias públicas ou demais
+localidades em função do tempo para os sub-grupos estupro com um único agressor (azul) e estupro coletivo (amarelo).
+
+Em conformidade com o último post mencionado, vê-se a preponderância do nível residência tanto para estupro com um único agressor (azul) quanto para estupro coletivo (amarelo). Esse fato é um dificultador na notificação pela vítima
+já que a ocorrência do crime a portas fechadas exclui a existência de testemunhas. Como consequência a notificação se baseia quase que exclusivamente no testemunho da mulher a qual se sabe que está fragilizada e que é costumeiramente desacreditada por agentes públicos.
+
+Outro fato a ser notado é que o percentual de estupros coletivos em vias públicas ou nas demais categorias é mais expressivo em comparação com os estupros com um único agressor.
+
+```{r localOcorr, fig.align='center', out.width='70%'}
+# # Local Ocorrencia
+# dfLocalOcor <- dados %>% select(ANO, estupColetFator, LOCAL_OCOR)
+# dfLocalOcor <- dfLocalOcor %>% mutate(LOCAL_OCOR = if_else(is.na(LOCAL_OCOR), "
+#                                                            Desconhecido", 
+#                                                            LOCAL_OCOR))
+# dfLocalOcor <- dfLocalOcor %>% mutate(LOCAL_OCORAgrup = if_else(LOCAL_OCOR %in% c("Residênca", "Via publica") , 
+#                                                                 LOCAL_OCOR, 
+#                                                                 "Outro"))
+# dfLocalOcor <- dfLocalOcor %>% mutate(LOCAL_OCORAgrup = if_else(LOCAL_OCORAgrup %in% "Via publica", 
+#                                                                 "Via pública", 
+#                                                                 LOCAL_OCORAgrup))
+# 
+# dfLocalOcor <- dfLocalOcor %>% mutate(ANONum = as.numeric(ANO))
+# dfLocalOcor <- dfLocalOcor %>% mutate(LOCAL_OCORAgrup = factor(LOCAL_OCORAgrup, levels = c("Residênca", "Via pública", "Outro")))
+# 
+# dfLocalOcorResAno <- dfLocalOcor %>%
+#   group_by(ANONum, estupColetFator, LOCAL_OCORAgrup) %>%
+#   summarise(freq = n()) %>%
+#   ungroup() %>%
+#   group_by(ANONum, estupColetFator) %>%
+#   mutate(freqTot = sum(freq),
+#          freqRel = round(x = (freq/freqTot)*100, digits = 3)) 
+# 
+# dfLocalOcorRes <- dfLocalOcor %>%
+#   group_by(ANONum, estupColetFator, LOCAL_OCORAgrup) %>%
+#   summarise(freq = n()) %>%
+#   ungroup() %>%
+#   group_by(estupColetFator) %>%
+#   mutate(freqTot = sum(freq),
+#          freqRel = round(x = (freq/freqTot)*100, digits = 3)) 
+# 
+# dfLocalOcorResAnoPlot <- unique(dfLocalOcorResAno); #
+# 
+# dfLocalOcorResAnoPlot2 <- dfLocalOcorResAnoPlot %>%
+#   select(ANONum, estupColetFator, LOCAL_OCORAgrup, freqRel)
+
+# save(dfLocalOcorResAnoPlot2, file = "/home/leste/Dropbox/stats4good/posts/larissa/Dados/dfLocalOcorResAnoPlot2.RData")
+
+load(file = "estupro_coletivo/data/dfLocalOcorResAnoPlot2.RData")
+
+GrafLinLocalOcorr <- ggplot(data = dfLocalOcorResAnoPlot2, 
+                                      aes(ANONum)) + 
+  geom_line(aes(y = freqRel, colour = estupColetFator)) +
+  geom_point(aes(y = freqRel, colour = estupColetFator)) +
+  facet_wrap(~ LOCAL_OCORAgrup) +
+  labs(y = "", x = "Ano", colour = "# Agressores", caption = "Fonte: VIVA/SVS/MS") +
+  scale_colour_tableau(palette = "tableau10medium") +
+  scale_y_continuous(breaks = seq(20, 60, 10),
+                     labels = c("20%", "30%", "40%", "50%", "60%")) +
+  ggtitle("Figura 04: Percentual dos locais de ocorrência mais comuns por número de \n agressores e ano de notificação") + 
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 60, hjust = 1))
+
+GrafLinLocalOcorr
+rm(dfLocalOcorResAnoPlot2)
+```
+
+### <a name="secRel"></a>Relação da vítima com o agressor
+
+A relação da vítima com o agressor elucida os aspectos sociais ou culturais que influenciam a ocorrência do estupro. Por exemplo, a cultura de servir sexualmente o parceiro, como analisado no post [Estupros em relacionamentos afetivos](https://stats4good.github.io/gesem/blog/2018/09/estupro_relacionamento/) ou a ausência do entendimento de consentimento em uma relação por parte de jovens como também pontuado pela [Agência Patrícia Galvão](https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/). Sendo assim, quisemos estudar essa variável novamente diferenciando as vítimas segundo o número de agressores.
+
+Na Figura a seguir vemos gráficos de barras para o percentual das ocorrências por ano e diferenciando os casos pelo número de agressores envolvidos.
+
+O SINAN dispõe de 16 categorias para descrever a relação social e/ou afetiva da vítima com o agressor. A fim de facilitar a anaĺise fizemos o seguinte agrupamento: 
+
++ Se a vítima declarou que o agressor era: _conhecido_, _pai_, _mãe_,
+_padrasto_, _irmão_, _filho_, _madrasta_, _marido_, _ex-marido_, _namorado_, _ex-namorado_ _cuidador_, _outros_ o 
+agressor é considerado conhecido na nossa análise. 
++ Em contrapartida, se a vítima declarou que o agressor era um _desconhecido_ ou _policial_ o agressor é considerado um desconhecido na nossa análise. 
+
+Dessa forma, em uma situação de estupro coletivo basta pelo menos um conhecido para que o crime seja considerado praticado por um agressor cuja vítima considera familiar. 
+
+```{r relacao, fig.align = 'center', out.width = '70%'}
+
+# ## Relacao
+# dfRel <- select(dados, c("ANO", "estupColet", "estupColetFator", 
+#                          names(dados)[startsWith(names(dados), prefix = "REL")]))
+# dfRel <- select(dfRel, names(dfRel)[!endsWith(names(dfRel), suffix = c("SEXUAL"))])
+# dfRel <- select(dfRel, names(dfRel)[!endsWith(names(dfRel), suffix = c("TRAB"))])
+# dfRel <- select(dfRel, names(dfRel)[!endsWith(names(dfRel), suffix = c("CAT"))])
+# #dfRel <- select(dfRel, names(dfRel)[!endsWith(names(dfRel), suffix = c("ESPEC"))])
+# dfRel <- select(dfRel, names(dfRel)[!endsWith(names(dfRel), suffix = c("PROPRI"))])
+# 
+# dfRel <- dfRel %>% mutate(REL_CONHEC = if_else(REL_CONHEC == 1, "Sim", REL_CONHEC))
+# dfRel <- dfRel %>% mutate(REL_CONHEC = if_else(REL_CONHEC == 2, "Não", REL_CONHEC))
+# dfRel <- dfRel %>% mutate(REL_CONHEC = if_else(REL_CONHEC == 9, "Ignorado", REL_CONHEC))
+# dfRel <- dfRel %>% mutate(ANONum = as.numeric(as.character(ANO)))
+# 
+# dfRel <- dfRel %>% mutate_if(is.character, function(x) if_else(is.na(x), "Ignorado", x))
+# dfRel <- dfRel %>% mutate(id = seq(nrow(dfRel)))
+# 
+# dfRel <- dfRel %>% mutate(peloMenosUmConhec = if_else(REL_CONHEC == "Sim" | REL_MAE == "Sim" | REL_PAI == "Sim" | REL_PAD == "Sim" |
+#                                                         REL_IRMAO== "Sim" | REL_FILHO == "Sim" | REL_MAD == "Sim" |
+#                                                         REL_CONJ == "Sim" | REL_EXCON == "Sim" | REL_NAMO == "Sim" | REL_EXNAM == "Sim" |
+#                                                         REL_CUIDA == "Sim" | REL_CONHEC == "Sim" | REL_PAD == "Sim" | REL_OUTROS == "Sim", "Sim", "Não"))
+# dfRel <- dfRel %>% mutate(peloMenosUmDesco = if_else(peloMenosUmConhec == "Não" | REL_POL == "Sim" | REL_DESCO == "Sim", "Sim", "Não"))
+# 
+# 
+# dfRelGrouped <- dfRel %>%
+#   group_by(ANO, estupColet, estupColetFator, peloMenosUmConhec, peloMenosUmDesco) %>%
+#   summarise(freq = n()) %>%
+#   ungroup() %>%
+#   group_by(ANO, estupColet) %>%
+#   mutate(freqTot = sum(freq),
+#          freqRel = round((freq/freqTot)*100, digits = 4))%>%
+#   unite(col = Desco_Conhec, peloMenosUmDesco, peloMenosUmConhec, sep = "_") %>%
+#   filter(Desco_Conhec != "Sim_Sim") %>%
+#   mutate(estupColetFator = if_else(estupColet == "1", "Um único agressor", "Estupro coletivo"))
+# 
+# dfRelGrouped <- dfRelGrouped %>% mutate(estupColetFator = factor(estupColetFator, levels = c("Um único agressor", "Estupro coletivo")))
+# 
+# 
+# save(dfRelGrouped, file = "/home/leste/Dropbox/stats4good/posts/larissa/Dados/dfRelGrouped.RData")
+
+load(file = "estupro_coletivo/data/dfRelGrouped.RData")
+
+
+GrafLinUmConhec <- ggplot(data = dfRelGrouped, 
+                          aes(x = ANO, y = freqRel, fill = Desco_Conhec)) + 
+  geom_bar(stat = "identity", position = "fill") +
+  facet_wrap(~ estupColetFator) +
+  labs(x = "Ano", y = "", fill = "Relação com a vítima", caption = "Fonte: VIVA/SVS/MS") +
+  ggtitle("Figura 06: Percentual de casos por relação do agressor com a vítima \n e ano de notificação") +
+  scale_fill_tableau(palette = "tableau10medium", 
+                     labels = c("Conhecido", "Desconhecido")) +
+  geom_hline(yintercept = 0.50) +
+  scale_y_continuous(labels = c("0.00" = "0",
+                               "0.25" = "25%","0.50" = "50%",
+                               "0.75" = "75%", "1.00" = "100%")) +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1))
+
+GrafLinUmConhec
+```
+
+Vê-se claramente o enorme percentual de casos em que o agressor é conhecido da vítima tanto nas notificações de estupro coletivo quanto nas notificações de estupro com um único agressor. Todavia, o percentual de casos notificados em que não há nenhum conhecido da vítima é claramente superior nas situação de estupro coletivo.
+
+### <a name="secCons"></a>Consequências e sequelas em vítimas de Estupro Coletivo
+
+As possíveis sequências do crime de estupro são severas e devastadoras com efeitos físicos e mentais no curto e longo prazo como observado em pesquisa da [Agência Patrícia Galvão](https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/).
+
+A fim de elucidar brevemente o potencial de sequelas nas vítimas finalizamos com uma análise relacionando as probabilidades de desenvolvimento de Estresse pós-traumático, mesmo ciente que a mesma variável foi observada apenas até o ano 2014. Assim como no post 
+sobre [Estupro de Vulnerável](https://stats4good.github.io/gesem/blog/2018/08/estupro_de_vulneravel/) vamos utilizar o conceito de
+[razão de chances](https://pt.wikipedia.org/wiki/Raz%C3%A3o_de_possibilidades) sem interpretá-lo diretamente e denotando-o por _odds_.
+
+```{r consequencia, fig.align='center', out.width='70%'}
+# # Consequencia
+# dfCons <- select(dados, c("ANO", "estupColet", "estupColetFator", 
+#                           names(dados)[startsWith(names(dados), prefix = "CONS_ESTRE")]))
+# 
+# dfCons <- dfCons %>% mutate_if(is.character, function(x) if_else(is.na(x), "Ignorado", x))
+# 
+# dfCons <- dfCons %>% mutate(CONS_ESTRE = ifelse(CONS_ESTRE == "Não se aplica", "Ignorado", CONS_ESTRE))
+# 
+# dfConsAno <- dfCons %>%
+#   group_by(ANO, estupColet, estupColetFator, CONS_ESTRE) %>%
+#   summarise(freq = n()) %>%
+#   #ungroup() %>%
+#   group_by(ANO, estupColet, estupColetFator) %>%
+#   mutate(freqTot = sum(freq)) #%>%
+#   #ungroup() %>%
+# 
+# dfConsAno <- dfConsAno %>% mutate(freqRel = round(x = freq/freqTot, digits = 3))
+# 
+# dfConsSemAno <- dfCons %>%
+#   group_by(estupColet, estupColetFator, CONS_ESTRE) %>%
+#   summarise(freq = n()) %>%
+#   #ungroup() %>%
+#   group_by(estupColet, estupColetFator) %>%
+#   mutate(freqTot = sum(freq)) %>% 
+#   mutate(freqRel = round(x = freq/freqTot, digits = 3)) %>%
+#   select(estupColetFator, CONS_ESTRE, freq, freqTot, freqRel)
+#  
+# aux <- rbind(c("Um", round(prop.table(table(dfCons$"CONS_ESTRE"[which(dfCons$"estupColet" == 0)])), digits = 3)),
+# c("Dois ou mais", round(prop.table(table(dfCons$"CONS_ESTRE"[which(dfCons$"estupColet" == 1)])), digits = 3))) 
+# 
+# df <- data.frame(aux)
+# names(df) <- c("# Agressores", "Ignorado", "Não", "Sim")
+# df$"Sim" <- as.numeric(as.character(df$"Sim"))
+# df$"ODDS" <- round(x = df$"Sim"/(1 - df$"Sim"), digits = 3)
+# 
+# save(df, file = "/home/leste/Dropbox/stats4good/posts/larissa/Dados/dfRel.RData")
+load(file = "estupro_coletivo/data/dfRel.RData")
+
+OR <- round(df$"ODDS"[which(df$"# Agressores" == "Dois ou mais")]/df$"ODDS"[which(df$"# Agressores" == "Um")], digits = 3)
+
+df %>%
+  kable("html", caption = "Tabela 1: Distribuição percentual das vítimas de estupro com Estresse pós-traumático pelo número de agressores, de 2011 a 2014 (fonte: VIVA/SVS/MS).") %>%
+  kable_styling(bootstrap_options = "hover", full_width = F)
+```
+
+A razão de chances observada de `r format(OR, big.mark = ".")` explicita que a chance de uma vítima de estupro coletivo desenvolver Estresse pós traumático é 29% maior que a chance de uma vítima de estupro com um único agressor desenvolver. Dessa forma, vemos que para a realidade brasileira as consequências e
+sequelas do crime de estupro coletivo são severas exigindo maior assistência para essa vítima.
+
+Variáveis como essa, que determinam o desenvolvimento de uma possível consequência como decorrência do crime, são fundamentais para o amplo entendimento das sequelas do estupro.
+
+**É importante notificar os casos de estupro (opções: ligue 180 ou ir ao centro de saúde mais próximo).**
+
+## Observações:
+
+Os dados utilizados neste post são oriundos do SINAN - O Sistema de Informação de Agravos de Notificação
+
+Cerca de 1,63% dos dados disponíveis foram descartados por corresponderem a registros em que a vítima não tinha anos de vida completos ou em que não constava o número de agressores envolvidos.
+
+Os dados de 2015 e 2016 não estão consolidados.
+
+## Referências
+
+^1^ [Estupro coletivo na Paraíba](https://www.portalt5.com.br/noticias/paraiba/2018/5/92878-adolescentes-sao-embriagadas-e-sofrem-estupro-coletivo-no-brejo-da-paraiba)
+^2^ [Estupro coletivo em Pernambuco](http://www.diariodepernambuco.com.br/app/noticia/brasil/2018/04/23/interna_brasil,749601/menina-que-sofreu-estupro-coletivo-no-interior-de-sp-passa-por-pronto.shtml)
+^3^ [Estupro coletivo no Piauí](https://noticias.uol.com.br/cotidiano/ultimas-noticias/2017/05/04/adolescente-gravida-de-seis-meses-e-vitima-de-estupro-coletivo-no-piaui.htm
+)
+^4^ [Estupro coletivo em São Paulo](https://www.gazetaonline.com.br/noticias/policia/2018/02/jovem-sofre-estupro-coletivo-e-esfaqueada-e-apedrejada-em-guarapari-1014120739.html)
+^5^ [Estupro coletivo em Minas Gerais](http://www.atribuna.com.br/noticias/noticias-detalhe/policia/policia-de-mg-investiga-estupro-coletivo-de-menina-de-13-anos-em-juiz-de-fora/?cHash=260ff3e7caf02314d2c23b8353c96c56)
+^6^ [Estupro coletivo no Distrito Federal](https://www.correio24horas.com.br/noticia/nid/menina-de-11-anos-e-vitima-de-estupro-coletivo-no-df-esta-meio-desorientada-diz-mae/)
+^7^ [Estupro coletivo no Mato Grosso do Sul](https://www.correiodoestado.com.br/cidades/empresarios-sao-presos-pelo-estupro-coletivo-de-adolescente/334661/)
+^8^ [Estupro coletivo em Santa Catarina](https://omunicipio.com.br/vitima-de-estupro-coletivo-em-brusque-conta-detalhes-da-agressao-sexual/)
+^9^ [Estupro coletivo no Paraná](https://www.bandab.com.br/seguranca/refugiada-se-fingiu-de-morta-para-acabar-com-estupro-coletivo-na-rmc-4-foram-presos/
+)
+
+^10^ A Comparison of Gang and Individual Rape Incidents. Ullman, Sarah E. Violence and Victims; New York Vol. 14, Iss. 2, (1999): 123-33. DOI:10.1891/0886-6708.14.2.123.
+
+^11^ Comparing Gang and Individual Rapes in a Community Sample of Urban Women. Ullman, Sarah E. Violence and Victims; New York Vol. 22, Iss. 1,  (2007): 43-51. DOI:10.1891/088667007780482856.

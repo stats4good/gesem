@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/gesem/blog/2018/10/estupro_coletivo/</loc>
+    <lastmod>2018-10-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/gesem/blog/2018/10/locais_atendimento_mulher/</loc>
     <lastmod>2018-10-09T00:00:00+00:00</lastmod>
   </url>
@@ -77,7 +82,7 @@
   
   <url>
     <loc>/gesem/blog/</loc>
-    <lastmod>2018-10-09T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -140,8 +145,20 @@
   </url>
   
   <url>
+    <loc>/gesem/tags/estupro/</loc>
+    <lastmod>2018-10-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/gesem/categories/estupro/</loc>
     <lastmod>2018-09-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/tags/estupro-coletivo/</loc>
+    <lastmod>2018-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -177,19 +194,25 @@
   
   <url>
     <loc>/gesem/</loc>
-    <lastmod>2018-10-09T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/gesem/tags/idade/</loc>
-    <lastmod>2018-09-28T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/gesem/categories/local-de-ocorrencia/</loc>
     <lastmod>2018-09-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/tags/local-de-ocorr%C3%AAncia/</loc>
+    <lastmod>2018-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -202,6 +225,12 @@
   <url>
     <loc>/gesem/tags/localiza%C3%A7%C3%A3o/</loc>
     <lastmod>2018-10-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/categories/localiza%C3%A7%C3%A3o/</loc>
+    <lastmod>2018-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -242,6 +271,12 @@
   </url>
   
   <url>
+    <loc>/gesem/tags/perfil-das-v%C3%ADtimas/</loc>
+    <lastmod>2018-10-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/gesem/categories/perfil-das-v%C3%ADtimas/</loc>
     <lastmod>2018-09-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -250,6 +285,12 @@
   <url>
     <loc>/gesem/tags/relacionamento-afetivo/</loc>
     <lastmod>2018-09-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/tags/rela%C3%A7ao-com-o-agressor/</loc>
+    <lastmod>2018-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -292,6 +333,12 @@
   <url>
     <loc>/gesem/tags/taxa-de-notifica%C3%A7%C3%A3o/</loc>
     <lastmod>2018-10-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/categories/taxa-de-notifica%C3%A7%C3%A3o/</loc>
+    <lastmod>2018-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

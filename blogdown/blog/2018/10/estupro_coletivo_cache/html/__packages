@@ -1,0 +1,14 @@
+base
+datasets
+utils
+grDevices
+graphics
+stats
+methods
+dplyr
+tidyr
+ggthemes
+ggplot2
+gridExtra
+stringr
+kableExtra

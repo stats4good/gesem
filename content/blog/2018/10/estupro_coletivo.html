@@ -1,0 +1,175 @@
+---
+title: "Estupro Coletivo: o que o define e o diferencia?"
+author: "Larissa Sayuri Futino C. dos Santos"
+date: 2018-10-20
+categories: ["Localização", "Taxa de notificação"]
+tags: ["estupro", "estupro coletivo", "local de ocorrência", "relaçao com o agressor", "idade", "perfil das vítimas"]
+banner: "blog/2018/10/estupro_coletivo/img/estuproColetImage.jpg"
+summary: "O crime de estupro é considerado de extrema violência por corresponder à apropriação do corpo e intimidade de uma mulher. O estupro coletivo, considerado aqui como a ocorrência da violação com mais de um agressor, é tido por muitos como o mais violento. Nesse post analisamos algumas características das vítimas desse tipo de estupro. Além disso, investigamos aspectos como o local de ocorrência e a relação com os agressores fazendo comparativos das quantidades observadas para estupros com um único agressor."
+---
+
+<script src="/gesem/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<div id="quando-ha-mais-de-um-agressor" class="section level3">
+<h3><a name="secIntroducao"></a>Quando há mais de um agressor</h3>
+<p>Crimes de estupro coletivo são continuamente noticiados na mídia<sup>1,2,3,4,5,6,7,8,9</sup> sendo mais recentemente de especial repercussão o caso no <a href="http://agenciabrasil.ebc.com.br/geral/noticia/2017-05/policia-investiga-mais-um-caso-de-estupro-coletivo-de-adolescente-no-rio">Rio de Janeiro</a>.</p>
+<p>Estupro Coletivo é uma expressão de uso comum para denotar:</p>
+<blockquote>
+<p>Estupro Coletivo: Crime de estupro, cometido com o concurso de duas ou mais pessoas.</p>
+</blockquote>
+<p>Ou seja, diz respeito aos casos de estupro em que há mais de um agressor envolvido. Mais especificamente, a expressão faz referência aos casos em que se aplica o art. 226 do Código Penal.</p>
+<p>Toda forma de violência sexual é cruel pois trata o corpo e intimidade da mulher como itens de posse do agressor pelo prazer e ímpeto de tortura como cita a <a href="https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/">Agência Patrícia Galvão</a>. Além disso, segundo o <a href="http://www.planalto.gov.br/ccivil_03/decreto/2002/D4388.htm">Estatuto de Roma do Tribunal Penal Internacional</a> todo crime de cunho sexual constitui crime de Violência contra a Humanidade. Entretanto, casos de estupro coletivo envolvem mais violência física e maior vulnerabilidade das vítimas para suicídio e desenvolvimento de sintomas psiquiátricos <sup>10,11</sup>.</p>
+<p>Bem como nos casos de crime com um único agressor, nos casos de estupro coletivo a vítima apresenta vergonha, medo e profunda dificuldade de denunciar o crime. Isso inibe e dificulta a sua notificação configurando a chamada sub-notificação já abordada no post <a href="https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/">Dados oficiais de Estupro no Brasil: A questão da subnotificação</a>. Os estudos de Sarah E. Ullman <sup>10,11</sup> afirmam que em casos de estupro coletivo é mais provável que a vítima procure atendimento e assistência mas a extensão dessa afirmação para a realidade do Brasil é impraticável uma vez que não há estudo semelhante no contexto nacional.</p>
+<!-- ```{r dados} -->
+<!-- dados <- readRDS(file = "~/Dropbox/stats4good/data/dados_desagrupados/sinan/output/sinan_filtrado.RDS") -->
+<!-- # Ficar com dados em que a vitima tinha anos de idade completos -->
+<!-- dados <- filter(dados, substr(NU_IDADE_N, 1, 1) == "4") -->
+<!-- numDadosIdAnosComp <- nrow(dados) -->
+<!-- dados <- mutate(dados, NU_IDADE_N = as.numeric(substr(NU_IDADE_N, 2, 4))) -->
+<!-- # Ficar com dados em que NUM_ENVOLV != NA -->
+<!-- dados <- filter(dados, !is.na(NUM_ENVOLV)) -->
+<!-- numDadosInfoNumEnvolv <- nrow(dados) -->
+<!-- # Criar variavel estupro coletivo -->
+<!-- dados <- mutate(dados, estupColet = if_else(NUM_ENVOLV == "Dois ou mais", 1, 0)) -->
+<!-- dados <- dados %>% mutate(estupColetFator = if_else(estupColet == 0, "Um", "Dois ou mais")) -->
+<!-- dados <- dados %>% mutate(estupColetFator = factor(estupColetFator, levels = c("Um", "Dois ou mais"))) -->
+<!-- ``` -->
+<p>Esse post estuda alguns aspectos desse tipo específico de estupro. Em todas as análises comparamos as quantidades observadas com as de estupros com um único agressor. Assim, é possível verificar se o número de agressores expõe diferenças nas demais características do crime.</p>
+</div>
+<div id="quantos-sao" class="section level3">
+<h3><a name="secMotiv"></a>Quantos são?</h3>
+<p>Mas de quantos casos estamos falando?! Considerando dados do Sistema de Informação de Agravos de Notificação (SINAN) em serviços de saúde do Ministério da Saúde (MS), de 2011 a 2016 temos quantidades relativas às notificações de crime de estupro em mulheres. Os números totais podem ser visualizados na Figura abaixo em que se vê a evolução do número total de notificações de crime de estupro no Brasil (linha amarela) e o percentual deles em que há mais de um agressor envolvido (linha azul).</p>
+<p>Notamos claramente o crescimento do número de notificações. Segundo o <a href="http://www.forumseguranca.org.br/publicacoes/atlas-da-violencia-2018/">Atlas da Violência 2018</a> isso é consequência da expansão e aprimoramento dos centros de referência que registram as notificações como as DEAMs, órgãos que receberam análise específica no post <a href="https://stats4good.github.io/gesem/blog/2018/10/locais_atendimento_mulher/">Os Ambientes Especializados no Atendimento à Mulher</a>.</p>
+<p>De forma mais gradativa vemos o aumento do percentual das notificações de estupro coletivo. A diferença entre os valores de 2011 e 2016 alcança dois pontos percentuais (de 12,7% a 14,7%) sendo que o maior valor observado corresponde a 15,6% em 2014. Em números absolutos, o SINAN registrou de 10.000 (2011) a 20.000 (2016) casos de estupro coletivo em mulheres. Logo, vemos que os registros desse crime dizem respeito a um número expressivo de vítimas.</p>
+<p><img src="/gesem/blog/2018/10/estupro_coletivo_files/figure-html/serieTemporal-1.png" width="70%" style="display: block; margin: auto;" /> <!-- Vamos observar características sociodemográficas das --> <!-- [vítimas](#secVitimas). No que diz respeito ao ato de violência em si investigamos aspectos como o  --> <!-- [local de ocorrência](#secLocalOcor) e a [relação com os agressores](#secRel).  --></p>
+</div>
+<div id="vitimas" class="section level3">
+<h3><a name="secVitimas"></a>Vítimas</h3>
+<p>No post <a href="https://stats4good.github.io/gesem/blog/2018/06/entendendo_as_idades/">Qual a idade das vítimas e onde esses crimes estão ocorrendo?</a> discutimos o perfil das vítimas de estupro segundo a faixa etária. O Gráfico a seguir procura observar se a vítima de estupro coletivo se diferencia quanto à idade da vítima de estupro no caso de um único agressor. Para cada ano da análise, dispomos de curvas representando as idades observadas nos sub-grupos (cores). Essa curvas são representações mais simples de gráficos de barras. O intervalo de idade onde a altura do gráfico está mais alta, representa a faixa etária da vítima com a maior quantidade de notificações.</p>
+<p>Vemos que as distribuições das idades das vítimas, por grupo de número de agressores se assemelham. Basta notar que há grande intersecção entre as curvas. A diferença perceptível dá-se nas partes mais à esquerda das curvas em que vemos mais área azul. Ou seja, como também apresentado no <a href="http://www.forumseguranca.org.br/publicacoes/atlas-da-violencia-2018/">Atlas da Violência 2018</a> há maior proporção de estupros coletivos contra adolescentes e maiores de 18 anos (mulheres com pelo menos 13 anos).</p>
+<p><img src="img/GrafDensidadeIdade.png" width="70%" style="display:block;margin:auto;"></p>
+<!-- # ```{r idade, fig.align = 'center', out.width = '70%'} -->
+<!-- # # # Idade -->
+<!-- # # dfIdade <- dados %>% select(ANO, estupColetFator, NU_IDADE_N)#; nrow(dfIdade) -->
+<!-- # # dfIdade <- dfIdade %>% filter(NU_IDADE_N < 80)#; nrow(dfIdade) -->
+<!-- #  -->
+<!-- # # GrafDensidadeIdade <- ggplot(dfIdade, aes(x = NU_IDADE_N, y = ANO)) + -->
+<!-- # #   geom_density_ridges(aes(fill = estupColetFator), colour = "transparent") + -->
+<!-- # #   scale_fill_manual(values = c("#4E79A780", "#F28E2B80")) + -->
+<!-- # #   geom_vline(xintercept = 13.6, linetype = "dotted") +  -->
+<!-- # #   labs(y = "", x = "Idade (anos)", fill = "# Agressores", caption = "Fonte: VIVA/SVS/MS") + -->
+<!-- # #   ggtitle("Figura 02: Distribuição das Idades das Vítimas por número de \n agressores e ano de notificação") + -->
+<!-- # #   theme(legend.position = "right", legend.direction = "vertical") -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # png(filename = "Plots/GrafDensidadeIdade.png") -->
+<!-- # # GrafDensidadeIdade -->
+<!-- # # dev.off() -->
+<!-- # ``` -->
+<p>Um aspecto social muito relevante diz respeito à etnia (raça) das vítimas. Dado o histórico brasileiro que criou condição de desigualdade entre as etnias observar essa variável pode ser uma forma de avaliar minorias ou grupos de privilégios. É válido lembrarmos que os dados em análise correspondem às notificações de estupro em mulheres. Eles não correspondem à ocorrência em si. A etnia auto declarada de uma pessoa pode corresponder a dificultador para que a vítima notifique o crime.</p>
+<p>Na Figura a seguir vemos gráficos de barras identificando as ocorrências com um único agressor e de estupro coletivo para cada um dos anos de notificação em estudo. A ideia é explorar a composição étnica segundo o número de agressores e em relação ao tempo. A visualização deixa evidente que a maior proporção das etnias é <em>parda</em> e <em>branca</em>, respectivamente, em todos os anos. Também notamos,com mais atenção, que a proporção referente à etnia <em>parda</em> aumenta gradativamente no tempo ao passo que a etnia <em>branca</em> reduz na mesma proporção (cerca de 2 pontos percentuais). Tal fato também é discutido no <a href="http://www.forumseguranca.org.br/publicacoes/atlas-da-violencia-2018/">Atlas da Violência 2018</a>.</p>
+<p>Obs.: A etnia <em>amarela</em> foi agrupada à etnia <em>branca</em> dada a sua pouca ocorrência.</p>
+<p><img src="/gesem/blog/2018/10/estupro_coletivo_files/figure-html/etnia-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="local-de-ocorrencia" class="section level3">
+<h3><a name="secLocalOcor"></a>Local de Ocorrência</h3>
+<p>A identificação do local em que o crime de estupro acontece é também fundamental na definição de características do crime. Estas podem auxiliar na concepção de políticas de combate ao estupro. Uma vez que o post <a href="https://stats4good.github.io/gesem/blog/2018/06/entendendo_as_idades/">Qual a idade das vítimas e onde esses crimes estão ocorrendo?</a> demonstra que os locais mais comuns são <em>residências</em> e <em>vias públicas</em> vamos nos ater com mais atenção a essas duas categorias sendo as demais (bares, áreas de lazer, comércio, escola, etc)) agrupadas como <em>outros</em>.</p>
+<p>Na Figura a seguir vemos o percentual das notificações de estupro que se deram em residências, vias públicas ou demais localidades em função do tempo para os sub-grupos estupro com um único agressor (azul) e estupro coletivo (amarelo).</p>
+<p>Em conformidade com o último post mencionado, vê-se a preponderância do nível residência tanto para estupro com um único agressor (azul) quanto para estupro coletivo (amarelo). Esse fato é um dificultador na notificação pela vítima já que a ocorrência do crime a portas fechadas exclui a existência de testemunhas. Como consequência a notificação se baseia quase que exclusivamente no testemunho da mulher a qual se sabe que está fragilizada e que é costumeiramente desacreditada por agentes públicos.</p>
+<p>Outro fato a ser notado é que o percentual de estupros coletivos em vias públicas ou nas demais categorias é mais expressivo em comparação com os estupros com um único agressor.</p>
+<p><img src="/gesem/blog/2018/10/estupro_coletivo_files/figure-html/localOcorr-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="relacao-da-vitima-com-o-agressor" class="section level3">
+<h3><a name="secRel"></a>Relação da vítima com o agressor</h3>
+<p>A relação da vítima com o agressor elucida os aspectos sociais ou culturais que influenciam a ocorrência do estupro. Por exemplo, a cultura de servir sexualmente o parceiro, como analisado no post <a href="https://stats4good.github.io/gesem/blog/2018/09/estupro_relacionamento/">Estupros em relacionamentos afetivos</a> ou a ausência do entendimento de consentimento em uma relação por parte de jovens como também pontuado pela <a href="https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/">Agência Patrícia Galvão</a>. Sendo assim, quisemos estudar essa variável novamente diferenciando as vítimas segundo o número de agressores.</p>
+<p>Na Figura a seguir vemos gráficos de barras para o percentual das ocorrências por ano e diferenciando os casos pelo número de agressores envolvidos.</p>
+<p>O SINAN dispõe de 16 categorias para descrever a relação social e/ou afetiva da vítima com o agressor. A fim de facilitar a anaĺise fizemos o seguinte agrupamento:</p>
+<ul>
+<li>Se a vítima declarou que o agressor era: <em>conhecido</em>, <em>pai</em>, <em>mãe</em>, <em>padrasto</em>, <em>irmão</em>, <em>filho</em>, <em>madrasta</em>, <em>marido</em>, <em>ex-marido</em>, <em>namorado</em>, <em>ex-namorado</em> <em>cuidador</em>, <em>outros</em> o agressor é considerado conhecido na nossa análise.</li>
+<li>Em contrapartida, se a vítima declarou que o agressor era um <em>desconhecido</em> ou <em>policial</em> o agressor é considerado um desconhecido na nossa análise.</li>
+</ul>
+<p>Dessa forma, em uma situação de estupro coletivo basta pelo menos um conhecido para que o crime seja considerado praticado por um agressor cuja vítima considera familiar.</p>
+<p><img src="/gesem/blog/2018/10/estupro_coletivo_files/figure-html/relacao-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Vê-se claramente o enorme percentual de casos em que o agressor é conhecido da vítima tanto nas notificações de estupro coletivo quanto nas notificações de estupro com um único agressor. Todavia, o percentual de casos notificados em que não há nenhum conhecido da vítima é claramente superior nas situação de estupro coletivo.</p>
+</div>
+<div id="consequencias-e-sequelas-em-vitimas-de-estupro-coletivo" class="section level3">
+<h3><a name="secCons"></a>Consequências e sequelas em vítimas de Estupro Coletivo</h3>
+<p>As possíveis sequências do crime de estupro são severas e devastadoras com efeitos físicos e mentais no curto e longo prazo como observado em pesquisa da <a href="https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/">Agência Patrícia Galvão</a>.</p>
+<p>A fim de elucidar brevemente o potencial de sequelas nas vítimas finalizamos com uma análise relacionando as probabilidades de desenvolvimento de Estresse pós-traumático, mesmo ciente que a mesma variável foi observada apenas até o ano 2014. Assim como no post sobre <a href="https://stats4good.github.io/gesem/blog/2018/08/estupro_de_vulneravel/">Estupro de Vulnerável</a> vamos utilizar o conceito de <a href="https://pt.wikipedia.org/wiki/Raz%C3%A3o_de_possibilidades">razão de chances</a> sem interpretá-lo diretamente e denotando-o por <em>odds</em>.</p>
+<table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:consequencia">Table 1: </span>Tabela 1: Distribuição percentual das vítimas de estupro com Estresse pós-traumático pelo número de agressores, de 2011 a 2014 (fonte: VIVA/SVS/MS).
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+# Agressores
+</th>
+<th style="text-align:left;">
+Ignorado
+</th>
+<th style="text-align:left;">
+Não
+</th>
+<th style="text-align:right;">
+Sim
+</th>
+<th style="text-align:right;">
+ODDS
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Um
+</td>
+<td style="text-align:left;">
+0.558
+</td>
+<td style="text-align:left;">
+0.316
+</td>
+<td style="text-align:right;">
+0.126
+</td>
+<td style="text-align:right;">
+0.144
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dois ou mais
+</td>
+<td style="text-align:left;">
+0.564
+</td>
+<td style="text-align:left;">
+0.28
+</td>
+<td style="text-align:right;">
+0.156
+</td>
+<td style="text-align:right;">
+0.185
+</td>
+</tr>
+</tbody>
+</table>
+<p>A razão de chances observada de 1.285 explicita que a chance de uma vítima de estupro coletivo desenvolver Estresse pós traumático é 29% maior que a chance de uma vítima de estupro com um único agressor desenvolver. Dessa forma, vemos que para a realidade brasileira as consequências e sequelas do crime de estupro coletivo são severas exigindo maior assistência para essa vítima.</p>
+<p>Variáveis como essa, que determinam o desenvolvimento de uma possível consequência como decorrência do crime, são fundamentais para o amplo entendimento das sequelas do estupro.</p>
+<p><strong>É importante notificar os casos de estupro (opções: ligue 180 ou ir ao centro de saúde mais próximo).</strong></p>
+</div>
+<div id="observacoes" class="section level2">
+<h2>Observações:</h2>
+<p>Os dados utilizados neste post são oriundos do SINAN - O Sistema de Informação de Agravos de Notificação</p>
+<p>Cerca de 1,63% dos dados disponíveis foram descartados por corresponderem a registros em que a vítima não tinha anos de vida completos ou em que não constava o número de agressores envolvidos.</p>
+<p>Os dados de 2015 e 2016 não estão consolidados.</p>
+</div>
+<div id="referencias" class="section level2">
+<h2>Referências</h2>
+<p><sup>1</sup> <a href="https://www.portalt5.com.br/noticias/paraiba/2018/5/92878-adolescentes-sao-embriagadas-e-sofrem-estupro-coletivo-no-brejo-da-paraiba">Estupro coletivo na Paraíba</a> <sup>2</sup> <a href="http://www.diariodepernambuco.com.br/app/noticia/brasil/2018/04/23/interna_brasil,749601/menina-que-sofreu-estupro-coletivo-no-interior-de-sp-passa-por-pronto.shtml">Estupro coletivo em Pernambuco</a> <sup>3</sup> <a href="https://noticias.uol.com.br/cotidiano/ultimas-noticias/2017/05/04/adolescente-gravida-de-seis-meses-e-vitima-de-estupro-coletivo-no-piaui.htm">Estupro coletivo no Piauí</a> <sup>4</sup> <a href="https://www.gazetaonline.com.br/noticias/policia/2018/02/jovem-sofre-estupro-coletivo-e-esfaqueada-e-apedrejada-em-guarapari-1014120739.html">Estupro coletivo em São Paulo</a> <sup>5</sup> <a href="http://www.atribuna.com.br/noticias/noticias-detalhe/policia/policia-de-mg-investiga-estupro-coletivo-de-menina-de-13-anos-em-juiz-de-fora/?cHash=260ff3e7caf02314d2c23b8353c96c56">Estupro coletivo em Minas Gerais</a> <sup>6</sup> <a href="https://www.correio24horas.com.br/noticia/nid/menina-de-11-anos-e-vitima-de-estupro-coletivo-no-df-esta-meio-desorientada-diz-mae/">Estupro coletivo no Distrito Federal</a> <sup>7</sup> <a href="https://www.correiodoestado.com.br/cidades/empresarios-sao-presos-pelo-estupro-coletivo-de-adolescente/334661/">Estupro coletivo no Mato Grosso do Sul</a> <sup>8</sup> <a href="https://omunicipio.com.br/vitima-de-estupro-coletivo-em-brusque-conta-detalhes-da-agressao-sexual/">Estupro coletivo em Santa Catarina</a> <sup>9</sup> <a href="https://www.bandab.com.br/seguranca/refugiada-se-fingiu-de-morta-para-acabar-com-estupro-coletivo-na-rmc-4-foram-presos/">Estupro coletivo no Paraná</a></p>
+<p><sup>10</sup> A Comparison of Gang and Individual Rape Incidents. Ullman, Sarah E. Violence and Victims; New York Vol. 14, Iss. 2, (1999): 123-33. <a href="DOI:10.1891/0886-6708.14.2.123" class="uri">DOI:10.1891/0886-6708.14.2.123</a>.</p>
+<p><sup>11</sup> Comparing Gang and Individual Rapes in a Community Sample of Urban Women. Ullman, Sarah E. Violence and Victims; New York Vol. 22, Iss. 1, (2007): 43-51. <a href="DOI:10.1891/088667007780482856" class="uri">DOI:10.1891/088667007780482856</a>.</p>
+</div>
