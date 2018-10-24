@@ -23,13 +23,13 @@ Estupro Coletivo é uma expressão de uso comum para denotar:
 Ou seja, diz respeito aos casos de estupro em que há mais de um agressor envolvido. Mais especificamente, a 
 expressão faz referência aos casos em que se aplica o art. 226 do Código Penal. 
 
-Toda forma de violência sexual é cruel pois trata o corpo e intimidade da mulher como itens de posse do agressor pelo prazer e ímpeto de tortura como cita a
+Toda forma de violência sexual é cruel pois trata o corpo e intimidade da mulher como itens de posse do agressor, pelo prazer e ímpeto de tortura, como cita a
 [Agência Patrícia Galvão](https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/). Além disso, segundo o [Estatuto de Roma do Tribunal Penal Internacional](http://www.planalto.gov.br/ccivil_03/decreto/2002/D4388.htm) todo crime de cunho sexual constitui crime de Violência contra a Humanidade. Entretanto,
 casos de estupro coletivo envolvem mais violência física e maior vulnerabilidade das
 vítimas para suicídio e desenvolvimento de sintomas psiquiátricos ^10,11^. 
 
 Bem como nos casos de crime com um único agressor, nos casos de estupro coletivo a vítima apresenta vergonha, medo e profunda 
-dificuldade de denunciar o crime. Isso inibe e dificulta a sua notificação configurando a chamada sub-notificação já abordada no post [Dados oficiais de Estupro no Brasil: A questão da subnotificação](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/). Os estudos de Sarah E. Ullman ^10,11^ afirmam que em casos de estupro coletivo é mais provável que a vítima procure atendimento e assistência mas a extensão dessa afirmação para a realidade do Brasil é impraticável uma vez que não há estudo semelhante no contexto nacional.
+dificuldade de denunciar o crime, como também pontuado pela [Agência Patrícia Galvão](https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/). Isso inibe e dificulta a notificação do crime, configurando a chamada sub-notificação já abordada no post [Dados oficiais de Estupro no Brasil: A questão da subnotificação](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/). Os estudos de Sarah E. Ullman ^10,11^ afirmam que em casos de estupro coletivo é mais provável que a vítima procure atendimento e assistência mas a extensão dessa afirmação para a realidade do Brasil é impraticável, uma vez que não há estudo semelhante no contexto nacional.
 
 
 ```{r pacotes}
@@ -70,7 +70,7 @@ no Brasil (linha amarela) e o percentual deles em que há mais de um agressor en
 
 Notamos claramente o crescimento do número de notificações. Segundo o [Atlas da Violência 2018](http://www.forumseguranca.org.br/publicacoes/atlas-da-violencia-2018/) isso é consequência da expansão e aprimoramento dos centros de referência que registram as notificações como as DEAMs, órgãos que receberam análise específica no post [Os Ambientes Especializados no Atendimento à Mulher](https://stats4good.github.io/gesem/blog/2018/10/locais_atendimento_mulher/). 
 
-De forma mais gradativa vemos o aumento do percentual das notificações de estupro coletivo. A diferença entre os valores de 2011 e 2016 alcança dois pontos percentuais (de 12,7% a 14,7%) sendo que o maior valor observado corresponde a 15,6% em 2014. Em números absolutos, o SINAN registrou de 10.000 (2011) a 20.000 (2016) casos de estupro coletivo em mulheres. Logo, vemos que os registros desse crime dizem respeito a um número expressivo de vítimas.
+De forma mais gradativa, vemos o aumento do percentual das notificações de estupro coletivo. A diferença entre os valores de 2011 e 2016 alcança dois pontos percentuais (de 12,7% a 14,7%) sendo que o maior valor observado corresponde a 15,6% em 2014. Em números absolutos, o SINAN registrou de **1.318** (2011) a **2.963** (2016) casos de estupro coletivo em mulheres. Logo, vemos que os registros desse crime dizem respeito a um número expressivo de vítimas.
 
 
 ```{r serieTemporal, fig.align = 'center', out.width = '70%'}
@@ -115,8 +115,8 @@ GrafLinFreqTotEPercEstColet <- ggplot(data = dfSeriesTemporais, aes(ANONum)) +
   # eixo secundario (a direita) revertendo a transformacao
   scale_y_continuous(sec.axis = sec_axis(~./1000, name = "Estupro Coletivo (%)")) +
   labs(y = "Frequência Total", x = "Ano", colour = "Variável", caption = "Fonte: VIVA/SVS/MS") +
-  scale_color_tableau(palette = "tableau10medium") +
-  ggtitle("Figura 01: Número total de notificações estupros em mulheres no Brasil e \n percentual de estupros coletivos por ano de notificação") +
+  scale_color_tableau(palette = "Tableau 10") +
+  ggtitle("Figura 01: Número total de notificações de estupros em mulheres no Brasil \n e percentual de estupros coletivos por ano de notificação") +
   theme(legend.position = "bottom")
 
 GrafLinFreqTotEPercEstColet
@@ -131,10 +131,9 @@ No post [Qual a idade das vítimas e onde esses crimes estão ocorrendo?](https:
 estupro segundo a faixa etária. O Gráfico a seguir procura observar se a vítima de estupro coletivo se diferencia quanto à idade da vítima de estupro no caso de um único agressor. 
 Para cada ano da análise, dispomos de curvas representando as idades observadas nos sub-grupos (cores). Essa curvas são representações mais simples de gráficos de barras. O intervalo de idade onde a altura do gráfico está mais alta, representa a faixa etária da vítima com a maior quantidade de notificações.
 
-Vemos que as distribuições das idades das vítimas, por grupo de número de agressores se assemelham. Basta notar que
-há grande intersecção entre as curvas. A diferença perceptível dá-se nas partes mais à esquerda das curvas em que
+Vemos que as distribuições das idades das vítimas, por grupo de número de agressores, se assemelham. Basta notar que há grande intersecção entre as curvas. A diferença é perceptível nas partes mais à esquerda das curvas em que
 vemos mais área azul. Ou seja, como também apresentado no [Atlas da Violência 2018](http://www.forumseguranca.org.br/publicacoes/atlas-da-violencia-2018/) há maior proporção de estupros coletivos
-contra adolescentes e maiores de 18 anos (mulheres com pelo menos 13 anos).
+contra adolescentes (mulheres com pelo menos 13 anos) e maiores de 18 anos.
 
 <img src="img/GrafDensidadeIdade.png" width="70%" style="display:block;margin:auto;">
 
@@ -158,7 +157,7 @@ contra adolescentes e maiores de 18 anos (mulheres com pelo menos 13 anos).
 <!-- # ``` -->
 
 Um aspecto social muito relevante diz respeito à etnia (raça) das vítimas. Dado o histórico brasileiro que criou condição de desigualdade entre as etnias observar essa variável pode ser uma forma de avaliar minorias ou grupos
-de privilégios. É válido lembrarmos que os dados em análise correspondem às notificações de estupro em mulheres. Eles não correspondem à ocorrência em si. A etnia auto declarada de uma pessoa pode corresponder a dificultador para que a vítima notifique o crime.
+de privilégios. É válido lembrarmos que os dados em análise correspondem às notificações de estupro em mulheres, sabemos que o número de ocorrências é muito maior. A etnia de uma pessoa pode ser um dificultador para que a vítima notifique o crime.
 
 Na Figura a seguir vemos gráficos de barras identificando as ocorrências com um único agressor e de estupro coletivo para cada um dos anos de notificação em estudo. A ideia é explorar a composição étnica segundo o número de agressores e em relação 
 ao tempo. A visualização deixa evidente que a maior proporção das etnias é _parda_ e _branca_, respectivamente, em todos os
@@ -199,7 +198,7 @@ GrafBarrasEmpilRaca <- ggplot() +
            data = dfRacaPlot,
            stat = "identity", position = "fill") + 
   facet_wrap(~ ANO) +
-  scale_fill_tableau(palette = "tableau10medium") +
+  scale_fill_tableau(palette = "Tableau 10") +
    scale_y_continuous(labels = c("0.00" = "0",
                                "0.25" = "25%","0.50" = "50%",
                                "0.75" = "75%", "1.00" = "100%")) +
@@ -215,13 +214,13 @@ rm(dfRacaPlot)
 A identificação do local em que o crime de estupro acontece é também fundamental na definição de 
 características do crime. Estas podem auxiliar na concepção de políticas de combate ao estupro. Uma vez que o post [Qual a idade das vítimas e onde esses crimes estão ocorrendo?](https://stats4good.github.io/gesem/blog/2018/06/entendendo_as_idades/) demonstra que os locais mais
 comuns são _residências_ e _vias públicas_ vamos nos ater com mais atenção a essas duas categorias sendo as demais
-(bares, áreas de lazer, comércio, escola, etc)) agrupadas como _outros_. 
+(bares, áreas de lazer, comércio, escola, etc) agrupadas como _outros_. 
 
 Na Figura a seguir vemos o percentual das notificações de estupro que se deram em residências, vias públicas ou demais
 localidades em função do tempo para os sub-grupos estupro com um único agressor (azul) e estupro coletivo (amarelo).
 
 Em conformidade com o último post mencionado, vê-se a preponderância do nível residência tanto para estupro com um único agressor (azul) quanto para estupro coletivo (amarelo). Esse fato é um dificultador na notificação pela vítima
-já que a ocorrência do crime a portas fechadas exclui a existência de testemunhas. Como consequência a notificação se baseia quase que exclusivamente no testemunho da mulher a qual se sabe que está fragilizada e que é costumeiramente desacreditada por agentes públicos.
+já que a ocorrência do crime a portas fechadas exclui a existência de testemunhas. Como consequência, citado pela [Agência Patrícia Galvão](https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/), a notificação se baseia quase que exclusivamente no testemunho da mulher a qual se sabe que está fragilizada e que é costumeiramente desacreditada por agentes públicos.
 
 Outro fato a ser notado é que o percentual de estupros coletivos em vias públicas ou nas demais categorias é mais expressivo em comparação com os estupros com um único agressor.
 
@@ -272,7 +271,7 @@ GrafLinLocalOcorr <- ggplot(data = dfLocalOcorResAnoPlot2,
   geom_point(aes(y = freqRel, colour = estupColetFator)) +
   facet_wrap(~ LOCAL_OCORAgrup) +
   labs(y = "", x = "Ano", colour = "# Agressores", caption = "Fonte: VIVA/SVS/MS") +
-  scale_colour_tableau(palette = "tableau10medium") +
+  scale_colour_tableau(palette = "Tableau 10") +
   scale_y_continuous(breaks = seq(20, 60, 10),
                      labels = c("20%", "30%", "40%", "50%", "60%")) +
   ggtitle("Figura 04: Percentual dos locais de ocorrência mais comuns por número de \n agressores e ano de notificação") + 
@@ -285,14 +284,12 @@ rm(dfLocalOcorResAnoPlot2)
 
 ### <a name="secRel"></a>Relação da vítima com o agressor
 
-A relação da vítima com o agressor elucida os aspectos sociais ou culturais que influenciam a ocorrência do estupro. Por exemplo, a cultura de servir sexualmente o parceiro, como analisado no post [Estupros em relacionamentos afetivos](https://stats4good.github.io/gesem/blog/2018/09/estupro_relacionamento/) ou a ausência do entendimento de consentimento em uma relação por parte de jovens como também pontuado pela [Agência Patrícia Galvão](https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/). Sendo assim, quisemos estudar essa variável novamente diferenciando as vítimas segundo o número de agressores.
+A relação da vítima com o agressor elucida os aspectos sociais ou culturais que influenciam a ocorrência do estupro. Por exemplo, a cultura de servir sexualmente o parceiro, como analisado no post [Estupros em relacionamentos afetivos](https://stats4good.github.io/gesem/blog/2018/09/estupro_relacionamento/), ou a ausência do entendimento de consentimento em uma relação por parte de jovens como também pontuado pela [Agência Patrícia Galvão](https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/). Sendo assim, quisemos estudar essa variável novamente diferenciando as vítimas segundo o número de agressores.
 
-Na Figura a seguir vemos gráficos de barras para o percentual das ocorrências por ano e diferenciando os casos pelo número de agressores envolvidos.
-
-O SINAN dispõe de 16 categorias para descrever a relação social e/ou afetiva da vítima com o agressor. A fim de facilitar a anaĺise fizemos o seguinte agrupamento: 
+Na Figura a seguir vemos gráficos de barras para o percentual das ocorrências por ano e diferenciando os casos pelo número de agressores envolvidos. O SINAN dispõe de 16 categorias para descrever a relação social e/ou afetiva da vítima com o agressor. A fim de facilitar a anaĺise fizemos o seguinte agrupamento: 
 
 + Se a vítima declarou que o agressor era: _conhecido_, _pai_, _mãe_,
-_padrasto_, _irmão_, _filho_, _madrasta_, _marido_, _ex-marido_, _namorado_, _ex-namorado_ _cuidador_, _outros_ o 
+_padrasto_, _irmão_, _filho_, _madrasta_, _marido_, _ex-marido_, _namorado_, _ex-namorado_, _cuidador_, _outros_ o 
 agressor é considerado conhecido na nossa análise. 
 + Em contrapartida, se a vítima declarou que o agressor era um _desconhecido_ ou _policial_ o agressor é considerado um desconhecido na nossa análise. 
 
@@ -348,8 +345,8 @@ GrafLinUmConhec <- ggplot(data = dfRelGrouped,
   geom_bar(stat = "identity", position = "fill") +
   facet_wrap(~ estupColetFator) +
   labs(x = "Ano", y = "", fill = "Relação com a vítima", caption = "Fonte: VIVA/SVS/MS") +
-  ggtitle("Figura 06: Percentual de casos por relação do agressor com a vítima \n e ano de notificação") +
-  scale_fill_tableau(palette = "tableau10medium", 
+  ggtitle("Figura 05: Percentual de casos notificados por relação do agressor com a \n vítima e ano de notificação") +
+  scale_fill_tableau(palette = "Tableau 10", 
                      labels = c("Conhecido", "Desconhecido")) +
   geom_hline(yintercept = 0.50) +
   scale_y_continuous(labels = c("0.00" = "0",
@@ -365,11 +362,11 @@ Vê-se claramente o enorme percentual de casos em que o agressor é conhecido da
 
 ### <a name="secCons"></a>Consequências e sequelas em vítimas de Estupro Coletivo
 
-As possíveis sequências do crime de estupro são severas e devastadoras com efeitos físicos e mentais no curto e longo prazo como observado em pesquisa da [Agência Patrícia Galvão](https://dossies.agenciapatriciagalvao.org.br/violencia/violencias/violencia-sexual/).
+As possíveis consequências do crime de estupro são severas e devastadoras com efeitos físicos e mentais no curto e longo prazo como observado em pesquisa no estado de São Paulo ^12^.
 
-A fim de elucidar brevemente o potencial de sequelas nas vítimas finalizamos com uma análise relacionando as probabilidades de desenvolvimento de Estresse pós-traumático, mesmo ciente que a mesma variável foi observada apenas até o ano 2014. Assim como no post 
-sobre [Estupro de Vulnerável](https://stats4good.github.io/gesem/blog/2018/08/estupro_de_vulneravel/) vamos utilizar o conceito de
-[razão de chances](https://pt.wikipedia.org/wiki/Raz%C3%A3o_de_possibilidades) sem interpretá-lo diretamente e denotando-o por _odds_.
+A fim de elucidar brevemente o potencial de sequelas nas vítimas finalizamos com uma análise relacionando as probabilidades de desenvolvimento de [Estresse pós-traumático](https://pt.wikipedia.org/wiki/Transtorno_de_estresse_p%C3%B3s-traum%C3%A1tico), mesmo ciente que a mesma variável foi observada apenas até o ano 2014. Assim como no post sobre [Estupro de Vulnerável](https://stats4good.github.io/gesem/blog/2018/08/estupro_de_vulneravel/), vamos utilizar o conceito de
+[razão de chances](https://pt.wikipedia.org/wiki/Raz%C3%A3o_de_possibilidades) que, por sua vez depende de quantias que denotaremos por _odds_.
+
 
 ```{r consequencia, fig.align='center', out.width='70%'}
 # # Consequencia
@@ -417,7 +414,7 @@ df %>%
   kable_styling(bootstrap_options = "hover", full_width = F)
 ```
 
-A razão de chances observada de `r format(OR, big.mark = ".")` explicita que a chance de uma vítima de estupro coletivo desenvolver Estresse pós traumático é 29% maior que a chance de uma vítima de estupro com um único agressor desenvolver. Dessa forma, vemos que para a realidade brasileira as consequências e
+Na razão de chances relacionamos a _odds_ de _Dois ou mais_ com a _odds_ de _um_ agressor. Obtemos então a quantidade `r format(OR, big.mark = ".")` a qual denota que a chance de uma vítima de estupro coletivo desenvolver Estresse pós traumático é **29%** maior que a chance de uma vítima de estupro com um único agressor desenvolver a mesma perturbação mental. Dessa forma, vemos que para a realidade brasileira as consequências e
 sequelas do crime de estupro coletivo são severas exigindo maior assistência para essa vítima.
 
 Variáveis como essa, que determinam o desenvolvimento de uma possível consequência como decorrência do crime, são fundamentais para o amplo entendimento das sequelas do estupro.
@@ -449,3 +446,5 @@ Os dados de 2015 e 2016 não estão consolidados.
 ^10^ A Comparison of Gang and Individual Rape Incidents. Ullman, Sarah E. Violence and Victims; New York Vol. 14, Iss. 2, (1999): 123-33. DOI:10.1891/0886-6708.14.2.123.
 
 ^11^ Comparing Gang and Individual Rapes in a Community Sample of Urban Women. Ullman, Sarah E. Violence and Victims; New York Vol. 22, Iss. 1,  (2007): 43-51. DOI:10.1891/088667007780482856.
+
+^12^ Violência sexual: estudo descritivo sobre as vítimas e o atendimento em um serviço universitário de referência no Estado de São Paulo, Brasil. Facuri, Cláudia de Oliveira, et al.. Cadernos de Saúde Pública 29 (2013): 889-898.
