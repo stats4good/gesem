@@ -1,0 +1,228 @@
+---
+title: "Quais as diferenças entre crimes de estupro em mulheres que ocorreram em residências e vias públicas?"
+author: "Juliana Freitas"
+date: 2018-11-02
+categories: ["estupro", "local de ocorrência"]
+tags: ["residências", "vias públicas", "estupro de vulnerável", "violência repetida", "zona de ocorrência"]
+banner: "blog/2018/11/residencias_vias_publicas/img/figura_post.png"
+summary: "Segundo os dados de notificações de estupro em mulheres do SINAN, os dois locais nos quais mais se ocorre estupros são residências e vias públicas, representando 75% das notificações. A partir disso, o objetivo desse post é mostrar as características desses crimes nesses dois lugares."
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+# knitr::opts_knit$set(base.dir = "C:\\Users\\Juliana\\Dropbox\\stats4good\\posts\\template\\")
+```
+```{r pacotes}
+require(ggthemes)
+require(dplyr)
+require(highcharter)
+require(kableExtra)
+#require(chron)
+require(colorspace)
+require(widgetframe)
+```
+
+
+```{r}
+## Dados SINAN
+# dados<- readRDS(file ="~/Dropbox/outros_projetos/UFMG/stats4good/data/dados_desagrupados/sinan/output/sinan_filtrado.RDS")
+# dados2011<- subset(dados, dados$ANO == "2011")
+# dados2012<- subset(dados, dados$ANO == "2012")
+# dados2013<- subset(dados, dados$ANO == "2013")
+# dados2014<- subset(dados, dados$ANO == "2014")
+# dados2015<- subset(dados, dados$ANO == "2015")
+# dados2016<- subset(dados, dados$ANO == "2016")
+# 
+# dados_residencia<- subset(dados, dados$LOCAL_OCOR == "Residênca")
+# dados2011_residencia<- subset(dados2011, dados2011$LOCAL_OCOR == "Residênca")
+# dados2012_residencia<- subset(dados2012, dados2012$LOCAL_OCOR == "Residênca")
+# dados2013_residencia<- subset(dados2013, dados2013$LOCAL_OCOR == "Residênca")
+# dados2014_residencia<- subset(dados2014, dados2014$LOCAL_OCOR == "Residênca")
+# dados2015_residencia<- subset(dados2015, dados2015$LOCAL_OCOR == "Residênca")
+# dados2016_residencia<- subset(dados2016, dados2016$LOCAL_OCOR == "Residênca")
+# 
+# dados_via_publica<- subset(dados, dados$LOCAL_OCOR == "Via publica")
+# dados2011_via_publica<- subset(dados2011, dados2011$LOCAL_OCOR == "Via publica")
+# dados2012_via_publica<- subset(dados2012, dados2012$LOCAL_OCOR == "Via publica")
+# dados2013_via_publica<- subset(dados2013, dados2013$LOCAL_OCOR == "Via publica")
+# dados2014_via_publica<- subset(dados2014, dados2014$LOCAL_OCOR == "Via publica")
+# dados2015_via_publica<- subset(dados2015, dados2015$LOCAL_OCOR == "Via publica")
+# dados2016_via_publica<- subset(dados2016, dados2016$LOCAL_OCOR == "Via publica")
+# 
+# ## Necessario
+# dados_residencia_ANO <- as.numeric(table(dados_residencia$ANO))
+# dados_vias_ANO  <- as.numeric(table(dados_via_publica$ANO))
+# nrows <- c(nrow(dados2011), nrow(dados2012), nrow(dados2013), nrow(dados2014), nrow(dados2015), nrow(dados2016))
+# 
+# idade_residencia<- c(as.numeric(difftime(dados_residencia$DT_OCOR, dados_residencia$DT_NASC, units = "days") / 365))
+# idade_via_publica<- c(as.numeric(difftime(dados_via_publica$DT_OCOR, dados_via_publica$DT_NASC, units = "days") / 365))
+# 
+# hora_ocorrencia_residencia<- na.omit(as.numeric(substr(x = dados_residencia$HORA_OCOR, start = 1, stop = 2)) + as.numeric(substr(x = dados_residencia$HORA_OCOR, start = 4, stop = 5)) / 60)
+# hora_ocorrencia_residencia_v2<- times(x = hora_ocorrencia_residencia/24)
+# 
+# hora_ocorrencia_via_publica<- na.omit(as.numeric(substr(x = dados_via_publica$HORA_OCOR, start = 1, stop = 2)) + as.numeric(substr(x = dados_via_publica$HORA_OCOR, start = 4, stop = 5)) / 60)
+# hora_ocorrencia_via_publica_v2<- times(x = hora_ocorrencia_via_publica/24)
+# 
+# save(dados_residencia_ANO, dados_vias_ANO, nrows, idade_residencia, idade_via_publica,
+#      hora_ocorrencia_residencia, hora_ocorrencia_residencia_v2, hora_ocorrencia_via_publica,
+#      hora_ocorrencia_via_publica_v2, file = "residencias_vias_publicas/data/dados_post.RData")
+load(file = "residencias_vias_publicas/data/dados_post.RData")
+
+```
+
+No post [Panorama das notificações de casos de estupro em escolas no Brasil](https://stats4good.github.io/gesem/blog/2018/09/estupro_escola/) vimos várias características de casos de estupro cujos locais de ocorrência eram escolas. Além disso, como pode ser visto no post [Qual a idade das vítimas e onde esses crimes estão ocorrendo?](https://stats4good.github.io/gesem/blog/2018/06/entendendo_as_idades/), os locais onde mais ocorrem estupros em mulheres, segundo o que é notificado, são residências e vias públicas, representando cerca de 75% dos casos notificados. Nesse mesmo sentido, foi verificado em [Estupro coletivo: o que o define e o diferencia?](https://stats4good.github.io/gesem/blog/2018/10/estupro_coletivo/) que a maior parte dos crimes notificados que ocorreram em vias públicas foram estupros coletivos.
+
+A partir disso, o objetivo desse post é comparar os casos que ocorreram nesses dois lugares: residências e vias públicas. Com isso, podemos entender e apontar as similaridades e as diferenças desses dois casos. Achamos que, quanto melhor conhecermos as características desse crime, com mais eficiência ele poderá ser combatido.
+
+Na Figura 1 vemos o total de casos notificados de estupro em mulheres (linha verde), nos anos de 2011 a 2016, assim como os casos notificados cujos locais de ocorrência são aqueles que queremos abordar neste post (linhas azul e laranja). Veja que, praticamente em todos os anos podemos observar um aumento no número de notificações (com exceção dos casos ocorridos em via pública no ano de 2015). Desde 2011 foram 56.542 (**26 por dia**) casos notificados que ocorreram em residências e 17.155 (**8 por dia**) casos em vias públicas.
+
+```{r}
+
+# Local de ocorrencia
+nomes_local_ocorrencia<- c("Residência", #1
+                           "Vias públicas" #6
+                           )
+
+highchart() %>% 
+  hc_xAxis(categories = as.character(2011:2016)) %>% 
+  hc_add_series(name = "Residência", data = dados_residencia_ANO, color = "#4572A7") %>%
+  hc_add_series(name = "Vias públicas", data = dados_vias_ANO, color = "#f28f43") %>%
+  hc_add_series(name = "Total", data = nrows, color = "#90ed7d") %>%
+   hc_xAxis(title = list(text = "Ano de notificação")) %>%
+  hc_yAxis(title = list(text = "Número de notificações"), min = 0, showFirstLabel = TRUE, labels = list(format = "{value}")) %>%
+  hc_title(text = "Figura 1: Número de notificações de casos de estupro em mulheres no Brasil, por local de ocorrência, de 2011 a 2016 (fonte: VIVA/SVS/MS).", style = list(color = gray(0.69))) %>%
+  frameWidget()
+
+# 	31.119.180
+# 255.127.14
+# 	44.160.44
+```
+
+A seguir, vamos comparar as características desse crime ocorrido em residências e vias públicas, de acordo com a idade da vítima, zona de ocorrência, hora de ocorrência, relação da vítima com o agressor e repetição da violência.
+
+### Idade das vítimas
+
+Uma das questões que queremos responder é se a idade das vítimas se difere nesses dois locais (residências x vias públicas). Para isso temos a Figura 2: a curva em azul representa os casos notificados que ocorreram em residências e a de cor laranja, os que ocorreram em vias públicas. O intervalo da idade que está ligado aos pontos mais altos do gráfico é aquele que representa a maior contagem de notificações. Veja que, até os 15 anos aproximadamente, a área em azul está muito mais alta que a área em laranja. Então, observando os casos notificados que aconteceram em residências (curva azul), podemos verificar que houve mais vítimas jovens (com a idade até 15 anos). Por outro lado, a idade das vítimas na grande parte dos crimes notificados que aconteceram em vias públicas era um pouco maior (a partir dos 15 anos).
+
+```{r}
+# highchart() %>%
+hchart(density(idade_residencia, na.rm = TRUE, from = 0), type = "area", name = "Residência", color = "#4572A7") %>%
+  hc_add_series(density(idade_via_publica, na.rm = TRUE, from = 0), type = "area", name = "Vias públicas", color = "#f28f43") %>%
+  hc_xAxis(title = list(text = "Idade na data de ocorrência (em anos)")) %>%
+  hc_yAxis(title = list(text = "Densidade")) %>%
+  hc_title(text = "Figura 2: Distribuição das idades de vítimas, por local de ocorrência, de 2011 a 2016 (fonte: VIVA/SVS/MS).", style = list(color = gray(0.69)))%>%
+  hc_tooltip(table = TRUE, backgroundColor = "lightgrey", split = TRUE, pointFormat = "Local de ocorrência: {series.name} <br> Idade: {point.x:.0f} anos <br> Densidade: {point.y}", headerFormat = '', valueDecimals = 4) %>%
+  frameWidget()
+
+```
+
+Uma outra característica em relação à idade e o local de ocorrência pode ser visto no post [Estupro de vulnerável: quais são as chances de ocorrência deste crime no Brasil?](https://stats4good.github.io/gesem/blog/2018/08/estupro_de_vulneravel/). Nele são abordados os casos notificados cujas vítimas tinham menos de 14 anos já que, por lei, uma pessoa só pode consentir sobre relações sexuais a partir a dessa idade. Foi verificado que a chance de ocorrência (e notificação) de estupro de vulnerável em residências é 7,73 a chance de ocorrência (e notificação) desse crime em vias públicas.
+
+### Zona de ocorrência
+
+A Tabela 1 mostra os casos notificados de estupro em mulheres, separado por local e zona de ocorrência. As zonas de ocorrência são divididas em três tipos: urbanas, periurbanas e rurais. A [definição do SINAN](http://bvsms.saude.gov.br/bvs/publicacoes/viva_instrutivo_violencia_interpessoal_autoprovocada_2ed.pdf) para cada um desses grupos é
+
+  * *Urbana*: área com características de cidade propriamente dita, incluindo-se a periferia e as “cidades satélites”, com concentração
+populacional/habitacional, existência de estruturas administrativas, serviços públicos, comércio, indústria, transporte e lazer;
+  * *Periurbana*: área relativamente próxima à urbana, com aglomeração populacional geralmente menos concentrada, onde as estruturas urbanas são precárias e os usos assemelham-se aos das estruturas rurais, não se distinguindo, por vezes, o campo e a cidade;
+  * *Rural*: área com características próprias do campo, com população dispersa, relativamente distante dos centros administrativos, acesso limitado a serviços públicos, agroprodução (ex.: fazenda, “roça”, chácara, sítio, assentamentos do Instituto
+Nacional de Colonização e Reforma Agrária – Incra, aldeias etc.).
+
+```{r}
+
+#dados_tabela1<- subset(dados, dados$LOCAL_OCOR == "Residênca" | dados$LOCAL_OCOR == "Via publica")
+# tabela1<- table(dados_tabela1$LOCAL_OCOR, dados_tabela1$ZONA_OCOR)
+# tabela1<- tabela1[,c("Urbana", "Periurbana", "Rural", "Ignorado")]
+tabela1<- read.table(file = "residencias_vias_publicas/data/tabela1.txt", header = TRUE, sep = ";")
+rownames(tabela1)<- c("Residência", "Vias públicas")
+tabela1 %>%
+  kable("html", caption = "Tabela 1: Total e porcentagem de casos notificados por local e zona de ocorrência, de 2011 a 2016 (fonte: VIVA/SVS/MS).") %>%
+  kable_styling(bootstrap_options = "hover", full_width = F) %>%
+  add_header_above(c(" ", "Zona de ocorrência" = 4))
+
+
+```
+
+Nos três tipos de zona, a maior partes das notificações, sobretudo em zonas urbanas e rurais, ocorreram dentro de residências. Destacamos também a grande quantidade de zonas sem classificação (Ignorado), representando 3 casos notificados (que ocorreram em um dos dois locais estudados) a cada cinco dias.
+
+### Hora de ocorrência
+
+A Figura 3 ilustra a distribuição do horário de ocorrência dos casos de estupro em mulheres, notificados de 2011 a 2016, separado por local de ocorrência. Novamente, a área em azul diz respeito aos casos notificados que ocorreram em residências e a em laranja, aqueles que ocorreram em vias públicas. Observando essa figura, podemos notar que entre 7:30h da manhã e 18h da noite, a maior parte dos casos estudados neste post são de notificações de estupros que aconteceram dentro de residências. Já de 01h da manhã às 7:30h e das 18h às 24h, ou seja, períodos noturnos e escuros, os crimes notificados têm acontecido em vias públicas.
+
+
+```{r}
+hchart(density(hora_ocorrencia_residencia, from = 0, to = 23 + (59/60)), type = "area", name = "Residência", color = "#4572A7") %>%
+  hc_add_series(density(hora_ocorrencia_via_publica, from = 0, to = 23 + (59/60)), type = "area", name = "Vias públicas", color = "#f28f43") %>%
+  hc_xAxis(min = 0, max = 24, tickPositions = 0:23, title = list(text = "Hora de ocorrência"), valueDecimals = 4) %>%
+  hc_yAxis(title = list(text = "Densidade")) %>%
+  hc_title(text = "Figura 3: Distribuição do horário de ocorrência dos casos notificados de estupro em mulheres, por local de ocorrência, de 2011 a 2016 (fonte: VIVA/SVS/MS).", style = list(color = gray(0.69))) %>%
+  hc_tooltip(table = TRUE, backgroundColor = "lightgrey", split = TRUE, pointFormat = "Local de ocorrência: {series.name} <br> Densidade: {point.y}", headerFormat = "", valueDecimals = 4) %>%
+  frameWidget()
+
+
+```
+
+### Relação com o agressor
+
+A Tabela 2 apresenta os casos de estupro em mulheres notificados de 2011 a 2016, separado por local de ocorrência e relação com o agressor (conhecido, desconhecido ou ignorado). Veja que, em **93%** dos casos notificados nos quais o agressor era **conhecido** da vítima, os casos aconteceram **dentro de residências**. Ou seja, quando o crime ocorre dentro de residências (possivelmente a residência da vítima e/ou do agressor), é **muito** provável que a vítima conheça o agressor. Lembramos aqui que, em boa parte dos casos que ocorreram em residências, as vítimas foram meninas com menos de 15 anos, o que agrava ainda mais o cenário.
+
+Por outro lado, dos casos notificados em que a vítima NÃO conhecia o agressor, 65% deles ocorreram em vias públicas. Porém, ainda considerando o agressor desconhecido pela vítima, há um número considerável de notificações cuja ocorrência se deu em residências, compondo 36% desses casos.
+
+```{r}
+tabela3<- read.table(file = "residencias_vias_publicas/data/tabela3.txt", header = TRUE, sep = ";")
+rownames(tabela3)<- c("Residência", "Vias públicas")
+tabela3 %>%
+  kable("html", caption = "Tabela 2: Total e porcentagem de casos notificados por local de ocorrência e relação com o agressor, de 2011 a 2016 (fonte: VIVA/SVS/MS).") %>%
+  kable_styling(bootstrap_options = "hover", full_width = F) %>%
+  add_header_above(c(" ", "Relação com o agressor" = 3))
+```
+
+Um outro ponto importante é que a maior parte dos casos nos quais a relação com o agressor não foi informada ocorreram em residências. Vale se perguntar o porquê disso: será por que essa informação é omitida porque a vítima conhece o agressor?
+
+Uma evidência para esse pensamento pode ser o que foi [dito](https://agenciapatriciagalvao.org.br/destaques/abuso-sexual-infantil-por-que-sempre-culpam-as-maes-pela-violencia/) por Antonio Rivaldo Brasil de Lima, psicólogo membro do Centro Nacional de Referência às Vítimas de Violência (CNRVV): "às vezes, ele até suspeitou, mas é uma ideia tão inimaginável que o adulto prefere afastar a suspeita". Várias notícias mostram crianças que foram estupradas por conhecidos e tiveram que gravar vídeos para que fossem acreditadas^1,2,3^. Inclusive, há vários casos notificados de estupro, independente do local de ocorrência, cujos agressores eram parceiros das vítimas  (namorados, ex-namorados, cônjuges ou ex-cônjuges). Mais informações sobre esses casos podem ser lidas [aqui](https://stats4good.github.io/gesem/blog/2018/09/estupro_relacionamento/).
+
+### Violência repetida
+
+A Tabela 3 mostra os casos notificados de estupro em mulheres por local de ocorrência e violência repetida. Veja que em 92% dos casos abordados neste post, é mais provável que haja violência repetida dentro das residências, comparando às ocorrências em vias públicas. Isso faz sentido, principalmente quando pensamos que as vítimas são mais novas e, no caso da ocorrência em residências, conhecem o agressor. No mesmo sentido que vimos na tabela anterior, 86% dos casos nos quais não se informou se a violência era repetida ou não, os crimes notificados ocorreram em residências.
+
+```{r}
+tabela2<- read.table(file = "residencias_vias_publicas/data/tabela2.txt", header = TRUE, sep = ";", check.names = F)
+rownames(tabela2)<- c("Residência", "Vias públicas")
+tabela2 %>%
+  kable("html", caption = "Tabela 3: Total e porcentagem de casos notificados por local de ocorrencia e violencia repetida, de 2011 a 2016 (fonte: VIVA/SVS/MS).") %>%
+  kable_styling(bootstrap_options = "hover", full_width = F) %>%
+  add_header_above(c(" ", "Violência repetida" = 3))
+```
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+### Conclusões
+
+De forma geral, considerando as notificações, as vítimas de estupros que ocorrem em residências são mais novas (menos de 15 anos), conhecem o agressor, sofrem essa violência repetidas vezes e o crime pode se dar em qualquer hora, com grande probabilidade de que seja à luz do dia. Essas conclusões então na mesma linha do que foi apresentado [nessa](https://agenciapatriciagalvao.org.br/destaques/abuso-sexual-infantil-por-que-sempre-culpam-as-maes-pela-violencia/) reportagem. Por outro lado, quando esses casos ocorrem em vias públicas, as vítimas têm mais de 15 anos, não conhecem o agressor e não sofrem essa violência repetidas vezes. Além disso, também já foi constatado [aqui](https://stats4good.github.io/gesem/blog/2018/10/estupro_coletivo/) que estupros coletivos ocorrem mais em vias públicas do que em residências.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+### Observações:
+
+* os dados de 2015 e 2016 não estão consolidados;
+
+* ao longo dos anos estudados, havia cerca 3% de valores faltantes na idade das vítimas, 5% na zona de ocorrência, 48% na hora de ocorrência, 3% na relação com o agressor e 0,6% na variável representando a violência repetida;
+
+* crimes de estupro são subnotificados, isso significa que as interpretações feitas aqui não refletem **exatamente** as ocorrências. Para entender mais sobre isso leia o post [Dados oficiais de estupro no Brasil: a questão da subnotificação](https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/);
+
+* reitaramos que estupro ***NUNCA*** é culpa da vítima;
+
+* é importante notificar os casos de estupro (opções: ligar 180 ou ir ao centro de saúde mais próximo).
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+### Referências
+
+^1^ [Adolescente registra com o celular tentativa de abuso sexual do padrasto](http://recordtv.r7.com/cidade-alerta/videos/adolescente-registra-com-o-celular-tentativa-de-abuso-sexual-do-padrasto-20102018)
+
+^2^ [Menina grava estupro de amiga de 10 anos no Piauí](https://catracalivre.com.br/cidadania/menina-grava-estupro-de-amiga-de-10-anos-no-piaui/)
+
+^3^ [Menina de 10 anos grava seu próprio estupro para que adultos acreditem em denúncia](https://www.bbc.com/portuguese/internacional-41436317)
+
