@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<script src="highchart_libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="highchart_libs/jquery/jquery.min.js"></script>
+<script src="highchart_libs/proj4js/proj4.js"></script>
+<link href="highchart_libs/highcharts/css/motion.css" rel="stylesheet" />
+<script src="highchart_libs/highcharts/highcharts.js"></script>
+<script src="highchart_libs/highcharts/highcharts-3d.js"></script>
+<script src="highchart_libs/highcharts/highcharts-more.js"></script>
+<script src="highchart_libs/highcharts/modules/stock.js"></script>
+<script src="highchart_libs/highcharts/modules/heatmap.js"></script>
+<script src="highchart_libs/highcharts/modules/treemap.js"></script>
+<script src="highchart_libs/highcharts/modules/annotations.js"></script>
+<script src="highchart_libs/highcharts/modules/boost.js"></script>
+<script src="highchart_libs/highcharts/modules/data.js"></script>
+<script src="highchart_libs/highcharts/modules/drag-panes.js"></script>
+<script src="highchart_libs/highcharts/modules/drilldown.js"></script>
+<script src="highchart_libs/highcharts/modules/funnel.js"></script>
+<script src="highchart_libs/highcharts/modules/item-series.js"></script>
+<script src="highchart_libs/highcharts/modules/offline-exporting.js"></script>
+<script src="highchart_libs/highcharts/modules/overlapping-datalabels.js"></script>
+<script src="highchart_libs/highcharts/modules/parallel-coordinates.js"></script>
+<script src="highchart_libs/highcharts/modules/sankey.js"></script>
+<script src="highchart_libs/highcharts/modules/solid-gauge.js"></script>
+<script src="highchart_libs/highcharts/modules/streamgraph.js"></script>
+<script src="highchart_libs/highcharts/modules/sunburst.js"></script>
+<script src="highchart_libs/highcharts/modules/vector.js"></script>
+<script src="highchart_libs/highcharts/modules/wordcloud.js"></script>
+<script src="highchart_libs/highcharts/modules/xrange.js"></script>
+<script src="highchart_libs/highcharts/modules/exporting.js"></script>
+<script src="highchart_libs/highcharts/modules/export-data.js"></script>
+<script src="highchart_libs/highcharts/maps/modules/map.js"></script>
+<script src="highchart_libs/highcharts/plugins/grouped-categories.js"></script>
+<script src="highchart_libs/highcharts/plugins/motion.js"></script>
+<script src="highchart_libs/highcharts/plugins/multicolor_series.js"></script>
+<script src="highchart_libs/highcharts/custom/reset.js"></script>
+<script src="highchart_libs/highcharts/custom/symbols-extra.js"></script>
+<script src="highchart_libs/highcharts/custom/text-symbols.js"></script>
+<link href="highchart_libs/htmlwdgtgrid/htmlwdgtgrid.css" rel="stylesheet" />
+<script src="highchart_libs/highchart-binding/highchart.js"></script>
+<script src="highchart_libs/pymjs/pym.v1.min.js"></script>
+  <title>highchart</title>
+</head>
+<body style="background-color:white;">
+<div id="htmlwidget_container">
+  <div id="htmlwidget-104d8afd6521719267a7" style="width:100%;height:500px;" class="highchart html-widget"></div>
+  <script>HTMLWidgets.pymChild = new pym.Child();HTMLWidgets.addPostRenderHandler(function(){
+                                setTimeout(function(){HTMLWidgets.pymChild.sendHeight();},100);
+                            });</script>
+</div>
+<script type="application/json" data-for="htmlwidget-104d8afd6521719267a7">{"x":{"hc_opts":{"title":{"text":"Figura 1: Casos observados de estupro em vítimas com idade inferior a 14 anos, entre os anos de 2010 a 2012, nos onze municípios analisados.","style":{"color":"#B0B0B0"}},"yAxis":{"title":{"text":"Percentual"},"type":"linear","minorGridLineWidth":0,"gridLineWidth":0,"showLastLabel":false,"labels":{"format":"{value}%"},"max":101},"credits":{"enabled":true,"text":" FONTE: Borges e Santos Jr. (2018).","href":"https://tede.ufam.edu.br/handle/tede/6647","style":{"fontSize":"12px0"}},"exporting":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0,"showInLegend":true},"treemap":{"layoutAlgorithm":"squarified"},"scatter":{"marker":{"symbol":"circle"}},"column":{"stacking":"percent"}},"series":[{"name":"Delegacia","data":[{"MUNICIPIO":"Amaturá","FONTE":"Delegacia","OBSERVADO":2,"y":2,"name":"Amaturá"},{"MUNICIPIO":"Atalaia do Norte","FONTE":"Delegacia","OBSERVADO":5,"y":5,"name":"Atalaia do Norte"},{"MUNICIPIO":"Barreirinha","FONTE":"Delegacia","OBSERVADO":9,"y":9,"name":"Barreirinha"},{"MUNICIPIO":"Benjamin Constant","FONTE":"Delegacia","OBSERVADO":2,"y":2,"name":"Benjamin Constant"},{"MUNICIPIO":"Boa Vista do Ramos","FONTE":"Delegacia","OBSERVADO":6,"y":6,"name":"Boa Vista do Ramos"},{"MUNICIPIO":"Maués","FONTE":"Delegacia","OBSERVADO":12,"y":12,"name":"Maués"},{"MUNICIPIO":"Nhamundá","FONTE":"Delegacia","OBSERVADO":8,"y":8,"name":"Nhamundá"},{"MUNICIPIO":"Santo Antônio do Içá","FONTE":"Delegacia","OBSERVADO":5,"y":5,"name":"Santo Antônio do Içá"},{"MUNICIPIO":"São Paulo de Olivença","FONTE":"Delegacia","OBSERVADO":4,"y":4,"name":"São Paulo de Olivença"},{"MUNICIPIO":"Tabatinga","FONTE":"Delegacia","OBSERVADO":6,"y":6,"name":"Tabatinga"},{"MUNICIPIO":"Tonantins","FONTE":"Delegacia","OBSERVADO":1,"y":1,"name":"Tonantins"},{"MUNICIPIO":"Total nos 11 municípios","FONTE":"Delegacia","OBSERVADO":60,"y":60,"name":"Total nos 11 municípios"}],"type":"column"},{"name":"SIM","data":[{"MUNICIPIO":"Amaturá","FONTE":"SIM","OBSERVADO":0,"y":0,"name":"Amaturá"},{"MUNICIPIO":"Atalaia do Norte","FONTE":"SIM","OBSERVADO":0,"y":0,"name":"Atalaia do Norte"},{"MUNICIPIO":"Barreirinha","FONTE":"SIM","OBSERVADO":0,"y":0,"name":"Barreirinha"},{"MUNICIPIO":"Benjamin Constant","FONTE":"SIM","OBSERVADO":0,"y":0,"name":"Benjamin Constant"},{"MUNICIPIO":"Boa Vista do Ramos","FONTE":"SIM","OBSERVADO":0,"y":0,"name":"Boa Vista do Ramos"},{"MUNICIPIO":"Maués","FONTE":"SIM","OBSERVADO":1,"y":1,"name":"Maués"},{"MUNICIPIO":"Nhamundá","FONTE":"SIM","OBSERVADO":0,"y":0,"name":"Nhamundá"},{"MUNICIPIO":"Santo Antônio do Içá","FONTE":"SIM","OBSERVADO":1,"y":1,"name":"Santo Antônio do Içá"},{"MUNICIPIO":"São Paulo de Olivença","FONTE":"SIM","OBSERVADO":0,"y":0,"name":"São Paulo de Olivença"},{"MUNICIPIO":"Tabatinga","FONTE":"SIM","OBSERVADO":0,"y":0,"name":"Tabatinga"},{"MUNICIPIO":"Tonantins","FONTE":"SIM","OBSERVADO":0,"y":0,"name":"Tonantins"},{"MUNICIPIO":"Total nos 11 municípios","FONTE":"SIM","OBSERVADO":2,"y":2,"name":"Total nos 11 municípios"}],"type":"column"},{"name":"SINASC","data":[{"MUNICIPIO":"Amaturá","FONTE":"SINASC","OBSERVADO":9,"y":9,"name":"Amaturá"},{"MUNICIPIO":"Atalaia do Norte","FONTE":"SINASC","OBSERVADO":23,"y":23,"name":"Atalaia do Norte"},{"MUNICIPIO":"Barreirinha","FONTE":"SINASC","OBSERVADO":23,"y":23,"name":"Barreirinha"},{"MUNICIPIO":"Benjamin Constant","FONTE":"SINASC","OBSERVADO":34,"y":34,"name":"Benjamin Constant"},{"MUNICIPIO":"Boa Vista do Ramos","FONTE":"SINASC","OBSERVADO":16,"y":16,"name":"Boa Vista do Ramos"},{"MUNICIPIO":"Maués","FONTE":"SINASC","OBSERVADO":63,"y":63,"name":"Maués"},{"MUNICIPIO":"Nhamundá","FONTE":"SINASC","OBSERVADO":15,"y":15,"name":"Nhamundá"},{"MUNICIPIO":"Santo Antônio do Içá","FONTE":"SINASC","OBSERVADO":23,"y":23,"name":"Santo Antônio do Içá"},{"MUNICIPIO":"São Paulo de Olivença","FONTE":"SINASC","OBSERVADO":19,"y":19,"name":"São Paulo de Olivença"},{"MUNICIPIO":"Tabatinga","FONTE":"SINASC","OBSERVADO":36,"y":36,"name":"Tabatinga"},{"MUNICIPIO":"Tonantins","FONTE":"SINASC","OBSERVADO":9,"y":9,"name":"Tonantins"},{"MUNICIPIO":"Total nos 11 municípios","FONTE":"SINASC","OBSERVADO":270,"y":270,"name":"Total nos 11 municípios"}],"type":"column"}],"xAxis":{"type":"category","title":{"text":""},"minorGridLineWidth":0,"gridLineWidth":0,"plotBands":[{"from":-0.5,"to":10.5,"color":"lightgrey","label":{"text":"Municípios","style":{"font":"bold 12px \"Trebuchet MS\", Verdana, sans-serif"}}},{"from":10.5,"to":12.5,"color":"grey","label":{"text":"Total"}}]},"tooltip":{"shared":true,"useHTML":true,"headerFormat":"<small>{point.key}<\/small><table>","pointFormat":"<span style=\"color:{series.color}\"><b>{series.name}<\/b><\/span>: <b>{point.percentage:.2f}%<\/b> ({point.y:,.0f} casos)<br/>","footerFormat":"<\/table>","backgroundColor":"lightgrey","split":true},"colors":["yellow","#3366FF","purple"]},"theme":{"chart":{"backgroundColor":"transparent"}},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"decimalPoint":",","thousandsSep":"."}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+<script type="application/htmlwidget-sizing" data-for="htmlwidget-104d8afd6521719267a7">{"viewer":{"width":"100%","height":350,"padding":0,"fill":false},"browser":{"width":"100%","height":500,"padding":0,"fill":false}}</script>
+</body>
+</html>

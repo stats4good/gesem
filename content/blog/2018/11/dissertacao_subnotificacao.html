@@ -1,0 +1,156 @@
+---
+title: "Pesquisa de mestrado da UFAM propõe método para estimação de sub-registro em crimes de estupro de vulneráveis"
+author: "Guilherme Lopes de Oliveira"
+date: 2018-11-16
+categories: ["estupro de vulnerável", "sunotificação"]
+tags: ["Dissertacao"]
+banner: "blog/2018/11/dissertacao_subnotificacao/img/banner.png"
+summary: "Métodos que propiciem a correção da subnotificação de eventos como o estupro são de grande interesse do GESEM. Neste post, uma metodologia  proposta recentemente numa dissertação de mestrado será apresentada. Os autores focam nos crimes de estupro de vulneráveis do sexo feminino em alguns municípios do estado do Amazonas, o que em muito se relaciona aos objetivos/estudos deste Grupo."
+---
+
+<script src="/gesem/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/gesem/rmarkdown-libs/pymjs/pym.v1.js"></script>
+<script src="/gesem/rmarkdown-libs/widgetframe-binding/widgetframe.js"></script>
+<script src="/gesem/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Em maio deste ano, o estatístico Natan Sant’Anna Borges defendeu sua dissertação <sup>1</sup> de mestrado no Programa de Pós-graduação em Matemática da Universidade Federal do Amazonas (UFAM). O objetivo do estudo era estimar a taxa de estupro de vulnerável em alguns municípios do interior do estado do Amazonas no período de 2010 a 2012 e ao mesmo tempo mensurar o nível de subnotificação do crime junto aos órgãos policiais. Como se vê, o tema do trabalho em muito se assemelha à <a href="https://stats4good.github.io/gesem/">proposta do GESEM</a> e, por isto, seus resultados serão brevemente apresentados e discutidos neste post para amplo conhecimento.</p>
+<blockquote>
+<p>De acordo com o art. 217-A do Código Penal <sup>2</sup>, o <em>estupro de vulnerável</em> é configurado como a conjunção carnal ou a prática de qualquer ato libidinoso com pessoa menor de 14 anos, sendo irrelevante eventual consentimento da vítima para a prática do ato, sua experiência sexual anterior ou existência de relacionamento amoroso com o agente.</p>
+</blockquote>
+<p>Rigorosamente, o crime ocorre independentemente do agente também ser menor de 14 anos <sup>3,4</sup>. Mesmo que apenas um dos membros de um casal se encaixe neste perfil, dificilmente a ocorrência de relação sexual entre eles seria denunciada se houver um consentimento bilateral. Por isso, parece razoável supor que o nível de <a href="https://stats4good.github.io/gesem/blog/2018/05/dados_oficias_e_subnotificacao/">subnotificação</a> do crime de estupro em vítimas com menos de 14 anos seja bastante elevado.</p>
+<p>Na sequência são apresentados os principais aspectos e resultados da dissertação, sem entrar em detalhes técnicos da metodologia estatística empregada. Antes disso, vale mencionar que em dois <em>posts</em> anteriores o GESEM disponibiliza análises a respeito deste tipo de crime. No <em>post</em> <a href="https://stats4good.github.io/gesem/blog/2018/06/entendendo_as_idades/">QUAL A IDADE DAS VÍTIMAS E ONDE ESSES CRIMES ESTÃO OCORRENDO?</a> é evidenciado que o estupro em vítimas com até 14 anos de idade corresponde a cerca de 50% dos casos notificados na base no SINAN. Em <a href="https://stats4good.github.io/gesem/blog/2018/08/estupro_de_vulneravel/">ESTUPRO DE VULNERÁVEL: QUAIS SÃO AS CHANCES DE OCORRÊNCIA DESTE CRIME NO BRASIL?</a> é apresentada uma análise mais detalhada a respeito deste tipo de crime, levando em conta, por exemplo, as unidades da federação e local de ocorrência.</p>
+<div id="a-ideia-para-correcao-da-taxa-de-ocorrencia-do-crime" class="section level3">
+<h3>A ideia para correção da taxa de ocorrência do crime</h3>
+<p>O total de casos de estupro em mulheres menores de 14 anos denunciados nos 11 municípios analisados, entre os anos de 2010 a 2012, foram obtidos por meio de boletins de ocorrência (BO) das delegacias municipais. O acesso aos BOs é uma maneira direta de obter informação sobre os crimes que de fato chegaram ao conhecimento dos órgãos policiais e que, portanto, tiveram a chance de serem investigados.</p>
+<p>Contudo, existem outras formas de registros no Brasil que permitem identificar este crime de maneira indireta. Para este fim, considerou-se o Sistema de Informação Sobre Nascidos Vivos (SINASC) e o Sistema de Informação sobre Mortalidade (SIM), ambos gerenciados pelo SUS e que podem ser acessados através da plataforma <a href="http://datasus.saude.gov.br/">DATASUS</a>. No SINASC o crime é localizado pela estimação da idade da mãe e o mês da concepção da gravidez. No SIM se localizam as ocorrências de óbitos fetais. Se em qualquer um destes bancos uma mãe com menos de 14 anos é identificada, então considera-se a ocorrência de um estupro de vulnerável.</p>
+<p>Os autores ressaltam que estes bancos de dados, SIM e SINASC, referem-se somente às vítimas que engravidaram no ato de ocorrência do crime e que, além disso, um registro no SIM ou no SINASC só deveria ser contado como não notificado (denunciado) se ele não aparecer nos dados das delegacias. Isto é, caso uma mulher com menos de 14 anos tenha engravidado no ato do crime e o tenha denunciado numa delegacia, este evento teria registro simultâneo em mais de um banco de dados.</p>
+<p>Uma metodologia estatística apropriada é, então, considerada para lidar com estas questões e permitir a estimação da proporção de sub-notificações do crime junto às delegacias fazendo uso dos três bancos de dados conjuntamente. Por consequência, as taxas de estupros de vulnerável notificados podem ser corrigidas.</p>
+</div>
+<div id="descricao-do-banco-de-dados" class="section level3">
+<h3>Descrição do banco de dados</h3>
+<p>A Figura 1 traz o total de casos observados em cada município a partir das três diferentes fontes de informação: Delegacias (parte da barra em amarelo), SIM (em azul) e SINASC (em roxo). Cerca de 81,33% do número total de casos foram identificados através do SINASC, evidenciando que, de fato, a maior parte deste tipo de crime não chega a ser denunciado junto aos órgãos policiais. Isso pode ser explicado, em partes, pelo fato de muitas concepções ocorrerem em relacionamentos afetivos consentidos pelas vítimas (contudo, ainda assim, se trata de um estupro segundo o Código Penal). O percentual observado por meio do SINASC varia dentre os municípios analisados, mas em todos eles se mostra maior que 65%. Destaca-se o município Benjamin Constant, no qual apenas 2 dos 36 casos observados (5,56%) foram denunciados numa delegacia.</p>
+<div id="htmlwidget-1" style="width:100%;height:480px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"url":"/gesem/blog/2018/11/dissertacao_subnotificacao_files/figure-html//widgets/widget_fig1.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="apresentacao-e-analise-dos-resultados-obtidos" class="section level3">
+<h3>Apresentação e análise dos resultados obtidos</h3>
+<p>Faz-se uso de um modelo estatístico apropriado para estimar as quantidades desconhecidas de interesse (parâmetros) usando, conjuntamente, os dados obtidos das Delegacias, SIM e SINASC. Para entender os resultados apresentados na Tabela 1, denote por</p>
+<ul>
+<li><span class="math inline">\(\lambda\)</span> a taxa média de estupros de vulneráveis do sexo feminino registrados nos municípios analisados;</li>
+<li><span class="math inline">\(p_1\)</span> a probabilidade do registro ser <strong>exclusivo da Delegacia</strong>;</li>
+<li><span class="math inline">\(p_2\)</span> a probabilidade do registro ser <strong>exclusivo do SINASC</strong>;</li>
+<li><span class="math inline">\(p_3\)</span> a probabilidade do registro ser <strong>exclusivo do SIM</strong>;</li>
+<li><span class="math inline">\(p_{12}\)</span> a probabilidade do registro ser <strong>simultâneo na Delegacia e no SINASC</strong>, e</li>
+<li><span class="math inline">\(p_{13}\)</span> a probabilidade do registro ser <strong>simultâneo na Delegacia e no SIM</strong>.</li>
+</ul>
+<p>Os termos que representam probabilidades são tais que <span class="math inline">\(p_1+p_2+p_3+p_{12}+p_{13}=1\)</span>. Por se tratarem de registros de eventos distintos, não se assume a possibilidade de registro simultâneo entre o SINASC e o SIM.</p>
+<table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-1">Table 1: </span>Tabela 1: Resumo das estimativas <em>a posteriori</em>. Média e intervalo de credibilidade de 95%. FONTE: Borges e Santos Jr. (2018).
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Parâmetro
+</th>
+<th style="text-align:left;">
+Média Estimada
+</th>
+<th style="text-align:left;">
+Intervalo de Credibilidade
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\lambda\)</span>
+</td>
+<td style="text-align:left;">
+51,84
+</td>
+<td style="text-align:left;">
+[44,56;61,04]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(p_1\)</span>
+</td>
+<td style="text-align:left;">
+0,0844
+</td>
+<td style="text-align:left;">
+[0,0086;0,1973]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(p_2\)</span>
+</td>
+<td style="text-align:left;">
+0,7871
+</td>
+<td style="text-align:left;">
+[0,7381;0,8313]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(p_3\)</span>
+</td>
+<td style="text-align:left;">
+0,0066
+</td>
+<td style="text-align:left;">
+[0,0002;0,0212]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(p_{12}\)</span>
+</td>
+<td style="text-align:left;">
+0,1151
+</td>
+<td style="text-align:left;">
+[0,0301;0,2090]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(p_{13}\)</span>
+</td>
+<td style="text-align:left;">
+0,0068
+</td>
+<td style="text-align:left;">
+[0,0003;0,0441]
+</td>
+</tr>
+</tbody>
+</table>
+<p>Com base nos resultados apresentados na Tabela 1, <strong>estima-se que a taxa média de estupro registrados (<span class="math inline">\(\lambda\)</span>) para cada 10.000 habitantes do sexo feminino menores de 14 anos é 51,84 no período analisado</strong>. Além disso, pode-se dizer que o valor verdadeiro desta taxa pertence ao intervalo [44,56 ; 61,04] com 95% de probabilidade.</p>
+<p>Para evidenciar a eficiência do método na correção desta taxa de estupro, os autores mencionam que a estimativa fornecida por um método convencionalmente utilizado era de 2,32 para cada 10 mil habitantes, o qual é 22,35 vezes menor que a estimativa fornecida pelos autores. Com isso, vê-se que a metodologia proposta viabiliza uma correção considerável na taxa que seria obtida olhando apenas para os dados provenientes das delegacias municipais.</p>
+<p>A estimativa para a probabilidade do crime ser subnotificado é de aproximadamente de 79,4%, ou seja, <strong>estima-se que apenas 20,6% dos casos ocorridos nestes municípios são denunciados aos órgão policiais</strong>. Este valor é obtido pela soma das estimativas para os parâmetros <span class="math inline">\(p_2\)</span> e <span class="math inline">\(p_3\)</span>, já que estas correspondem às proporções dos casos observados que não são notificados numa delegacia.</p>
+<p>Além dos resultados para vítimas com idade inferior a 14 anos, são fornecidas estimativas para vítimas com faixas etárias abaixo de 13 e 12 anos nos onze municípios. Tanto as taxas de notificação quanto as probabilidades de subnotificação do crime decaem conforme a faixa etária diminui. Com base nesses resultados, quanto mais nova a vítima menos frequente é o crime e maior a probabilidade de que ele seja denunciado numa delegacia. Para cada 10000 habitantes do sexo feminino com menos de 13 anos de idade, estimou-se que a taxa média de estupros de vulnerável do sexo feminino registrados nos municípios analisados é de 19,82 e a probabilidade do crime ser devidamente reportado aos órgãos policiais é de 41%. Para vítimas com idade inferior a 12 anos tais estimativas foram, respectivamente, iguais a 7,4 e 61%.</p>
+<hr />
+</div>
+<div id="comentarios" class="section level3">
+<h3>Comentários</h3>
+<p>O texto completo da dissertação pode ser acessado através deste <a href="https://tede.ufam.edu.br/handle/tede/6647">link</a>. Os resultados se mostram interessantes para a correção de subnotificação de crimes junto aos órgãos policiais quando se tem disponíveis informações de outros sistemas de registros que indiretamente permitem o acesso aos casos ocorridos.</p>
+<p>É importante salientar, no entanto, que o método fornece correções para o total de crimes não denunciados à polícia com relação àqueles que podem ser observados por meio de outras fontes indiretas de dados. Dessa forma, para os casos de estupro de vulnerável que não são reportados em qualquer sistema auxiliar ou que não são de fácil identificação por meio do SIM ou do SINASC (por resultarem em gravidez), a correção carece de metodologias diferenciadas. O mesmo vale para outros crimes aos quais a metodologia porventura se aplique.</p>
+<p>De todo modo, recomenda-se fortemente a leitura e divulgação do trabalho. Dada toda a dificuldade encontrada para a correção do sub-registro em contextos diversos, dentre eles os crimes de estupro, a metodologia proposta se mostra de grande relevância e aplicação prática.</p>
+<hr />
+</div>
+<div id="referencias" class="section level2">
+<h2>Referências</h2>
+<p><sup>1</sup> <a href="https://tede.ufam.edu.br/handle/tede/6647">Borges e Santos Jr. (2018). Uma proposta para estimação da taxa e da subnotificação de registros de estupro de vulnerável no Brasil. Dissertação de Mestrado. Programa de Pós-graduação em Matemática da UFAM.</a></p>
+<p><sup>2</sup> <a href="http://www.planalto.gov.br/ccivil_03/Decreto-Lei/Del2848.htm#art217a">art. 217-A do Código Penal.</a></p>
+<p><sup>3</sup> <a href="https://eduardocabette.jusbrasil.com.br/artigos/164268648/o-estupro-de-vulneravel-e-os-atos-libidinosos-sem-violencia-entre-menores-uma-solucao-encontravel-no-direito-comparado" class="uri">https://eduardocabette.jusbrasil.com.br/artigos/164268648/o-estupro-de-vulneravel-e-os-atos-libidinosos-sem-violencia-entre-menores-uma-solucao-encontravel-no-direito-comparado</a></p>
+<p><sup>4</sup> <a href="https://deniscaramigo.jusbrasil.com.br/artigos/374354382/o-estupro-consensual-de-vulneravel-entre-adolescentes-menores-de-14-e-maiores-de-12-anos-fato-tipico-ou-nao" class="uri">https://deniscaramigo.jusbrasil.com.br/artigos/374354382/o-estupro-consensual-de-vulneravel-entre-adolescentes-menores-de-14-e-maiores-de-12-anos-fato-tipico-ou-nao</a></p>
+<p>** É importante notificar os casos de estupro (opções: ligue 180 ou vá ao centro de saúde mais próximo).</p>
+<p>** Reiteramos que o estupro NUNCA é culpa da vítima.</p>
+<p>** Agradeço ao Natan Sant’Anna Borges pela disponibilidade e autorização para a análise aqui apresentada.</p>
+</div>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/gesem/blog/2018/11/dissertacao_subnotificacao/</loc>
+    <lastmod>2018-11-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/gesem/blog/2018/11/residencias_vias_publicas/</loc>
     <lastmod>2018-11-02T00:00:00+00:00</lastmod>
   </url>
@@ -87,7 +92,7 @@
   
   <url>
     <loc>/gesem/blog/</loc>
-    <lastmod>2018-11-02T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -128,6 +133,12 @@
   <url>
     <loc>/gesem/tags/diagrama-de-venn/</loc>
     <lastmod>2018-05-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/tags/dissertacao/</loc>
+    <lastmod>2018-11-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -174,6 +185,12 @@
   </url>
   
   <url>
+    <loc>/gesem/categories/estupro-de-vulner%C3%A1vel/</loc>
+    <lastmod>2018-11-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/gesem/tags/ex-marido/</loc>
     <lastmod>2018-09-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -199,7 +216,7 @@
   
   <url>
     <loc>/gesem/</loc>
-    <lastmod>2018-11-02T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -332,6 +349,12 @@
   <url>
     <loc>/gesem/categories/subnotifica%C3%A7%C3%A3o/</loc>
     <lastmod>2018-05-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/categories/sunotifica%C3%A7%C3%A3o/</loc>
+    <lastmod>2018-11-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
