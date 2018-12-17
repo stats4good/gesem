@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/gesem/blog/2018/12/sinan/</loc>
+    <lastmod>2018-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/gesem/blog/2018/11/dissertacao_subnotificacao/</loc>
     <lastmod>2018-11-16T00:00:00+00:00</lastmod>
   </url>
@@ -91,8 +96,14 @@
   </url>
   
   <url>
+    <loc>/gesem/categories/base-de-dados/</loc>
+    <lastmod>2018-12-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/gesem/blog/</loc>
-    <lastmod>2018-11-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -168,7 +179,7 @@
   
   <url>
     <loc>/gesem/categories/estupro/</loc>
-    <lastmod>2018-11-02T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -209,6 +220,12 @@
   </url>
   
   <url>
+    <loc>/gesem/tags/f%C3%B3rum-brasileiro-de-seguran%C3%A7a-p%C3%BAblica/</loc>
+    <lastmod>2018-12-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/gesem/tags/google-trends/</loc>
     <lastmod>2018-03-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -216,7 +233,7 @@
   
   <url>
     <loc>/gesem/</loc>
-    <lastmod>2018-11-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -271,6 +288,12 @@
   <url>
     <loc>/gesem/tags/marido/</loc>
     <lastmod>2018-09-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/tags/minist%C3%A9rio-da-sa%C3%BAde/</loc>
+    <lastmod>2018-12-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -335,6 +358,12 @@
   </url>
   
   <url>
+    <loc>/gesem/tags/sinan/</loc>
+    <lastmod>2018-12-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/gesem/categories/sinan/</loc>
     <lastmod>2018-07-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -385,6 +414,12 @@
   <url>
     <loc>/gesem/tags/viol%C3%AAncia-repetida/</loc>
     <lastmod>2018-11-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/gesem/tags/viva/</loc>
+    <lastmod>2018-12-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

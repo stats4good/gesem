@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Base De Dados on Grupo de Estudo da Subnotificação de Estupro em Mulheres</title>
+    <link>/gesem/categories/base-de-dados/</link>
+    <description>Recent content in Base De Dados on Grupo de Estudo da Subnotificação de Estupro em Mulheres</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Mon, 17 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/gesem/categories/base-de-dados/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dados de Estupro em Mulheres no Brasil</title>
+      <link>/gesem/blog/2018/12/sinan/</link>
+      <pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/gesem/blog/2018/12/sinan/</guid>
+      <description>Dados: opções e disponibilidade No post A problemática do acesso a dados relacionados ao crime de estupro no Brasil discutimos o acesso aos dados referentes à notificação de crime de estupro no Brasil. Nele, apresentamos a existência de duas fontes de dados: (a) Ministério da Saúde (MS) e (b) Secretarias de Segurança Públicas (SSP) através de boletins de ocorrência (BO).
+Como esclarecido e justificado no post mencionado, trabalhamos com os dados do MS, porém, é importante reconhecer algumas possíveis limitações dessa escolha.</description>
+    </item>
+    
+  </channel>
+</rss>
